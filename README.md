@@ -19,6 +19,9 @@
 - 読んだ本の感想をコメントで投稿できる
 - 他の人のコメントを閲覧・いいねできる>
 
+## 実装機能リスト
+https://docs.google.com/spreadsheets/d/1QIHupszH9kSksYkofslfzFKRv1ugBX3dssLI8usQ7mQ/edit?usp=sharing
+
 ## 設計書
 <...>
 
