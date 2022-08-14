@@ -1,62 +1,39 @@
 Rails.application.routes.draw do
-
-  namespace :admin do
-    get 'comments/destroy'
-  end
-  namespace :admin do
-    get 'books/index'
-    get 'books/show'
-    get 'books/edit'
-    get 'books/update'
-    get 'books/destroy'
-  end
-  namespace :admin do
-    get 'users/index'
-    get 'users/show'
-    get 'users/edit'
-    get 'users/update'
-    get 'users/comment'
-  end
-  namespace :admin do
-    get 'homes/top'
-  end
-  namespace :public do
-    get 'bookmarks/create'
-    get 'bookmarks/destroy'
-  end
-  namespace :public do
-    get 'comments/new'
-    get 'comments/create'
-  end
-  namespace :public do
-    get 'books/index'
-    get 'books/new'
-    get 'books/create'
-    get 'books/show'
-    get 'books/edit'
-    get 'books/update'
-    get 'books/search'
-  end
-  namespace :public do
-    get 'users/show'
-    get 'users/edit'
-    get 'users/update'
-    get 'users/confirm'
-    get 'users/withdraw'
-  end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
   
   devise_for :admins, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
   
-  devise_for :users, skip: [:registrations, :passwords], controllers: {
+  devise_for :users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: "public/sessions"
   }
   
+  
+  namespace :admin do
+    root to: 'homes#top'
+    resources :users, only: [:index, :show, :edit, :update, :comment]
+    resources :books, only: [:index, :show, :edit, :update, :destroy]
+    resources :comments, only: [:destroy]
+  end
+  
+  scope module: 'public' do
+    root to: 'homes#top'
+    get 'about' => 'homes#about'
+    
+    get 'users/mypage' => 'users#show'
+    get 'users/information/edit' => 'users#edit'
+    patch 'users/information' => 'users#update'
+    get 'user/confirm'
+    patch 'user/withdraw'
+    
+    resources :books, only: [:index, :new, :create, :show, :edit, :update] do
+      resources :bookmarks, only: [:create, :destroy]
+      resources :comments, only: [:new, :create]
+    end
+    get 'books/search'
+    
+  end
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
