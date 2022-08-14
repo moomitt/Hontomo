@@ -1,2 +1,69 @@
-<h1>Public::Homes#about</h1>
-<p>Find me in app/views/public/homes/about.html.erb</p>
+<div class="container">
+  <div class="row">
+    
+    <div class="col-12 bg-dark" id="top-image" style="height: 300px; width: 100%;">
+      </br>
+      <h5 class="my-5 text-light text-center">Hontomoへようこそ！</h5>
+      <h6 class="my-4 text-light text-center">Hontomoは、本好きのための”感想”共有型コミュニティサイトです。</h6>
+      <h6 class="my-4 text-light text-center">コメント形式で気軽に感想を共有できます。</h6>
+    </div>
+    
+    <div class="col-11 border mt-5 mx-auto" id="top-image" style="height: 900px; width: 100%;">
+      <div>
+        <h5 class="mt-5 mb-4 ml-3 font-weight-bold"><u>Hontomoの使い方</u></h5>
+        <p class="my-3 ml-3">「本を探す」からあなたの読んだ本を検索</p>
+        <p class="my-3 ml-3 px-2 font-weight-bold bg-light d-inline-block">→ お探しの本が登録済みの場合</p>
+        <p class="my-2 ml-4">　　「コメントを投稿」をクリックして、あなたの感想を投稿しましょう！</p>
+        <p class="my-2 ml-4">　　 気になったコメントには「いいね」でリアクションしましょう</p>
+        <p class="mt-4 my-3 ml-3 px-2 font-weight-bold bg-light d-inline-block">→ お探しの本が見つからない場合</p>
+        <p class="my-2 ml-5">　あなたが１人目の投稿者です</p>
+        <p class="my-2 ml-5">　①「本を新規登録」をクリックして、本の情報を登録してください</p>
+        <p class="my-2 ml-5">　②「コメントを投稿」をクリックして、最初のコメントを投稿しましょう！</p>
+      </div>
+      
+      <div>
+        <h5 class="mt-5 mb-4 ml-3 font-weight-bold"><u>ご利用上の注意</u></h5>
+        <p class="my-3 ml-4"><%= link_to '利用規約', about_path %>　　※必ずお読みください</p>
+        <p class="my-3 ml-4">
+          ・<u>本サイトは読了者向けの感想共有サイトです。</u></br>
+          　書籍の内容に言及する（ネタバレを含む）コメントの投稿が想定されます。</br>
+          　読了済みでない書籍ページの閲覧にはご注意ください。
+        </p>
+        <p class="my-3 ml-4">
+          ・下記に該当する書籍の登録およびコメント投稿はお止めください。</br>
+          　 ・特定の個人・団体を誹謗中傷する内容</br>
+          　 ・公序良俗に反する内容、成人向けの内容</br>
+        </p>
+        
+        <p class="my-3 ml-4">
+          ・上記以外の場合でも、管理者が不適切な内容と判断した場合、</br>
+          　該当書籍およびコメントは許可無く削除される可能性があります。あらかじめご了承ください。
+        </p>
+        
+        <p class="my-3 ml-4">
+          ・登録いただいた書籍情報に誤りがある場合や変更が生じた場合、</br>
+          　管理者側で修正する場合があります。ご了承ください。
+        </p>
+      </div>
+    </div>
+    
+    <div class="col-12 text-center py-5">
+      <h5><strong>Let's Enjoy Hontomo！</strong></h5>
+      <%= link_to '今すぐ本を探す', books_path, :class => "btn btn-secondary px-4 mt-2" %>
+    </div>
+    <div class="col-6 text-center py-3 mx-auto bg-light">
+      <p><strong>本の登録・コメント投稿には会員登録が必要です</strong></p>
+      <div class="row">
+        <div class="col pr-0">
+          <p>会員登録がお済みの方</p>
+          <%= link_to 'ログイン', new_user_session_path, :class => "btn btn-primary px-5" %>
+        </div>
+        <div class="col pl-0">
+          <p>会員登録がお済みでない方</p>
+          <%= link_to '新規登録', new_user_registration_path, :class => "btn btn-success px-5" %>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
