@@ -1,2 +1,25 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h4 class="my-5"><%= @user.name %>　さんのマイページ</h4>
+    </div>
+    
+    <div class="col-10 mx-auto">
+      <h4 class="mb-4 d-inline-block">会員情報</h4>
+      <%= link_to '登録情報の編集はこちら', users_information_edit_path, :class => "btn btn-sm btn-success ml-5 px-4" %>
+      <div class="row ml-4">
+        <label class="col-lg-2">ニックネーム</label>
+        <p class="col-lg-2"><%= @user.name %></p>
+      </div>
+      <div class="row ml-4">
+        <label class="col-lg-2">メールアドレス</label>
+        <p class="col-lg-3"><%= @user.email %></p>
+      </div>
+    </div>
+    
+    <div class="col-10 mx-auto">
+      <h4 class="mt-5">お気に入り登録リスト</h4>
+    </div>
+    
+  </div>
+</div>

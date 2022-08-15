@@ -21,11 +21,25 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
+            <% if user_signed_in? %>
+              <li class="mr-5 my-3"><small>ようこそ、<%= current_user.name %> さん</small></li>
+              <li class="ml-1 mr-4 my-3"><u><%= link_to 'Hontomoとは', about_path %></u></li>
+              <li class="ml-1 mr-4 my-3"><u><%= link_to '本を探す', books_path %></u></li>
+              <li class="ml-1 mr-4 my-3"><u><%= link_to 'マイページ', users_mypage_path %></u></li>
+              <li class="ml-1 mr-4 my-3"><u><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></u></li>
+            <% elsif admin_signed_in? %>
+              <li class="mr-5 my-3"><small>ようこそ、管理者 さん</small></li>
+              <li class="ml-1 mr-4 my-3"><u><%= link_to '会員一覧', admin_users_path %></u></li>
+              <li class="ml-1 mr-4 my-3"><u><%= link_to '書籍一覧', admin_books_path %></u></li>
+              <li class="ml-1 mr-4 my-3"><u><%= link_to 'コメント一覧', admin_root_path %></u></li>
+              <li class="ml-1 mr-4 my-3"><u><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></u></li>
+            <% else %>
               <li class="mr-5 my-3"><small>ようこそ、ゲスト さん</small></li>
               <li class="ml-1 mr-4 my-3"><u><%= link_to 'Hontomoとは', about_path %></u></li>
               <li class="ml-1 mr-4 my-3"><u><%= link_to '本を探す', books_path %></u></li>
               <li class="ml-1 mr-4 my-3"><u><%= link_to 'ログイン', new_user_session_path %></u></li>
               <li class="ml-1 mr-4 my-3"><u><%= link_to '新規登録', new_user_registration_path %></u></li>
+            <% end %>
             </ul>
           </div>
         </div>

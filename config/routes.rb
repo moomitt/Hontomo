@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   
   namespace :admin do
     root to: 'homes#top'
-    resources :users, only: [:index, :show, :edit, :update, :comment]
+    resources :users, only: [:index, :show, :edit, :update]
+    get 'users/:id/comment' => 'users#comment', as: 'user_comment'
     resources :books, only: [:index, :show, :edit, :update, :destroy]
     resources :comments, only: [:destroy]
   end
@@ -24,8 +25,8 @@ Rails.application.routes.draw do
     get 'users/mypage' => 'users#show'
     get 'users/information/edit' => 'users#edit'
     patch 'users/information' => 'users#update'
-    get 'user/confirm'
-    patch 'user/withdraw'
+    get 'users/confirm'
+    patch 'users/withdraw'
     
     resources :books, only: [:index, :new, :create, :show, :edit, :update] do
       resources :bookmarks, only: [:create, :destroy]
