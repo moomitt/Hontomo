@@ -1,2 +1,55 @@
-<h1>Public::Books#edit</h1>
-<p>Find me in app/views/public/books/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h4 class="my-5">本の登録情報編集</h4>
+    </div>
+    
+    <div class="col-10 mx-auto">
+      <%= form_with model: @book, url: book_path(@book.id), method: :patch, :class => "form-horaizontal" do |f| %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <div class="row input-group-sm mb-2">
+          <label class="col-lg-2">タイトル</label>
+          <%= f.text_field :name, :class => "form-control col-lg-4" %>
+        </div>
+        <div class="row input-group-sm mb-2">
+          <label class="col-lg-2">作者</label>
+          <%= f.text_field :author, :class => "form-control col-lg-4" %>
+        </div>
+        <div class="row input-group-sm mb-2">
+          <label class="col-lg-2">画像</label>
+        </div>
+        <div class="row input-group-sm mb-2">
+          <label class="col-lg-2">シリーズ名</label>
+          <%= f.text_field :series, :class => "form-control col-lg-4" %>
+        </div>
+        
+        <div class="row input-group-sm mb-2">
+          <label class="col-lg-2">タグ</label>
+          <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+            <div class ="form-check mr-3">
+              <%= tag.label class: "form-check-label" do %>
+                <%= tag.check_box class: "form-check-input" %>
+                <%= tag.text %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        
+        <%= @book.errors.full_messages %>
+        
+        <div class="row input-group-sm mb-2 mt-5">
+          <label class="col-lg-2"></label>
+          <%= f.submit '変更を保存する', :class => "btn btn-success px-5" %>
+        </div>
+        <% end %>
+        
+        <div class="row input-group-sm mb-2">
+          <label class="col-lg-2"></label>
+          <%= form_tag({controller:"books",action:"new"}, method: :get) do %>
+            <%= text_field_tag :tag %>
+            <%= submit_tag 'タグを追加' %>
+          <% end %>
+        </div>
+    </div>
+  </div>
+</div>

@@ -25,9 +25,17 @@ class Public::BooksController < ApplicationController
   end
 
   def edit
+    @book = Book.find(params[:id])
+    if params[:tag]
+      Tag.create(name: params[:tag])
+      redirect_to edit_book_path
+    end
   end
 
   def update
+    @book = Book.find(params[:id])
+    @book.update(book_params)
+    redirect_to book_path(@book.id)
   end
 
   def search
