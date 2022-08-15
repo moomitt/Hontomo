@@ -4,6 +4,10 @@ class Public::BooksController < ApplicationController
 
   def new
     @book = Book.new
+    if params[:tag]
+      Tag.create(name: params[:tag])
+      redirect_to new_book_path
+    end
   end
 
   def create

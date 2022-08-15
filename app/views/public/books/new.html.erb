@@ -42,6 +42,14 @@
           <%= f.submit '本を登録する', :class => "btn btn-success px-5" %>
         </div>
         <% end %>
+        
+        <div class="row input-group-sm mb-2">
+          <label class="col-lg-2"></label>
+          <%= form_tag({controller:"books",action:"new"}, method: :get) do %>
+            <%= text_field_tag :tag %>
+            <%= submit_tag 'タグを追加' %>
+          <% end %>
+        </div>
     </div>
   </div>
 </div>
