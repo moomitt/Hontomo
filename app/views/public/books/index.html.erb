@@ -7,7 +7,7 @@
     <div class="col-10 mx-auto  text-top">
       <h4 class="mb-4">すべての本　<small>(全<%= @books.count %>件)</small></h4>
       <% @books.each do |book| %>
-        <div class="col-3 d-inline-block text-top">
+        <div class="col-3 d-inline-block" style="vertical-align: top;SS">
         <%= link_to book_path(book.id) do %>
           <div class="border" style="width: 150px; height: 200px;"></div>
           <p class="mt-3 mb-1"><strong><%= book.name %></strong></p>
@@ -17,10 +17,10 @@
       <% end %>
     </div>
     
-    <div class="col-12 text-center">
+    <div class="col-12 text-center py-4">
       <p><strong>お探しの本が見つかりませんでしたか？</strong></p>
       <p><strong>あなたの読んだ本を登録して、最初のコメントを投稿しましょう！</strong></p>
-      <%= link_to '本を登録する', new_book_path, :class => "btn btn-secondary px-5" %>
+      <%= link_to '本を登録する', new_book_path, :class => "btn btn-secondary px-5 mt-4" %>
     </div>
   </div>
 </div>
