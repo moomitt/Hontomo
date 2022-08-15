@@ -13,6 +13,12 @@
           <p><%= book.author %></p>
         </div>
       <% end %>
-    </div>    
+    </div>
+    
+    <div class="col-12 text-center">
+      <p><strong>お探しの本が見つかりませんでしたか？</strong></p>
+      <p><strong>あなたの読んだ本を登録して、最初のコメントを投稿しましょう！</strong></p>
+      <%= link_to '本を登録する', new_book_path, :class => "btn btn-secondary px-5" %>
+    </div>
   </div>
 </div>
