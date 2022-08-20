@@ -9,7 +9,12 @@
       <% @books.each do |book| %>
         <div class="d-inline-block" style="vertical-align: top; width: 20%;">
         <%= link_to book_path(book.id) do %>
-          <div class="border" style="width: 150px; height: 200px;"></div>
+          <div class="border" style="width: 150px; height: 200px;">
+          <% if book.isbn.present? %>
+            <% item = RakutenWebService::Books::Book.search(isbn: book.isbn).first %>
+            <%= image_tag(item.large_image_url) %>
+          <% end %>
+          </div>
           <p class="mt-3 mb-1"><strong><%= book.name %></strong></p>
           <p><%= book.author %></p>
         <% end %>
