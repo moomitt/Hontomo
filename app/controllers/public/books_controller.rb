@@ -2,12 +2,10 @@ class Public::BooksController < ApplicationController
   def index
     @books = Book.all
   end
-
+  
   def new
-    @book = Book.new
-    if params[:tag]
-      Tag.create(name: params[:tag])
-      redirect_to new_book_path
+    if params[:keyword]
+      @books = RakutenWebService::Books::Book.search(title: params[:keyword])
     end
   end
 
@@ -40,6 +38,7 @@ class Public::BooksController < ApplicationController
 
   def search
   end
+  
   
   private
   def book_params

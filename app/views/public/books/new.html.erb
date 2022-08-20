@@ -1,55 +1,27 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <h4 class="my-5">本の新規登録</h4>
+      <h4 class="my-5">本を登録する</h4>
     </div>
-    
-    <div class="col-10 mx-auto">
-      <%= form_with model: @book, url: books_path, :class => "form-horaizontal" do |f| %>
-        <%= f.hidden_field :user_id, :value => current_user.id %>
-        <div class="row input-group-sm mb-2">
-          <label class="col-lg-2">タイトル</label>
-          <%= f.text_field :name, :class => "form-control col-lg-4" %>
-        </div>
-        <div class="row input-group-sm mb-2">
-          <label class="col-lg-2">作者</label>
-          <%= f.text_field :author, :class => "form-control col-lg-4" %>
-        </div>
-        <div class="row input-group-sm mb-2">
-          <label class="col-lg-2">画像</label>
-        </div>
-        <div class="row input-group-sm mb-2">
-          <label class="col-lg-2">シリーズ名</label>
-          <%= f.text_field :series, :class => "form-control col-lg-4" %>
-        </div>
-        
-        <div class="row input-group-sm mb-2">
-          <label class="col-lg-2">タグ</label>
-          <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
-            <div class ="form-check mr-3">
-              <%= tag.label class: "form-check-label" do %>
-                <%= tag.check_box class: "form-check-input" %>
-                <%= tag.text %>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
-        
-        <%= @book.errors.full_messages %>
-        
-        <div class="row input-group-sm mb-2 mt-5">
-          <label class="col-lg-2"></label>
-          <%= f.submit '本を登録する', :class => "btn btn-success px-5" %>
-        </div>
+    <div class="col-10">
+      <div class="row form-group-sm">
+        <%= form_with url: new_book_path, method: :get, local: true, :class => "form-horaizontal" do |f| %>
+          <%= f.text_field :keyword, :class => "form-control" %>
+          <%= f.submit '題名で検索', :class => "btn btn-sm btn-secondary" %>
         <% end %>
-        
-        <div class="row input-group-sm mb-2">
-          <label class="col-lg-2"></label>
-          <%= form_tag({controller:"books",action:"new"}, method: :get) do %>
-            <%= text_field_tag :tag %>
-            <%= submit_tag 'タグを追加' %>
+      </div>
+      <h4 class="my-5">検索結果</h4>
+      <div id="item_list">
+        <% if @books.present? %>
+          <% @books.each do |book| %>
+          <div class="mb-3">
+            <%= link_to (image_tag(book.medium_image_url)), book.item_url %>
+            <strong class="mx-3"><%= book.title %></strong>
+            <%= book.author %>
+          </div>
           <% end %>
-        </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
