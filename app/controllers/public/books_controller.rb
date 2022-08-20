@@ -5,17 +5,18 @@ class Public::BooksController < ApplicationController
   
   def find
     if params[:keyword]
-      @books = RakutenWebService::Books::Book.search(title: params[:keyword])
+      @items = RakutenWebService::Books::Book.search(title: params[:keyword])
     end
   end
   
   def new
-    @books =  RakutenWebService::Books::Book.search(isbn: params[:isbn])
+    items = RakutenWebService::Books::Book.search(isbn: params[:isbn])
+    @item = items.first
     @book = Book.new
   end
 
   def create
-    @books =  RakutenWebService::Books::Book.search(isbn: params[:isbn])
+    @books = RakutenWebService::Books::Book.search(isbn: params[:isbn])
     @book = Book.new(book_params)
     if @book.save
       redirect_to book_path(@book.id)
@@ -26,6 +27,8 @@ class Public::BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
+    items = RakutenWebService::Books::Book.search(isbn: @book.isbn)
+    @item = items.first
   end
 
   def edit

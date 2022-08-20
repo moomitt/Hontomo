@@ -12,15 +12,15 @@
       </div>
       <h4 class="my-5">検索結果</h4>
       <div id="item_list">
-        <% if @books.present? %>
-          <% @books.each do |book| %>
+        <% if @items.present? %>
+          <% @items.each do |item| %>
           <div class="mb-3">
-            <%= image_tag(book.medium_image_url) %>
-            <strong class="mx-3"><%= book.title %></strong>
-            <%= book.author %>
-            <%= link_to '楽天ブックスでみる', book.item_url, :class => "btn btn-sm btn-success ml-5" %>
+            <%= image_tag(item.medium_image_url) %>
+            <strong class="mx-3"><%= item.title %></strong>
+            <%= item.author %>
+            <%= link_to '楽天ブックスでみる', item.item_url, :class => "btn btn-sm btn-success ml-5" %>
             <%= form_with url: new_book_path, method: :get do |f| %>
-              <%= f.hidden_field :isbn, :value => book.isbn %>
+              <%= f.hidden_field :isbn, :value => item.isbn %>
               <%= f.submit '登録画面へ', :class => "btn btn-sm btn-secondary mt-2 mb-3" %>
             <% end %> 
           </div>

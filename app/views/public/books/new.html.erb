@@ -4,21 +4,19 @@
       <h4 class="my-5">本を登録する</h4>
     </div>
     <div class="col-10">
-      <% @books.each do |book| %>
-          <div class="mb-3">
-            <%= image_tag(book.medium_image_url) %>
-            <strong class="mx-3"><%= book.title %></strong>
-            <%= book.author %>
-            <%= link_to '楽天ブックスでみる', book.item_url, :class => "btn btn-sm btn-success ml-5" %>
-            <%= form_with model: @book, url: books_path, method: :post do |f| %>
-              <%= f.hidden_field :isbn, :value => book.isbn %>
-              <%= f.hidden_field :name, :value => book.title %>
-              <%= f.hidden_field :author, :value => book.author %>
-              <%= f.hidden_field :user_id, :value => current_user.id %>
-              <%= f.submit 'この本を登録する', :class => "btn btn btn-success mt-2 mb-3" %>
-            <% end %> 
-          </div>
-        <% end %>
+        <div class="mb-3">
+          <%= image_tag(@item.medium_image_url) %>
+          <strong class="mx-3"><%= @item.title %></strong>
+          <%= @item.author %>
+          <%= link_to '楽天ブックスでみる', @item.item_url, :class => "btn btn-sm btn-success ml-5" %>
+          <%= form_with model: @book, url: books_path, method: :post do |f| %>
+            <%= f.hidden_field :isbn, :value => @item.isbn %>
+            <%= f.hidden_field :name, :value => @item.title %>
+            <%= f.hidden_field :author, :value => @item.author %>
+            <%= f.hidden_field :user_id, :value => current_user.id %>
+            <%= f.submit 'この本を登録する', :class => "btn btn btn-success mt-2 mb-3" %>
+          <% end %> 
+        </div>
       </div>
     </div>
   </div>

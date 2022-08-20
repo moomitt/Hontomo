@@ -8,6 +8,9 @@
       <h4 class="mb-4 d-inline-block">本の情報</h4>
       <%= link_to '登録情報の編集はこちら', edit_book_path(@book.id), :class => "btn btn-sm btn-success ml-5 px-4" %>
       <div class="row ml-4">
+        <%= image_tag(@item.medium_image_url) %>
+      </div>
+      <div class="row ml-4">
         <label class="col-lg-2">タイトル</label>
         <p class="col-lg-4"><%= @book.name %></p>
       </div>
