@@ -8,15 +8,15 @@
       <%= form_with model: @book, url: book_path(@book.id), method: :patch, :class => "form-horaizontal" do |f| %>
         <%= f.hidden_field :user_id, :value => current_user.id %>
         <div class="row input-group-sm mb-2">
+          <%= image_tag(@item.large_image_url) %>
+        </div>
+        <div class="row input-group-sm mb-2">
           <label class="col-lg-2">タイトル</label>
-          <%= f.text_field :name, :class => "form-control col-lg-4" %>
+          <%= f.text_field :name, readonly: true, :class => "form-control col-lg-4" %>
         </div>
         <div class="row input-group-sm mb-2">
           <label class="col-lg-2">作者</label>
-          <%= f.text_field :author, :class => "form-control col-lg-4" %>
-        </div>
-        <div class="row input-group-sm mb-2">
-          <label class="col-lg-2">画像</label>
+          <%= f.text_field :author, readonly: true, :class => "form-control col-lg-4" %>
         </div>
         <div class="row input-group-sm mb-2">
           <label class="col-lg-2">シリーズ名</label>

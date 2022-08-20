@@ -5,7 +5,7 @@
     </div>
     <div class="col-10">
         <div class="mb-3">
-          <%= image_tag(@item.medium_image_url) %>
+          <%= image_tag(@item.large_image_url) %>
           <strong class="mx-3"><%= @item.title %></strong>
           <%= @item.author %>
           <%= link_to '楽天ブックスでみる', @item.item_url, :class => "btn btn-sm btn-success ml-5" %>
