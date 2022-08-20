@@ -28,11 +28,12 @@ Rails.application.routes.draw do
     get 'users/confirm'
     patch 'users/withdraw'
     
+    get 'books/find'
+    get 'books/search'
     resources :books, only: [:index, :new, :create, :show, :edit, :update] do
       resources :bookmarks, only: [:create, :destroy]
       resources :comments, only: [:new, :create]
     end
-    get 'books/search'
     
   end
 

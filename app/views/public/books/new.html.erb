@@ -4,22 +4,20 @@
       <h4 class="my-5">本を登録する</h4>
     </div>
     <div class="col-10">
-      <div class="row form-group-sm">
-        <%= form_with url: new_book_path, method: :get, local: true, :class => "form-horaizontal" do |f| %>
-          <%= f.text_field :keyword, :class => "form-control" %>
-          <%= f.submit '題名で検索', :class => "btn btn-sm btn-secondary" %>
-        <% end %>
-      </div>
-      <h4 class="my-5">検索結果</h4>
-      <div id="item_list">
-        <% if @books.present? %>
-          <% @books.each do |book| %>
+      <% @books.each do |book| %>
           <div class="mb-3">
-            <%= link_to (image_tag(book.medium_image_url)), book.item_url %>
+            <%= image_tag(book.medium_image_url) %>
             <strong class="mx-3"><%= book.title %></strong>
             <%= book.author %>
+            <%= link_to '楽天ブックスでみる', book.item_url, :class => "btn btn-sm btn-success ml-5" %>
+            <%= form_with model: @book, url: books_path, method: :post do |f| %>
+              <%= f.hidden_field :isbn, :value => book.isbn %>
+              <%= f.hidden_field :name, :value => book.title %>
+              <%= f.hidden_field :author, :value => book.author %>
+              <%= f.hidden_field :user_id, :value => current_user.id %>
+              <%= f.submit 'この本を登録する', :class => "btn btn btn-success mt-2 mb-3" %>
+            <% end %> 
           </div>
-          <% end %>
         <% end %>
       </div>
     </div>

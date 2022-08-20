@@ -3,13 +3,19 @@ class Public::BooksController < ApplicationController
     @books = Book.all
   end
   
-  def new
+  def find
     if params[:keyword]
       @books = RakutenWebService::Books::Book.search(title: params[:keyword])
     end
   end
+  
+  def new
+    @books =  RakutenWebService::Books::Book.search(isbn: params[:isbn])
+    @book = Book.new
+  end
 
   def create
+    @books =  RakutenWebService::Books::Book.search(isbn: params[:isbn])
     @book = Book.new(book_params)
     if @book.save
       redirect_to book_path(@book.id)
@@ -42,6 +48,6 @@ class Public::BooksController < ApplicationController
   
   private
   def book_params
-    params.require(:book).permit(:user_id, :name, :author, :series, tag_ids: [])
+    params.require(:book).permit(:user_id, :name, :author, :series, :isbn, tag_ids: [])
   end
 end
