@@ -4,12 +4,21 @@ class Public::BooksController < ApplicationController
     if params[:keyword]
       redirect_to books_search_path
     end
+    if params[:tag_ids]
+      redirect_to books_search_path
+    end
   end
   
   def search
-    @books = Book.where('name LIKE(?)', "%#{params[:keyword]}%").or(Book.where('author LIKE(?)', "%#{params[:keyword]}%"))
     if params[:keyword]
       @books = Book.where('name LIKE(?)', "%#{params[:keyword]}%").or(Book.where('author LIKE(?)', "%#{params[:keyword]}%"))
+    end
+    if params[:tag_ids]
+      @books = []
+      params[:tag_ids].each do |key,value|
+        @books += Tag.find_by(name: key).books if value == "1"
+      end
+      @books.uniq!
     end
   end
   

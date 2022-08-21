@@ -7,7 +7,15 @@
     <div class="col-10 mx-auto text-top mb-5">
       <%= form_with url: books_search_path, method: :get, local: true, :class => "form-horaizontal" do |f| %>
         <%= f.text_field :keyword, :class => "form-control col-5" %>
-        <%= f.submit 'キーワード検索', :class => "btn btn-sm btn-secondary" %>
+        <%= f.submit 'キーワード検索', :class => "btn btn-sm btn-secondary mb-4" %>
+      <% end %>
+      
+      <%= form_tag({controller: "books", action: "search"}, method: :get) do %>
+        <% Tag.all.each do |t| %>
+          <%= check_box :tag_ids, t.name %><%= t.name %>
+        <% end %>
+        </br>
+        <%= submit_tag 'タグ検索' %>
       <% end %>
     </div>
     
