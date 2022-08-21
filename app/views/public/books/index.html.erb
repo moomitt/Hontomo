@@ -4,6 +4,13 @@
       <h4 class="my-5">本をさがす</h4>
     </div>
     
+    <div class="col-10 mx-auto text-top mb-5">
+      <%= form_with url: books_search_path, method: :get, local: true, :class => "form-horaizontal" do |f| %>
+        <%= f.text_field :keyword, :class => "form-control col-5" %>
+        <%= f.submit 'キーワード検索', :class => "btn btn-sm btn-secondary" %>
+      <% end %>
+    </div>
+    
     <div class="col-10 mx-auto text-top">
       <h4 class="mb-4">すべての本　<small>(全<%= @books.count %>件)</small></h4>
       <% @books.each do |book| %>

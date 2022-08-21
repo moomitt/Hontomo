@@ -1,6 +1,16 @@
 class Public::BooksController < ApplicationController
   def index
     @books = Book.all
+    if params[:keyword]
+      redirect_to books_search_path
+    end
+  end
+  
+  def search
+    @books = Book.where('name LIKE(?)', "%#{params[:keyword]}%").or(Book.where('author LIKE(?)', "%#{params[:keyword]}%"))
+    if params[:keyword]
+      @books = Book.where('name LIKE(?)', "%#{params[:keyword]}%").or(Book.where('author LIKE(?)', "%#{params[:keyword]}%"))
+    end
   end
   
   def find
@@ -46,10 +56,6 @@ class Public::BooksController < ApplicationController
     @book.update(book_params)
     redirect_to book_path(@book.id)
   end
-
-  def search
-  end
-  
   
   private
   def book_params
