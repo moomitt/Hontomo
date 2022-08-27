@@ -1,6 +1,6 @@
 class Public::BookmarksController < ApplicationController
   
-  before_action :authenticate_user!   #ログインしていない場合、トップページにリダイレクト
+  before_action :authenticate_user!   #ログインしていない場合、ログインページにリダイレクト
   
   def create
     @book = Book.find(params[:book_id])
