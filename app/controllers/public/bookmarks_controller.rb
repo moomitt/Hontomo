@@ -14,7 +14,7 @@ class Public::BookmarksController < ApplicationController
 
   def destroy
     @book = Book.find(params[:book_id])
-    bookmark = @book.bookmarks.new(user_id: current_user.id)
+    bookmark = @book.bookmarks.find_by(user_id: current_user.id)
     if bookmark.present?      #二度押しのエラー回避
       bookmark.destroy
       redirect_to request.referer
