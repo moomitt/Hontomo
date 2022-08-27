@@ -38,6 +38,14 @@
         <p class="col-lg-4"><%= @book.user.name %></p>
       </div>
       
+      <div class="row ml-4">
+        <% if @book.bookmarked_by?(current_user) %>
+          <%= link_to 'お気に入り解除', book_bookmark_path(@book), method: :delete %>
+        <% else %>
+          <%= link_to 'お気に入り登録', book_bookmarks_path(@book), method: :post %>
+        <% end %>
+      </div>
+      
     </div>
     
     <div class="col-10 mx-auto">

@@ -6,4 +6,8 @@ class Book < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_one_attached :image
+  
+  def bookmarked_by?(user)                 #すでにブックマークしているか検証
+    bookmarks.where(user_id: user).exists?
+  end
 end
