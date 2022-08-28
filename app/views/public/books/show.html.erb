@@ -49,8 +49,11 @@
     </div>
     
     <div class="col-10 mx-auto">
-      <h4 class="mt-5">感想コメント一覧</h4>
+      <h4 class="my-5">感想コメント一覧</h4>
+      <%= link_to '感想コメントを投稿', new_book_comment_path(@book.id), :class => "btn btn-secondary px-3" %>
     </div>
+    
+    
     
   </div>
 </div>

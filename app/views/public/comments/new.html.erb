@@ -1,2 +1,14 @@
-<h1>Public::Comments#new</h1>
-<p>Find me in app/views/public/comments/new.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h4 class="my-5">感想コメント投稿</h4>
+    </div>
+    <div class="col-10">
+      <%= form_with model: @comment, url: book_comments_path(@book.id), method: :post, :class => "form-horaizontal" do |f| %>
+        <label class="col-lg-2">コメント</label>
+        <%= f.text_area :text, :class => "form-control my-3 col-lg-8" %>
+        <%= f.submit 'コメントを投稿', :class => "btn btn-success px-3" %>
+      <% end %>
+    </div>
+  </div>
+</div>
