@@ -48,6 +48,7 @@ class Public::BooksController < ApplicationController
     @book = Book.find(params[:id])
     items = RakutenWebService::Books::Book.search(isbn: @book.isbn)
     @item = items.first
+    @comments = Comment.where(book_id: @book.id)
   end
 
   def edit
