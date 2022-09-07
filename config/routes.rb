@@ -32,7 +32,9 @@ Rails.application.routes.draw do
     get 'books/search'
     resources :books, only: [:index, :new, :create, :show, :edit, :update] do
       resources :bookmarks, only: [:create, :destroy]
-      resources :comments, only: [:new, :create]
+      resources :comments, only: [:new, :create] do
+        resource :goods, only: [:create, :destroy]
+      end
     end
     
   end
