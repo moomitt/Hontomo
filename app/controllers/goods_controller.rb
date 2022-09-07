@@ -1,2 +1,0 @@
-class GoodsController < ApplicationController
-end
