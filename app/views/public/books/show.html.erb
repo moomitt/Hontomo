@@ -57,6 +57,15 @@
           <p>
             <small>投稿者:　<%= comment.user.name %></small>
             <small class="ml-5">投稿日時： <%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></small>
+            <% if comment.gooded_by?(current_user) %>
+              <%= link_to book_comment_goods_path(book_id: @book.id, comment_id: comment.id), method: :delete do %>
+                <small class="ml-5">♥ <%= comment.goods.count %></small>
+              <% end %>
+            <% else %>
+              <%= link_to book_comment_goods_path(book_id: @book.id, comment_id: comment.id), method: :post do %>
+                <small class="ml-5">♡ <%= comment.goods.count %></small>
+              <% end %>
+            <% end %>
           </p>
         </div>
       <% end %>

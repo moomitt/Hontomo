@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     resources :books, only: [:index, :new, :create, :show, :edit, :update] do
       resources :bookmarks, only: [:create, :destroy]
       resources :comments, only: [:new, :create] do
-        resource :goods, only: [:create, :destroy]
+        resource :goods, only: [:create, :destroy]    #URLにgoodのidを含む必要がないため、resourceで記述
       end
     end
     
