@@ -57,9 +57,11 @@
           <p>
             <small>投稿者:　<%= comment.user.name %></small>
             <small class="ml-5">投稿日時： <%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></small>
+            
             <div id="goods_buttons_<%= comment.id %>">
               <%= render partial: 'public/goods/good', locals: { book: @book, comment: comment } %>
             </div>
+            
           </p>
         </div>
       <% end %>
