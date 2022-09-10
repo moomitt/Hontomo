@@ -6,7 +6,11 @@
     
     <div class="col-10 mx-auto">
       <h4 class="mb-4 d-inline-block">本の情報</h4>
-      <%= link_to '登録情報の編集はこちら', edit_book_path(@book.id), :class => "btn btn-sm btn-success ml-5 px-4" %>
+      <% if user_signed_in? %>
+        <%= link_to '登録情報を編集する', edit_book_path(@book.id),
+        :class => "btn btn-sm btn-success ml-5 px-4" %>
+      <% end %>
+      
       <div class="row ml-4 mb-5">
         <%= image_tag(@item.large_image_url) %>
       </div>
@@ -25,7 +29,7 @@
       <div class="row ml-4">
         <label class="col-lg-2">タグ</label>
         <% @book.tags.each do |tag| %>
-          <span class="btn btn-sm btn-secondary"><%= tag.name %></span>
+          <span class="btn btn-sm btn-secondary mr-2"><%= tag.name %></span>
         <% end %>
       </div>
       
@@ -38,13 +42,17 @@
         <p class="col-lg-4"><%= @book.user.name %></p>
       </div>
       
-      <div class="row ml-4">
-        <% if @book.bookmarked_by?(current_user) %>
-          <%= link_to '★ お気に入り解除', book_bookmark_path(@book), method: :delete, :class => "btn btn-outline-warning" %>
-        <% else %>
-          <%= link_to '★ お気に入り登録', book_bookmarks_path(@book), method: :post, :class => "btn btn-warning" %>
-        <% end %>
-      </div>
+      <% if user_signed_in? %>
+        <div class="row ml-4">
+          <% if @book.bookmarked_by?(current_user) %>
+            <%= link_to '★ お気に入り解除', book_bookmark_path(@book), method: :delete, 
+            :class => "btn btn-outline-warning" %>
+          <% else %>
+            <%= link_to '★ お気に入り登録', book_bookmarks_path(@book), method: :post, 
+            :class => "btn btn-warning" %>
+          <% end %>
+        </div>
+      <% end %>
       
     </div>
     
@@ -66,7 +74,25 @@
         </div>
       <% end %>
       
-      <%= link_to '感想コメントを投稿', new_book_comment_path(@book.id), :class => "btn btn-secondary px-3 my-4" %>
+      <% if user_signed_in? %>
+        <%= link_to '感想コメントを投稿', new_book_comment_path(@book.id),
+        :class => "btn btn-secondary px-3 my-4" %>
+      <% else %>
+        <div class="col-6 text-center mt-5 py-3 mx-auto bg-light">
+          <p><strong>本の登録・コメント投稿には会員登録が必要です</strong></p>
+          <div class="row">
+            <div class="col pr-0">
+              <p>会員登録がお済みの方</p>
+              <%= link_to 'ログイン', new_user_session_path, :class => "btn btn-primary px-5" %>
+            </div>
+            <div class="col pl-0">
+              <p>会員登録がお済みでない方</p>
+              <%= link_to '新規登録', new_user_registration_path, :class => "btn btn-success px-5" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      
     </div>
     
     
