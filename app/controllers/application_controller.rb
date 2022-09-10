@@ -8,4 +8,13 @@ class ApplicationController < ActionController::Base
     def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
     end
+  
+  
+  before_action :authenticate_admin!, if: :admin_url
+  def admin_url
+    request.fullpath.include?('/admin')
+  end
+  # admin_urlがtrueの場合のみbefore_actionを実行
+  # request.fullpath : 飛んだ先のpathを全て取得
+    
 end

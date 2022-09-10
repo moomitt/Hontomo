@@ -13,3 +13,8 @@ Tag.create([
   { name: 'ノンフィクション' },
   { name: 'エッセイ' }
   ])
+  
+Admin.create!(
+  email: 'admin@test.jp',
+  password: 'admin00'
+)

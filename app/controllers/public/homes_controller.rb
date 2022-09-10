@@ -5,7 +5,7 @@ class Public::HomesController < ApplicationController
   end
   
   #Commentモデルのbook_idが同じものでまとめて
-  #それをcomment_idの多い順に並び替えて、book_idを取り出す
+  #それをcomment_idの多い順に並び替えて、book_idで取り出す
   
   def about
   end
