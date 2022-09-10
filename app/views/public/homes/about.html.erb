@@ -51,19 +51,22 @@
       <h5><strong>Let's Enjoy Hontomo！</strong></h5>
       <%= link_to '今すぐ本を探す', books_path, :class => "btn btn-secondary px-4 mt-2" %>
     </div>
-    <div class="col-6 text-center py-3 mx-auto bg-light">
-      <p><strong>本の登録・コメント投稿には会員登録が必要です</strong></p>
-      <div class="row">
-        <div class="col pr-0">
-          <p>会員登録がお済みの方</p>
-          <%= link_to 'ログイン', new_user_session_path, :class => "btn btn-primary px-5" %>
-        </div>
-        <div class="col pl-0">
-          <p>会員登録がお済みでない方</p>
-          <%= link_to '新規登録', new_user_registration_path, :class => "btn btn-success px-5" %>
+    
+    <% unless user_signed_in? %>
+      <div class="col-6 text-center py-3 mx-auto bg-light">
+        <p><strong>本の登録・コメント投稿には会員登録が必要です</strong></p>
+        <div class="row">
+          <div class="col pr-0">
+            <p>会員登録がお済みの方</p>
+            <%= link_to 'ログイン', new_user_session_path, :class => "btn btn-primary px-5" %>
+          </div>
+          <div class="col pl-0">
+            <p>会員登録がお済みでない方</p>
+            <%= link_to '新規登録', new_user_registration_path, :class => "btn btn-success px-5" %>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
     
   </div>
 </div>
