@@ -37,10 +37,30 @@
       <% end %>
     </div>
     
-    <div class="col-10 mx-auto text-center py-4">
+    <div class="col-10 mx-auto text-center pt-4">
       <p><strong>お探しの本が見つかりませんでしたか？</strong></p>
       <p><strong>あなたの読んだ本を登録して、最初のコメントを投稿しましょう！</strong></p>
-      <%= link_to '本を登録する', books_find_path, :class => "btn btn-secondary px-5 mt-4" %>
     </div>
+    
+    <% if user_signed_in? %>
+      <div class="col-10 mx-auto text-center">
+        <%= link_to '本を登録する', books_find_path, :class => "btn btn-secondary px-5 mt-4" %>
+      </div>
+    <% else %>
+      <div class="col-6 text-center my-3 py-3 mx-auto bg-light">
+        <p><strong>本の登録・コメント投稿には会員登録が必要です</strong></p>
+        <div class="row">
+          <div class="col pr-0">
+            <p>会員登録がお済みの方</p>
+            <%= link_to 'ログイン', new_user_session_path, :class => "btn btn-primary px-5" %>
+          </div>
+          <div class="col pl-0">
+            <p>会員登録がお済みでない方</p>
+            <%= link_to '新規登録', new_user_registration_path, :class => "btn btn-success px-5" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    
   </div>
 </div>
