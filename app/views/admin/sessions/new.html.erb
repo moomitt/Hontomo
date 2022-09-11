@@ -17,14 +17,6 @@
           <%= f.password_field :password, autocomplete: "current-password",
           :class => "col-lg-4 form-control mb-3"  %>
         </div>
-      
-        <% if devise_mapping.rememberable? %>
-          <div class="row input-group-sm">
-            <label class="label-control col-lg-2"></label>
-            <%= f.check_box :remember_me %>
-            <label><small>　ログインしたままにする</small></label>
-          </div>
-        <% end %>
         
         <div class="row input-group-sm">
           <label class="label-control col-lg-2"></label>
