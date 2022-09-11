@@ -1,2 +1,47 @@
-<h1>Admin::Users#edit</h1>
-<p>Find me in app/views/admin/users/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    
+    <div class="col-12">
+      <h3 class="my-5 ml-4">会員情報変更</h3>
+    </div>
+    
+    <div class="col-10 mx-auto">
+    <%= form_with model: @user, url: admin_user_path(@user.id), method: :patch,
+    :class => "form_horaizontal" do |f| %>
+    
+      <div class="row input-group-sm mb-2">
+        <label class="col-lg-2">会員ID</label>
+        <p class="col"><%= @user.id %></p>
+      </div>
+      
+      <div class="row input-group-sm mb-2">
+        <label class="col-lg-2">ニックネーム</label>
+        <%= f.text_field :name, :class => "form-control col-lg-3" %>
+      </div>
+      
+      <div class="row input-group-sm mb-2">
+        <label class="col-lg-2">メールアドレス</label>
+        <%= f.text_field :email, :class => "form-control col-lg-4" %>
+      </div>
+      
+      <div class="row input-group-sm mb-2">
+        <label class="col-lg-2">会員ステータス</label>
+        <div class="form-check">
+          <%= f.radio_button :is_deleted, :false, :class => "form-check-input mr-5" %>
+          <label class="form-check-label mr-5">有効</label>
+          <%= f.radio_button :is_deleted, :true, :class => "form-check-input" %>
+          <label class="form-check-label">退会</label>
+        </div>
+      </div>
+      
+      <div class="row my-5">
+        <label class="col-lg-2"></label>
+        <%= f.submit '変更を保存', :class => "btn btn-sm btn-success px-4" %>
+      </div>
+      
+    <% end %>
+    </div>
+    
+  </div>
+</div>
+
