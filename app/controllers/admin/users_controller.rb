@@ -4,14 +4,22 @@ class Admin::UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def update
+    @user = User.find(params[:id])
   end
 
   def comment
+  end
+  
+  private
+  def user_params
+    params.require(:user).permit(:name, :email, :is_deleted)
   end
 end
