@@ -21,6 +21,17 @@
         <p class="col-lg-3"><%= @user.email %></p>
       </div>
       
+      <div class="row ml-4">
+        <label class="col-lg-2">会員ステータス</label>
+        <p class="col-lg-3">
+          <% if @user.is_deleted == false %>
+            <strong class="text-success">有効</strong>
+          <% else %>
+            <strong class="text-secondary">退会</strong>
+          <% end %>
+        </p>
+      </div>
+      
       <div class="row my-5">
         <label class="col-lg-2"></label>
         <%= link_to '編集する', edit_admin_user_path,
