@@ -1,6 +1,13 @@
 class Admin::BooksController < ApplicationController
   def index
     @books = Book.all
+    if params[:keyword]
+      redirect_to admin_books_search_path
+    end
+  end
+  
+  def search
+    @books = Book.where('name LIKE(?)', "%#{params[:keyword]}%").or(Book.where('author LIKE(?)', "%#{params[:keyword]}%"))
   end
 
   def show

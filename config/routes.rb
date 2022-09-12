@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :users, only: [:index, :show, :edit, :update]
     get 'users/:id/comment' => 'users#comment', as: 'user_comment'
+    get 'books/search'
     resources :books, only: [:index, :show, :edit, :update, :destroy]
     resources :comments, only: [:destroy]
   end
