@@ -40,6 +40,15 @@
         <p class="col-lg-4"><%= @book.user.name %></p>
       </div>
       
+      <div class="row ml-4">
+        <label class="col-lg-2">更新日</label>
+        <p class="col-lg-4"><%= @book.updated_at.strftime('%Y/%m/%d') %></p>
+      </div>
+      <div class="row ml-4">
+        <label class="col-lg-2">登録者</label>
+        <p class="col-lg-4"><%= @book.user.name %></p>
+      </div>
+      
     </div>
     
     <div class="col-10 mx-auto">
