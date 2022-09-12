@@ -1,2 +1,30 @@
-<h1>Admin::Books#index</h1>
-<p>Find me in app/views/admin/books/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="my-5 ml-4">書籍一覧<small>　(全<%= @books.count %>件)</small></h3>
+    </div>
+    
+    <div class="col-10">
+      <table class="table table-hover table-bordered">
+        <thead class="table-active">
+          <th>登録日</th>
+          <th>タイトル</th>
+          <th>作者</th>
+          <th>シリーズ名</th>
+          <th>登録者</th>
+        </thead>
+        <tbody>
+          <% @books.each do |book| %>
+            <tr>
+              <td><%= book.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+              <td><%= link_to book.name, admin_book_path(book.id) %></td>
+              <td><%= book.author %></td>
+              <td><%= book.series %></td>
+              <td><%= link_to book.user.name, admin_user_path(book.user.id) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
