@@ -1,16 +1,24 @@
-<div class="container">
+<div class="container-fluid pb-5" style="background-color:#988F90">
   <div class="row">
     
-    <div class="col-12 bg-dark" id="top-image" style="height: 300px; width: 100%;">
-      </br>
-      <h5 class="my-5 text-light text-center">Hontomoへようこそ！</h5>
-      <h6 class="my-4 text-light text-center">Hontomoは、本好きのための”感想”共有型コミュニティサイトです。</h6>
-      <h6 class="my-4 text-light text-center">コメント形式で気軽に感想を共有できます。</h6>
+    <div class="text-center" id="top-image"
+    style="height:500px; width:100%; background-image: url('<%= asset_path('top2.png') %>');
+    background-size:cover; background-position:bottom;">
+      <div class="p-3 mx-auto">
+        <h2 class="my-5 text-light"><span id="e-text">Hontomo </span>へようこそ！</h2>
+        <p class="my-4 text-light"><span id="e-text">Hontomo </span>は、本好きのための ”感想” 共有型コミュニティサイトです。</p>
+        <p class="my-4 mb-5 text-light">コメント形式で気軽に感想を共有できます。</p>
+        <%= link_to 'About', about_path, class: "btn btn-primary px-5 mx-2 mt-3 d-inline-block", id: "e-text" %>
+        <%= link_to '本を探してみる', books_path, class: "btn btn-light px-4 mx-2 mt-3 d-inline-block" %>
+      </div>
     </div>
     
-    <div class="col-11 border mt-5 mx-auto" id="top-image" style="height: 900px; width: 100%;">
+    <div class="col-11 mt-5 mx-auto card card-default pb-5">
       <div>
-        <h5 class="mt-5 mb-4 ml-3 font-weight-bold"><u>Hontomoの使い方</u></h5>
+        <h5 class="my-5 ml-3 font-weight-bold">
+          <i class="fas fa-file fa-lg fa-fw mr-2"></i>
+          <span id="e-text">Hontomo </span>の使い方
+        </h5>
         <p class="my-3 ml-3">「本を探す」からあなたの読んだ本を検索</p>
         <p class="my-3 ml-3 px-2 font-weight-bold bg-light d-inline-block">→ お探しの本が登録済みの場合</p>
         <p class="my-2 ml-4">　　「コメントを投稿」をクリックして、あなたの感想を投稿しましょう！</p>
@@ -20,10 +28,15 @@
         <p class="my-2 ml-5">　①「本を新規登録」をクリックして、本の情報を登録してください</p>
         <p class="my-2 ml-5">　②「コメントを投稿」をクリックして、最初のコメントを投稿しましょう！</p>
       </div>
-      
+    </div>
+    
+     <div class="col-11 mt-5 mx-auto card card-default pb-5">
       <div>
-        <h5 class="mt-5 mb-4 ml-3 font-weight-bold"><u>ご利用上の注意</u></h5>
-        <p class="my-3 ml-4"><%= link_to '利用規約', about_path %>　　※必ずお読みください</p>
+        <h5 class="my-5 ml-3 font-weight-bold">
+          <i class="fas fa-shield-alt fa-lg fa-fw mr-2"></i>
+          ご利用上の注意
+        </h5>
+        <p class="my-3 ml-4 text-primary"><%= link_to '利用規約', about_path %>　　※必ずお読みください</p>
         <p class="my-3 ml-4">
           ・<u>本サイトは読了者向けの感想共有サイトです。</u></br>
           　書籍の内容に言及する（ネタバレを含む）コメントの投稿が想定されます。</br>
@@ -31,9 +44,9 @@
         </p>
         <p class="my-3 ml-4">
           ・下記に該当する書籍の登録およびコメント投稿はお止めください。</br>
-          　 ・特定の個人・団体を誹謗中傷する内容</br>
-          　 ・公序良俗に反する内容、成人向けの内容</br>
-        </p>
+          　  ・特定の個人・団体を誹謗中傷する内容</br>
+          　  ・公序良俗に反する内容、成人向けの内容</br>
+        </p> 
         
         <p class="my-3 ml-4">
           ・上記以外の場合でも、管理者が不適切な内容と判断した場合、</br>
@@ -48,20 +61,19 @@
     </div>
     
     <div class="col-12 text-center py-5">
-      <h5><strong>Let's Enjoy Hontomo！</strong></h5>
-      <%= link_to '今すぐ本を探す', books_path, :class => "btn btn-secondary px-4 mt-2" %>
+      <h5 class="text-white"><strong id="e-text">Let's Enjoy Hontomo！</strong></h5>
+      <%= link_to '今すぐ本を探す', books_path, :class => "btn btn-light px-4 mt-2" %>
     </div>
     
     <% unless user_signed_in? %>
-      <div class="col-6 text-center py-3 mx-auto bg-light">
-        <p><strong>本の登録・コメント投稿には会員登録が必要です</strong></p>
-        <div class="row">
-          <div class="col pr-0">
-            <p>会員登録がお済みの方</p>
+      <div class="col-lg-6 col-md-8 col-sm-11 col-xs-11 py-3 mx-auto text-center card card-info">
+        <p>本の登録・コメント投稿にはログインが必要です</p>
+          <div class="d-inline-block mb-2 mx-2 text-center">
+            <p><small>会員登録がお済みの方</small></p>
             <%= link_to 'ログイン', new_user_session_path, :class => "btn btn-primary px-5" %>
           </div>
-          <div class="col pl-0">
-            <p>会員登録がお済みでない方</p>
+          <div class="d-inline-block mb-2 mx-2 text-center">
+            <p><small>会員登録がお済みでない方</small></p>
             <%= link_to '新規登録', new_user_registration_path, :class => "btn btn-success px-5" %>
           </div>
         </div>
