@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:destroy]
     get 'comments/search'
     resources :comments, only: [:destroy]
+    resources :tags, only: [:index, :destroy]
   end
   
   scope module: 'public' do

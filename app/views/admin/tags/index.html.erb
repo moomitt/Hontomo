@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h4 class="my-5">タグ一覧／編集</h4>
+    </div>
+    
+    <div class="col-10 mx-auto">
+        <div class="row input-group-sm mb-2 my-5">
+          <label class="col-lg-2">タグを追加</label>
+          <%= form_tag({controller:"tags",action:"index"}, method: :get) do %>
+            <%= text_field_tag :tag %>
+            <%= submit_tag '追加' %>
+          <% end %>
+        </div>
+    </div>
+    
+    <div class="col-lg-8">
+      <table class="table table-hover table-bordered">
+        <thead class="table-active">
+          <th>タグ名</th>
+          <th>登録件数</th>
+          <th>作成日時</th>
+          <th></th>
+        </thead>
+        <tbody>
+          <% @tags.each do |tag| %>
+            <tr>
+              <td><%= tag.name %></td>
+              <td><%= tag.books.count %></td>
+              <td><%= tag.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+              <td><%= link_to '削除', admin_tag_path(tag.id), method: :delete,
+              class: "btn btn-sm btn-danger px-3",
+              data: {confirm: "削除したタグは元に戻せません。本当に削除しますか？"} %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    
+  </div>
+</div>
