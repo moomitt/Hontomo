@@ -4,5 +4,8 @@ class Admin::CommentsController < ApplicationController
   end
   
   def destroy
+    comment = Comment.find(params[:id])
+    comment.destroy
+    redirect_to admin_root_path
   end
 end
