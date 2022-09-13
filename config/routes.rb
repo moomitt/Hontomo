@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     get 'users/:id/comment' => 'users#comment', as: 'user_comment'
     get 'books/search'
     resources :books, only: [:index, :show, :edit, :update, :destroy]
+    get 'comments/search'
     resources :comments, only: [:destroy]
   end
   

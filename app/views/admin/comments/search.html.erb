@@ -1,7 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <h3 class="my-5 ml-4">コメント一覧<small>　(全<%= @comments.count %>件)</small></h3>
+      <h3 class="my-5 ml-4 d-inline-block">コメント 検索結果<small>　(全<%= @comments.count %>件)</small></h3>
+      <%= link_to '一覧に戻る', admin_root_path, class: "btn btn-primary btn-sm px-4 ml-5" %>
     </div>
     
     <div class="col-10 mx-auto text-top mb-5">
