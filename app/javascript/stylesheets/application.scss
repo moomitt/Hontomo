@@ -1,20 +1,29 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
-#header-logo {
+#e-text {
   font-family: 'Raleway', sans-serif;
 }
 
 body{
   font-family: 'Noto Sans JP', sans-serif;
   color: #42455A;
-  background-color: #FAF8F8;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
 }
 
-// #top-image {
-//   background-image: url(../assets/images/top.jpg);
-// }
+header a {
+  color: #FFFFFF;
+}
+
+header a:hover {
+  color: #000000;
+  text-decoration: none;
+}
+
+.card-default {
+  background-color: #FAF8F8;
+  border-radius: 6px;
+}

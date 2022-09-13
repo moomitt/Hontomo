@@ -1,49 +1,60 @@
 <div class="container">
   <div class="row">
     
-    <div class="col-12 bg-dark text-center" id="top-image" style="height: 330px; width: 100%;">
+    <div class="col-12 text-center" id="top-image"
+    style="height:500px; width:100%; background-image: url('<%= asset_path('top.png') %>');
+    background-size:cover; background-position:bottom;">
       </br>
-      <h5 class="my-5 text-light">Hontomoへようこそ！</h5>
-      <h6 class="my-4 text-light">Hontomoは、本好きのための”感想”共有型コミュニティサイトです。</h6>
-      <h6 class="my-4 text-light">コメント形式で気軽に感想を共有できます。</h6>
-      <%= link_to '今すぐ本を探す', books_path, :class => "btn btn-light px-5 mt-3" %>
+      <h2 class="my-5 text-light"><span id="e-text">Hontomo </span>へようこそ！</h2>
+      <p class="my-4 text-light"><span id="e-text">Hontomo </span>は、本好きのための”感想”共有型コミュニティサイトです。</p>
+      <p class="my-4 text-light">コメント形式で気軽に感想を共有できます。</p>
+      <%= link_to '今すぐ本を探す', books_path, class: "btn btn-light px-5 mt-4" %>
     </div>
     
-    <div class="col-10 mx-auto text-top mt-5">
-      <h4 class="mb-4">人気の図書</h4>
-      <% @popular_books.each do |book| %>
-        <div class="d-inline-block" style="vertical-align: top; width: 20%;">
-        <%= link_to book_path(book.id) do %>
-          <div class="border" style="width: 150px; height: 200px;">
-          <% if book.isbn.present? %>
-            <% item = RakutenWebService::Books::Book.search(isbn: book.isbn).first %>
-            <%= image_tag(item.large_image_url) %>
+    <div class="col-11 mx-auto mt-5 card card-default">
+      <div class="card-body">
+        <h4 class="card-title mb-4">人気の図書</h4>
+        <div class="ml-4">
+          <% @popular_books.each do |book| %>
+            <div class="d-inline-block" style="vertical-align: top; width: 20%;">
+            <%= link_to book_path(book.id) do %>
+              <div class="border" style="width: 150px; height: 200px;">
+              <% if book.isbn.present? %>
+                <% item = RakutenWebService::Books::Book.search(isbn: book.isbn).first %>
+                <%= image_tag(item.large_image_url) %>
+              <% end %>
+              </div>
+              <p class="mt-3 mb-1 text-truncate"><strong><%= book.name %></strong></p>
+              <p class="text-truncate"><%= book.author %></p>
+            <% end %>
+            </div>
           <% end %>
-          </div>
-          <p class="mt-3 mb-1"><strong><%= book.name %></strong></p>
-          <p><%= book.author %></p>
-        <% end %>
         </div>
-      <% end %>
+      </div>
     </div>
     
-    <div class="col-10 mx-auto text-top mt-5">
-      <h4 class="mb-4">新着図書</h4>
-      <% @new_books.each do |book| %>
-        <div class="d-inline-block" style="vertical-align: top; width: 20%;">
-        <%= link_to book_path(book.id) do %>
-          <div class="border" style="width: 150px; height: 200px;">
-          <% if book.isbn.present? %>
-            <% item = RakutenWebService::Books::Book.search(isbn: book.isbn).first %>
-            <%= image_tag(item.large_image_url) %>
+    <div class="col-11 mx-auto mt-5 card card-default">
+      <div class="card-body">
+        <h4 class="card-title mb-4">新着図書</h4>
+        <div class="ml-4">
+          <% @new_books.each do |book| %>
+            <div class="d-inline-block" style="vertical-align: top; width: 20%;">
+            <%= link_to book_path(book.id) do %>
+              <div class="border" style="width: 150px; height: 200px;">
+              <% if book.isbn.present? %>
+                <% item = RakutenWebService::Books::Book.search(isbn: book.isbn).first %>
+                <%= image_tag(item.large_image_url) %>
+              <% end %>
+              </div>
+              <p class="mt-3 mb-1 text-truncate"><strong><%= book.name %></strong></p>
+              <p class="text-truncate"><%= book.author %></p>
+            <% end %>
+            </div>
           <% end %>
-          </div>
-          <p class="mt-3 mb-1"><strong><%= book.name %></strong></p>
-          <p><%= book.author %></p>
-        <% end %>
         </div>
-      <% end %>
+      </div>
     </div>
+    
     
     <div class="col-12 text-center">
       <%= link_to '他の本を探す', books_path, :class => "btn btn-secondary px-5 my-5" %>
