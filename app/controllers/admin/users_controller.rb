@@ -18,6 +18,8 @@ class Admin::UsersController < ApplicationController
   end
 
   def comment
+    @user = User.find(params[:id])
+    @comments = Comment.where(user_id: @user.id)
   end
   
   private

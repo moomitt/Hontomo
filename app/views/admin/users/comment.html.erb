@@ -1,2 +1,32 @@
-<h1>Admin::Users#comment</h1>
-<p>Find me in app/views/admin/users/comment.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="my-5 ml-4 d-inline-block"><%= @user.name %>さんのコメント一覧<small>　(全<%= @comments.count %>件)</small></h3>
+      <%= link_to '会員ページに戻る', admin_user_path(@user.id), class: "btn btn-primary btn-sm px-4 ml-5" %>
+    </div>
+    
+    <div class="col-12">
+      <table class="table table-hover table-bordered" style="width:85%">
+        <thead class="table-active">
+          <th>投稿日時</th>
+          <th>コメント</th>
+          <th>書籍名</th>
+          <th></th>
+        </thead>
+        <tbody>
+          <% @comments.each do |comment| %>
+            <tr>
+              <td style="width:15%"><%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+              <td style="width:40%"><%= comment.text %></td>
+              <td style="width:20%"><%= link_to comment.book.name, admin_book_path(comment.book.id) %></td>
+              <td style="width:10%"><%= link_to '削除', admin_comment_path(comment.id), method: :delete,
+              class: "btn btn-sm btn-danger px-3",
+              data: {confirm: "削除したコメントは元に戻せません。本当に削除しますか？"} %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

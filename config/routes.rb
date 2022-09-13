@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     resources :books, only: [:index, :show, :edit, :update, :destroy]
     get 'comments/search'
     resources :comments, only: [:destroy]
+    get 'comments/search'
+    resources :comments, only: [:destroy]
   end
   
   scope module: 'public' do
