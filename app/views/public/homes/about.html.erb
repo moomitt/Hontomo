@@ -8,71 +8,82 @@
         <h2 class="my-5 text-light"><span id="e-text">Hontomo </span>へようこそ！</h2>
         <p class="my-3 text-light"><span id="e-text">Hontomo </span>は、本好きのための ”感想” 共有型コミュニティサイトです。</p>
         <p class="my-3 mb-5 text-light">コメント形式で気軽に感想を共有できます。</p>
-        <%= link_to 'Topページへ', root_path, class: "btn btn-primary px-4 mx-2 mt-3 d-inline-block" %>
-        <%= link_to '本を探してみる', books_path, class: "btn btn-light px-4 mx-2 mt-3 d-inline-block" %>
+        <%= link_to 'Topページへ', root_path, class: "btn btn-main px-4 mx-2 mt-3 d-inline-block" %>
+        <%= link_to '本を探してみる', books_path, class: "btn btn-accent px-4 mx-2 mt-3 d-inline-block" %>
       </div>
     </div>
     
-    <div class="col-11 mt-5 mx-auto card card-default pb-5">
+    <div class="col-11 mt-5 mx-auto card card-normal pb-5">
       <div>
         <h5 class="my-5 ml-3 font-weight-bold">
           <i class="fas fa-file fa-lg fa-fw mr-2"></i>
           <span id="e-text">Hontomo </span>の使い方
         </h5>
-        <p class="my-3 ml-3">「本を探す」からあなたの読んだ本を検索</p>
-        <p class="my-3 ml-3 px-2 font-weight-bold bg-light d-inline-block">→ お探しの本が登録済みの場合</p>
-        <p class="my-2 ml-4">　　「コメントを投稿」をクリックして、あなたの感想を投稿しましょう！</p>
-        <p class="my-2 ml-4">　　 気になったコメントには「いいね」でリアクションしましょう</p>
-        <p class="mt-4 my-3 ml-3 px-2 font-weight-bold bg-light d-inline-block">→ お探しの本が見つからない場合</p>
-        <p class="my-2 ml-5">　あなたが１人目の投稿者です。</p>
-        <p class="my-2 ml-5">　①「本を新規登録」をクリックして、本の情報を登録してください</p>
-        <p class="my-2 ml-5">　②「コメントを投稿」をクリックして、最初のコメントを投稿しましょう！</p>
+        <p class="my-3 ml-3 mr-3">「本を探す」からあなたの読んだ本を検索</p>
+        <h6 class="my-3 ml-3 mr-2 px-2 d-inline-block">→ お探しの本が登録済みの場合</h6>
+        <div class="ml-4">
+          <p class="my-2 ml-4 mr-2"><strong class="text-main">コメントを投稿 </strong>をクリックして、あなたの感想を投稿しましょう！</p>
+          <p class="my-2 ml-4 mr-2">気になったコメントは<strong class="text-main"> いいね </strong>でリアクションしましょう！</p>
+        </div>
+        <h6 class="mt-4 mb-3 ml-3 mr-3 px-2 d-inline-block">→ お探しの本が見つからない場合</h6>
+        <div class="ml-4">
+          <p class="my-2 ml-4 mr-2">あなたが１人目の投稿者です。</p>
+          <p class="my-2 ml-4 mr-2">①<strong class="text-main"> 本を新規登録 </strong>をクリックして、本の情報を登録してください</p>
+          <p class="my-2 ml-4 mr-2">②<strong class="text-main"> コメントを投稿 </strong>をクリックして、最初のコメントを投稿しましょう！</p>
+        </div>
       </div>
     </div>
     
-     <div class="col-11 mt-5 mx-auto card card-default pb-5">
+     <div class="col-11 mt-5 mx-auto card card-normal pb-5">
       <div>
         <h5 class="my-5 ml-3 font-weight-bold">
           <i class="fas fa-shield-alt fa-lg fa-fw mr-2"></i>
           ご利用上の注意
         </h5>
         <p class="my-3 ml-4"><%= link_to '　利用規約', about_path, class: "text-primary" %>　　※必ずお読みください</p>
-        <p class="my-3 ml-4">
-          ・<u>本サイトは読了者向けの感想共有サイトです。</u></br>
-          　書籍の内容に言及する（ネタバレを含む）コメントの投稿が想定されます。</br>
-          　読了済みでない書籍ページの閲覧にはご注意ください。
-        </p>
-        <p class="my-3 ml-4">
-          ・下記に該当する書籍の登録およびコメント投稿はお止めください。</br>
-          　  ・特定の個人・団体を誹謗中傷する内容</br>
-          　  ・公序良俗に反する内容、成人向けの内容</br>
-        </p> 
         
-        <p class="my-3 ml-4">
-          ・上記以外の場合でも、管理者が不適切な内容と判断した場合、</br>
-          　該当書籍およびコメントは許可無く削除される可能性があります。あらかじめご了承ください。
-        </p>
+        <div class="mx-2">
+          <p class="my-4 ml-4">
+            ・<u>本サイトは読了者向けの感想共有サイトです。</u></br>
+            　書籍の内容に言及する（ネタバレを含む）コメントの投稿が想定されます。</br>
+            　読了済みでない書籍ページの閲覧にはご注意ください。
+          </p>
+          <p class="mt-4 mb-1 ml-4">
+            ・下記に該当する書籍の登録およびコメント投稿はお止めください。</br>
+          </p> 
+          <div class="ml-5">
+            ・特定の個人・団体を誹謗中傷する内容</br>
+            ・公序良俗に反する内容、成人向けの内容
+          </div>
+          
+          <p class="my-4 ml-4">
+            ・上記以外の場合でも、管理者が不適切な内容と判断した場合、</br>
+            　該当書籍およびコメントは許可無く削除される可能性があります。あらかじめご了承ください。
+          </p>
+          
+          <p class="mt-4 ml-4">
+            ・登録いただいた書籍情報に誤りがある場合や変更が生じた場合、</br>
+            　管理者側で修正する場合があります。ご了承ください。
+          </p>
+        </div>
         
-        <p class="my-3 ml-4">
-          ・登録いただいた書籍情報に誤りがある場合や変更が生じた場合、</br>
-          　管理者側で修正する場合があります。ご了承ください。
-        </p>
       </div>
     </div>
     
     <div class="col-12 text-center py-5">
       <h5 class="text-white"><strong id="e-text">Let's Enjoy Hontomo！</strong></h5>
-      <%= link_to '今すぐ本を探す', books_path, :class => "btn btn-light px-4 mt-2" %>
+      <%= link_to '今すぐ本を探す', books_path, :class => "btn btn-accent px-4 mt-2" %>
     </div>
     
     <% unless user_signed_in? %>
-      <div class="col-lg-7 col-md-9 col-sm-11 col-xs-11 py-3 mx-auto text-center card card-info">
+      <div class="col-lg-6 col-md-8 col-sm-11 col-xs-11 py-3 mx-auto text-center card card-info">
         <p>本の登録・コメント投稿にはログインが必要です</p>
-          <div class="d-inline-block mb-2 mx-2 text-center">
+        <div class="row text-center">
+          <div class="col-lg-6 col-md-12 mb-2 mx-2 text-center">
             <p><small>会員登録がお済みの方</small></p>
-            <%= link_to 'ログイン', new_user_session_path, :class => "btn btn-primary px-5" %>
+            <%= link_to 'ログイン', new_user_session_path, :class => "btn btn-main px-5" %>
           </div>
-          <div class="d-inline-block mb-2 mx-2 text-center">
+          <div class="col-lg-6 col-md-12 mb-2 mx-2 text-center">
             <p><small>会員登録がお済みでない方</small></p>
             <%= link_to '新規登録', new_user_registration_path, :class => "btn btn-success px-5" %>
           </div>

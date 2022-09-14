@@ -54,16 +54,19 @@ header a:hover {
   border-radius: 6px;
 }
 
-.card-default {
+.card-normal {
   background-color: #FAF8F8;
+  .text-main{
+    color: #8B9FB2;
+  }
 }
 
-.card-primary {
+.card-main {
   background-color: #8B9FB2;
   color: #FFFFFF;
 }
 
-.card-light {
+.card-accent {
   background-color: #CFB96C;
   border-color: #CFB96C;
   color: #FFFFFF;
@@ -72,7 +75,7 @@ header a:hover {
   }
 }
 
-.card-dark {
+.card-pale {
   background-color: #988F90;
   border-color: #988F90;
   color: #FFFFFF;
@@ -91,38 +94,38 @@ header a:hover {
 }
 
 
-.btn-light{
+.btn-accent {
   background-color: #CFB96C;
   border-color:  #CFB96C;
   color: #FFFFFF;
 }
 
-.btn-light:hover {
+.btn-accent:hover {
   background-color: #DDCBB9;
   border-color:  #DDCBB9;
   color: #FFFFFF;
 }
 
-.btn-light:active {
+.btn-accent:active {
   background-color: #DDCBB9;
   border-color:  #DDCBB9;
   color: #FFFFFF;
 }
 
 
-.btn-primary{
+.btn-main{
   background-color: #8B9FB2;
   border-color:  #8B9FB2;
   color: #FFFFFF;
 }
 
-.btn-primary:hover {
+.btn-main:hover {
   background-color: #A2B2C2;
   border-color:  #A2B2C2;
   color: #FFFFFF;
 }
 
-.btn-primary:active {
+.btn-main:active {
   background-color: #A2B2C2;
   border-color:  #A2B2C2;
   color: #FFFFFF;

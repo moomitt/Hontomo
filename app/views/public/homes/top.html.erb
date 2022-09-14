@@ -8,12 +8,12 @@
         <h2 class="my-5 text-light"><span id="e-text">Hontomo </span>へようこそ！</h2>
         <p class="my-3 text-light"><span id="e-text">Hontomo </span>は、本好きのための ”感想” 共有型コミュニティサイトです。</p>
         <p class="my-3 mb-5 text-light">コメント形式で気軽に感想を共有できます。</p>
-        <%= link_to 'About', about_path, class: "btn btn-primary px-5 mx-2 mt-3 d-inline-block", id: "e-text" %>
-        <%= link_to '本を探してみる', books_path, class: "btn btn-light px-4 mx-2 mt-3 d-inline-block" %>
+        <%= link_to 'About', about_path, class: "btn btn-main px-5 mx-2 mt-3 d-inline-block", id: "e-text" %>
+        <%= link_to '本を探してみる', books_path, class: "btn btn-accent px-4 mx-2 mt-3 d-inline-block" %>
       </div>
     </div>
     
-    <div class="col-lg-10 col-md-8 col-sm-11 col-xs-11 mx-auto mt-5 card card-default">
+    <div class="col-lg-10 col-md-8 col-sm-11 col-xs-11 mx-auto mt-5 card card-normal">
       <div class="card-body">
         <h4 class="card-title mb-4">人気の図書</h4>
         <div class="mx-auto text-center">
@@ -25,7 +25,7 @@
                 <%= image_tag(item.large_image_url) %>
               <% end %>
               <p class="mt-2 mb-1 text-truncate"><strong><%= book.name %></strong></p>
-              <p class="text-truncate"><%= book.author %></p>
+              <p class="mb-4 text-truncate"><%= book.author %></p>
             <% end %>
             </div>
           <% end %>
@@ -33,7 +33,7 @@
       </div>
     </div>
     
-    <div class="col-lg-10 col-md-8 col-sm-11 col-xs-11 mx-auto mt-5 card card-default">
+    <div class="col-lg-10 col-md-8 col-sm-11 col-xs-11 mx-auto mt-5 card card-normal">
       <div class="card-body">
         <h4 class="card-title mb-4">新着図書</h4>
         <div class="mx-auto text-center">
@@ -54,17 +54,18 @@
     </div>
     
     <div class="col-12 text-center">
-      <%= link_to '他の本を探す', books_path, :class => "btn btn-light px-5 mt-4 mb-5" %>
+      <%= link_to '他の本を探す', books_path, :class => "btn btn-accent px-5 mt-4 mb-5" %>
     </div>
     
     <% unless user_signed_in? %>
       <div class="col-lg-6 col-md-8 col-sm-11 col-xs-11 py-3 mx-auto text-center card card-info">
         <p>本の登録・コメント投稿にはログインが必要です</p>
-          <div class="d-inline-block mb-2 mx-2 text-center">
+        <div class="row text-center">
+          <div class="col-lg-6 col-md-12 mb-2 mx-2 text-center">
             <p><small>会員登録がお済みの方</small></p>
-            <%= link_to 'ログイン', new_user_session_path, :class => "btn btn-primary px-5" %>
+            <%= link_to 'ログイン', new_user_session_path, :class => "btn btn-main px-5" %>
           </div>
-          <div class="d-inline-block mb-2 mx-2 text-center">
+          <div class="col-lg-6 col-md-12 mb-2 mx-2 text-center">
             <p><small>会員登録がお済みでない方</small></p>
             <%= link_to '新規登録', new_user_registration_path, :class => "btn btn-success px-5" %>
           </div>
