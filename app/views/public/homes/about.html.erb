@@ -1,14 +1,14 @@
 <div class="container-fluid pb-5" style="background-color:#988F90">
   <div class="row">
     
-    <div class="text-center" id="top-image"
-    style="height:500px; width:100%; background-image: url('<%= asset_path('top2.png') %>');
+    <div class="text-center pt-5" id="top-image"
+    style="height:570px; width:100%; background-image: url('<%= asset_path('top2.png') %>');
     background-size:cover; background-position:bottom;">
-      <div class="p-3 mx-auto">
+      <div class="px-3 pt-5 mx-auto">
         <h2 class="my-5 text-light"><span id="e-text">Hontomo </span>へようこそ！</h2>
-        <p class="my-4 text-light"><span id="e-text">Hontomo </span>は、本好きのための ”感想” 共有型コミュニティサイトです。</p>
-        <p class="my-4 mb-5 text-light">コメント形式で気軽に感想を共有できます。</p>
-        <%= link_to 'About', about_path, class: "btn btn-primary px-5 mx-2 mt-3 d-inline-block", id: "e-text" %>
+        <p class="my-3 text-light"><span id="e-text">Hontomo </span>は、本好きのための ”感想” 共有型コミュニティサイトです。</p>
+        <p class="my-3 mb-5 text-light">コメント形式で気軽に感想を共有できます。</p>
+        <%= link_to 'Topページへ', root_path, class: "btn btn-primary px-4 mx-2 mt-3 d-inline-block" %>
         <%= link_to '本を探してみる', books_path, class: "btn btn-light px-4 mx-2 mt-3 d-inline-block" %>
       </div>
     </div>
@@ -24,7 +24,7 @@
         <p class="my-2 ml-4">　　「コメントを投稿」をクリックして、あなたの感想を投稿しましょう！</p>
         <p class="my-2 ml-4">　　 気になったコメントには「いいね」でリアクションしましょう</p>
         <p class="mt-4 my-3 ml-3 px-2 font-weight-bold bg-light d-inline-block">→ お探しの本が見つからない場合</p>
-        <p class="my-2 ml-5">　あなたが１人目の投稿者です</p>
+        <p class="my-2 ml-5">　あなたが１人目の投稿者です。</p>
         <p class="my-2 ml-5">　①「本を新規登録」をクリックして、本の情報を登録してください</p>
         <p class="my-2 ml-5">　②「コメントを投稿」をクリックして、最初のコメントを投稿しましょう！</p>
       </div>
@@ -36,7 +36,7 @@
           <i class="fas fa-shield-alt fa-lg fa-fw mr-2"></i>
           ご利用上の注意
         </h5>
-        <p class="my-3 ml-4 text-primary"><%= link_to '利用規約', about_path %>　　※必ずお読みください</p>
+        <p class="my-3 ml-4"><%= link_to '　利用規約', about_path, class: "text-primary" %>　　※必ずお読みください</p>
         <p class="my-3 ml-4">
           ・<u>本サイトは読了者向けの感想共有サイトです。</u></br>
           　書籍の内容に言及する（ネタバレを含む）コメントの投稿が想定されます。</br>
@@ -66,7 +66,7 @@
     </div>
     
     <% unless user_signed_in? %>
-      <div class="col-lg-6 col-md-8 col-sm-11 col-xs-11 py-3 mx-auto text-center card card-info">
+      <div class="col-lg-7 col-md-9 col-sm-11 col-xs-11 py-3 mx-auto text-center card card-info">
         <p>本の登録・コメント投稿にはログインが必要です</p>
           <div class="d-inline-block mb-2 mx-2 text-center">
             <p><small>会員登録がお済みの方</small></p>

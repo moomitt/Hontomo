@@ -17,8 +17,6 @@ body {
 }
 
 .container-fluid {
-  padding-top: 72px;
-  padding-bottom: 45px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -35,7 +33,6 @@ header{
   top: 0;
   left: 0;
   width: 100%;
-  height: 72px;
   z-index: 10;
 }
 
@@ -100,11 +97,18 @@ header a:hover {
   color: #FFFFFF;
 }
 
-.btn-light:hover, .btn-light:active {
+.btn-light:hover {
   background-color: #DDCBB9;
   border-color:  #DDCBB9;
   color: #FFFFFF;
 }
+
+.btn-light:active {
+  background-color: #DDCBB9;
+  border-color:  #DDCBB9;
+  color: #FFFFFF;
+}
+
 
 .btn-primary{
   background-color: #8B9FB2;
@@ -112,8 +116,15 @@ header a:hover {
   color: #FFFFFF;
 }
 
-.btn-primary:hover, .btn-primary:active{
+.btn-primary:hover {
   background-color: #A2B2C2;
   border-color:  #A2B2C2;
   color: #FFFFFF;
 }
+
+.btn-primary:active {
+  background-color: #A2B2C2;
+  border-color:  #A2B2C2;
+  color: #FFFFFF;
+}
+
