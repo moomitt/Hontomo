@@ -1,0 +1,12 @@
+<% comments.each do |comment| %>
+  <div class="col-12 bg-light px-4 pt-3 pb-2 mb-3">
+    <p><%= comment.text %></p>
+    <p class="d-inline-block">
+      <small>投稿者:　<%= comment.user.name %></small>
+      <small class="ml-5">投稿日時： <%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></small>
+    </p>
+      <div id="goods_buttons_<%= comment.id %>" class="d-inline-block">
+        <%= render partial: 'public/goods/good', locals: { book: book, comment: comment } %>
+      </div>
+  </div>
+<% end %>

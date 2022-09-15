@@ -48,7 +48,9 @@ class Public::BooksController < ApplicationController
     @book = Book.find(params[:id])
     items = RakutenWebService::Books::Book.search(isbn: @book.isbn)
     @item = items.first
-    @comments = Comment.where(book_id: @book.id).sort{|a,b| b.goods.size <=> a.goods.size}
+    @good_comments = Comment.where(book_id: @book.id).sort{|a,b| b.goods.size <=> a.goods.size}
+    @new_comments = Comment.where(book_id: @book.id).order('id DESC')
+    @user_comments = Comment.where(book_id: @book.id, user_id: current_user.id)
   end
 
   def edit
