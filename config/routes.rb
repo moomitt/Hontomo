@@ -40,8 +40,10 @@ Rails.application.routes.draw do
       resources :comments, only: [:new, :create] do
         resource :goods, only: [:create, :destroy]    #URLにgoodのidを含む必要がないため、resourceで記述
       end
+      member do
+        get :search_comment
+      end
     end
-    
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

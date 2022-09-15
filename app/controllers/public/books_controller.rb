@@ -50,7 +50,14 @@ class Public::BooksController < ApplicationController
     @item = items.first
     @good_comments = Comment.where(book_id: @book.id).sort{|a,b| b.goods.size <=> a.goods.size}
     @new_comments = Comment.where(book_id: @book.id).order('id DESC')
-    @user_comments = Comment.where(book_id: @book.id, user_id: current_user.id)
+    if user_signed_in?
+      @user_comments = Comment.where(book_id: @book.id, user_id: current_user.id)
+    end
+  end
+  
+  def search_comment
+    @book = Book.find(params[:id])
+    @search_comments = Comment.where(book_id: @book.id).where('text LIKE(?)', "%#{params[:keyword]}%").sort{|a,b| b.goods.size <=> a.goods.size}
   end
 
   def edit

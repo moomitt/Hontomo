@@ -1,0 +1,4 @@
+<%= form_with url: search_comment_book_path(book.id), method: :get,  class: "form-horaizontal" do |f| %>
+   <%= f.text_field :keyword, class: "form-control col-5" %>
+   <%= f.submit 'キーワード検索', class: "btn btn-sm btn-secondary mb-4" %>
+<% end %>

@@ -10,4 +10,6 @@ class Book < ApplicationRecord
   def bookmarked_by?(user)                 #すでにブックマークしているか検証
     bookmarks.where(user_id: user).exists?
   end
+  
+  
 end

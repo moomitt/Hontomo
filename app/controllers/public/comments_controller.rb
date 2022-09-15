@@ -13,6 +13,8 @@ class Public::CommentsController < ApplicationController
     redirect_to book_path(book.id)
   end
   
+
+  
   private
   def comment_params
     params.require(:comment).permit(:text)

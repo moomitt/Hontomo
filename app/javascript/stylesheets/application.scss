@@ -148,32 +148,34 @@ label{
 .wrap {
   width: 90%;
   max-width: 800px;
-  margin: 0 auto;
 }
 
 #tab-menu {
   display: flex;
+  margin-bottom: 0px;
 }
 
 #tab-menu li {
   list-style-type: none;
-  width: 33%;
+  width: 25%;
 }
 
 #tab-menu li a {
-  color: #fff;
+  color: #FFFFFF;
   text-decoration: none;
   display: block;
-  padding: 20px;
+  padding: 10px;
   text-align: center;
-  background: #000;
-  border: 1px solid #000;
+  background: #8B9FB2;
+  border: 1px solid #8B9FB2;
   border-bottom: none;
 }
 
 #tab-menu .active {
-  background: #fff;
-  color: #000;
+  background: #FAF8F8;
+  border: 1px solid #8B9FB2;
+  border-bottom: none;
+  color: #42455A;
 }
 
 #tab-contents {
@@ -184,12 +186,12 @@ label{
 #tab-contents .tab {
   width: 100%;
   padding: 30px;
-  background: #fff;
-  border: 1px solid #000;
+  background: #FAF8F8;
+  border: 1px solid #8B9FB2;
   border-top: none;
 }
 
 #tab-contents p {
-  color: #000;
+  color: #42455A;
   line-height: 2.5;
 }
