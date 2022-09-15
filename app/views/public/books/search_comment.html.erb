@@ -12,7 +12,7 @@
       
       <div class="">
         <% @search_comments.each do |comment| %>
-          <div class="col-12 bg-light px-4 pt-3 pb-2 mb-3">
+          <div class="col-12 bg-light px-4 pt-3 pb-2 mb-3 card-normal card">
             <p><%= comment.text %></p>
             <p class="d-inline-block">
               <small>投稿者:　<%= comment.user.name %></small>

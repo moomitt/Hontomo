@@ -139,7 +139,7 @@ label{
 }
 
 .text-main {
-  color:  #A2B2C2;
+  color:  #8B9FB2;
 }
 
 
@@ -189,9 +189,16 @@ label{
   background: #FAF8F8;
   border: 1px solid #8B9FB2;
   border-top: none;
+  .card-comment {
+    max-width: 980px;
+    border-radius: 6px;
+    background-color: #F1F3F5;
+    border: 0.6px solid #A2B2C2;
+  }
 }
 
 #tab-contents p {
   color: #42455A;
-  line-height: 2.5;
+  line-height: 2.0;
+  padding-bottom: 0;
 }
