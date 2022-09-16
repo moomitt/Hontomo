@@ -3,12 +3,24 @@
     <div class="col-12">
       <h4 class="my-5">感想コメント投稿</h4>
     </div>
+    
+    <% if @comment.errors.any? %>
+      <ul>
+        <% @comment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    
     <div class="col-10">
       <%= form_with model: @comment, url: book_comments_path(@book.id), method: :post, :class => "form-horaizontal" do |f| %>
         <label class="col-lg-2">コメント</label>
+        <%= f.hidden_field :book_id, :value => @book.id %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
         <%= f.text_area :text, :class => "form-control my-3 col-lg-8" %>
         <%= f.submit 'コメントを投稿', :class => "btn btn-success px-3" %>
       <% end %>
+      <%= link_to 'キャンセル', book_path(@book.id), class: "btn btn-sm btn-main" %>
     </div>
   </div>
 </div>

@@ -19,8 +19,8 @@
               <td style="width:15%"><%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></td>
               <td style="width:40%"><%= comment.text %></td>
               <td style="width:20%"><%= link_to comment.book.name, admin_book_path(comment.book.id) %></td>
-              <td style="width:10%"><%= link_to '削除', admin_comment_path(comment.id), method: :delete,
-              class: "btn btn-sm btn-danger px-3",
+              <td style="width:10%"><%= link_to '削除', user_comment_destroy_admin_user_path(comment.id),
+              method: :delete, class: "btn btn-sm btn-danger px-3",
               data: {confirm: "削除したコメントは元に戻せません。本当に削除しますか？"} %></td>
             </tr>
           <% end %>

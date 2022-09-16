@@ -7,5 +7,5 @@ class Comment < ApplicationRecord
     goods.exists?(user_id: user.id)
   end
   
-  validates :series, length: { minimum: 2, maximum: 120 }, uniqueness: true
+  validates :text, presence: true, length: { maximum: 120 }
 end

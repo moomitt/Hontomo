@@ -4,72 +4,87 @@
       <h4 class="my-5">書籍情報</h4>
     </div>
     
-    <div class="col-10 mx-auto">
-      <h4 class="mb-4 d-inline-block">本の情報</h4>
-      <%= link_to '登録情報を編集する', edit_admin_book_path(@book.id),
-        :class => "btn btn-sm btn-success ml-5 px-4" %>
-      
-      <div class="row ml-4 mb-5">
-        <%= image_tag(@item.large_image_url) %>
-      </div>
-      <div class="row ml-4">
-        <label class="col-lg-2">タイトル</label>
-        <p class="col-lg-4"><%= @book.name %></p>
-      </div>
-      <div class="row ml-4">
-        <label class="col-lg-2">作者</label>
-        <p class="col-lg-4"><%= @book.author %></p>
-      </div>
-      <div class="row ml-4">
-        <label class="col-lg-2">シリーズ</label>
-        <p class="col-lg-4"><%= @book.series %></p>
-      </div>
-      <div class="row ml-4">
-        <label class="col-lg-2">タグ</label>
-        <% @book.tags.each do |tag| %>
-          <span class="btn btn-sm btn-secondary mr-2"><%= tag.name %></span>
-        <% end %>
-      </div>
-      
-      <div class="row ml-4">
-        <label class="col-lg-2">登録日</label>
-        <p class="col-lg-4"><%= @book.created_at.strftime('%Y/%m/%d') %></p>
-      </div>
-      <div class="row ml-4">
-        <label class="col-lg-2">登録者</label>
-        <p class="col-lg-4"><%= @book.user.name %></p>
-      </div>
-      
-      <div class="row ml-4">
-        <label class="col-lg-2">更新日</label>
-        <p class="col-lg-4"><%= @book.updated_at.strftime('%Y/%m/%d') %></p>
-      </div>
-      <div class="row ml-4">
-        <label class="col-lg-2">登録者</label>
-        <p class="col-lg-4"><%= @book.user.name %></p>
-      </div>
-      
-    </div>
     
-    <div class="col-10 mx-auto">
-      <h4 class="my-5">感想コメント一覧</h4>
-        
-      <% @comments.each do |comment| %>
-        <div class="col-12 bg-light px-4 pt-3 pb-2 mb-3">
-          <p><%= comment.text %></p>
-          <p>
-            <small>投稿者:　<%= comment.user.name %></small>
-            <small class="ml-5">投稿日時： <%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></small>
-            <div id="goods_buttons_<%= comment.id %>">
-              <%= render partial: 'public/goods/good', locals: { book: @book, comment: comment } %>
-            </div>
-          </p>
+    <div class="col-11 mx-auto mb-5">
+      <h5 class="mb-4"><i class="fas fa-book-open fa-lg fa-fw mr-3"></i>本の情報</h5>
+      
+      <div class="row">
+        <div class="col-lg-3 pl-5">
+          <div class="pb-4">
+            <%= image_tag(@item.large_image_url) %>
+          </div>
         </div>
-      <% end %>
+        
+        <div class="col-lg-6">
+          <table class="table table-sm">
+            <tbody>
+              <tr>
+                <td class="text-main align-middle font-weight-bold" style="width:25%;">タイトル</td>
+                <td class="font-weight-bold" colspan="3"><%= @book.name %></td>
+              </tr>
+              <tr>
+                <td class="text-main align-middle">作者</td>
+                <td colspan="3"><%= @book.author %></td>
+              </tr>
+              <tr>
+                <td class="text-main align-middle">シリーズ</td>
+                <td colspan="3"><%= @book.series %></td>
+              </tr>
+              <tr>
+                <td class="text-main align-middle">タグ</td>
+                <td colspan="3">
+                  <% @book.tags.each do |tag| %>
+                    <span class="btn btn-secondary disabled btn-sm mr-1 my-1"><%= tag.name %></span>
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-main">登録日</td>
+                <td class="align-middle" style="font-size:0.9rem"><%= @book.created_at.strftime('%Y/%m/%d') %></td>
+                <td class="text-main">更新日</td>
+                <td class="align-middle" style="font-size:0.9rem"><%= @book.updated_at.strftime('%Y/%m/%d') %></td>
+              </tr>
+              <tr>
+                <td class="text-main align-middle">登録者</td>
+                <td colspan="3" class="align-middle" style="font-size:0.95rem"><%= @book.user.name %></td>
+              </tr>
+            </tbody>
+          </table>
+          <%= link_to edit_admin_book_path(@book.id), class: "btn btn-sm btn-main px-3 mt-2 ml-3" do %>
+            <i class="fas fa-edit fa-fw mr-1"></i>登録情報を編集する
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="col-11 mx-auto">
+      <h5 class="mb-5">
+        <i class="fas fa-comment-alt fa-lg fa-fw mr-3"></i>感想コメント　<small>全<%= @new_comments.count %>件</small>
+      </h5>
+      
+      <div class="wrap mb-5">
+        <ul id="tab-menu">
+          <li><a href="#tab1" class="active">いいねが多い順</a></li>
+          <li><a href="#tab2">新着順</a></li>
+          <li><a href="#tab3">コメント検索</a></li>
+        </ul>
+        
+        <div id="tab-contents">
+          <div id="tab1" class="tab">
+            <%= render partial: 'tab3', locals: { book: @book, comments: @good_comments } %>
+          </div>
+          <div id="tab2" class="tab">
+            <%= render partial: 'tab3', locals: { book: @book, comments: @new_comments } %>
+          </div>
+          <div id="tab3" class="tab">
+            <%= render partial: 'tab2', locals: { book: @book } %>
+          </div>
+        </div>
+      </div>
       
     </div>
-    
-    
-    
   </div>
 </div>
+
+<%= javascript_pack_tag 'script' %>

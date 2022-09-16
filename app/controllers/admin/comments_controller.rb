@@ -8,4 +8,5 @@ class Admin::CommentsController < ApplicationController
     comment.destroy
     redirect_to admin_root_path
   end
+
 end

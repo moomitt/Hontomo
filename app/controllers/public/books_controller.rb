@@ -32,14 +32,15 @@ class Public::BooksController < ApplicationController
   end
   
   def new
+    @book = Book.new
     items = RakutenWebService::Books::Book.search(isbn: params[:isbn])
     @item = items.first
-    @book = Book.new
   end
 
   def create
-    @books = RakutenWebService::Books::Book.search(isbn: params[:isbn])
     @book = Book.new(book_params)
+    items = RakutenWebService::Books::Book.search(isbn: @book.isbn)
+    @item = items.first
     if @book.save
       redirect_to book_path(@book.id)
     else

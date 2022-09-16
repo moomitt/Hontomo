@@ -44,7 +44,7 @@
         
         <div class="row input-group-sm mb-2 my-5">
           <label class="col-lg-2">タグを追加</label>
-          <%= form_tag({controller:"books",action:"new"}, method: :get) do %>
+          <%= form_tag({ controller:"books", action:"edit" }, method: :get) do %>
             <%= text_field_tag :tag %>
             <%= submit_tag '追加' %>
           <% end %>

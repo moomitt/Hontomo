@@ -16,7 +16,17 @@ class Admin::BooksController < ApplicationController
     @item = items.first
     @good_comments = Comment.where(book_id: @book.id).sort{|a,b| b.goods.size <=> a.goods.size}
     @new_comments = Comment.where(book_id: @book.id).order('id DESC')
-    @user_comments = Comment.where(book_id: @book.id).and(user_id: current_user.id)
+  end
+  
+  def search_comment
+    @book = Book.find(params[:id])
+    @search_comments = Comment.where(book_id: @book.id).where('text LIKE(?)', "%#{params[:keyword]}%").sort{|a,b| b.goods.size <=> a.goods.size}
+  end
+  
+  def book_comment_destroy
+    comment = Comment.find(params[:id])
+    comment.destroy
+    redirect_to admin_book_path(comment.book.id)
   end
 
   def edit
@@ -25,7 +35,7 @@ class Admin::BooksController < ApplicationController
     @item = items.first
     if params[:tag]
       if Tag.create(name: params[:tag])
-        redirect_to edit_book_path
+        redirect_to edit_admin_book_path
       else
         render :edit
       end
@@ -33,17 +43,17 @@ class Admin::BooksController < ApplicationController
   end
 
   def update
-    book = Book.find(params[:id])
-    if book.update(book_params)
-      redirect_to admin_book_path(book.id)
+    @book = Book.find(params[:id])
+    if @book.update(book_params)
+      redirect_to admin_book_path(@book.id)
     else
       render :edit
     end
   end
 
   def destroy
-    @book = Book.find(params[:id])
-    @book.destroy
+    book = Book.find(params[:id])
+    book.destroy
     redirect_to admin_books_path
   end
   

@@ -52,11 +52,11 @@
           <% if user_signed_in? %>
             <% if @book.bookmarked_by?(current_user) %>
               <%= link_to book_bookmark_path(@book), method: :delete, class: "btn btn-sm btn-accent px-3 mt-2 mx-3" do %>
-                <i class="fas fa-star fa-fw mr-1"></i>お気に入り登録する
+                <i class="fas fa-star fa-fw mr-1"></i>お気に入り登録済み
               <% end %>
             <% else %>
               <%= link_to book_bookmarks_path(@book), method: :post, class: "btn btn-sm btn-accent px-3 mt-2 mx-3" do %>
-                <i class="fas fa-star fa-fw mr-1"></i>お気に入り登録済み
+                <i class="fas fa-star fa-fw mr-1"></i>お気に入り登録する
               <% end %>
             <% end %>
           <% end %>
@@ -95,7 +95,7 @@
           </div>
           <div id="tab4" class="tab">
             <% if user_signed_in? %>
-              <%= render partial: 'tab', locals: { book: @book, comments: @user_comments } %>
+              <%= render partial: 'tab3', locals: { book: @book, comments: @user_comments } %>
             <% else %>
               <p class="text-center my-5">投稿コメントがありません</p>
               <p class="text-center my-5">

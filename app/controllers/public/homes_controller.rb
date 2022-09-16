@@ -1,6 +1,6 @@
 class Public::HomesController < ApplicationController
   def top
-    @popular_books = Book.find(Comment.group(:book_id).order('count(id) desc').pluck(:book_id))
+    @popular_books = Book.find(Comment.group(:book_id).order('count(id) desc').limit(4).pluck(:book_id))
     @new_books = Book.order('id DESC').limit(4)
   end
   

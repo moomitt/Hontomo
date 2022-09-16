@@ -5,21 +5,26 @@ class Public::CommentsController < ApplicationController
   end
 
   def create
-    book = Book.find(params[:book_id])
-    comment = Comment.new(comment_params)
-    comment.book_id = book.id
-    comment.user_id = current_user.id
-    if comment.save
-      redirect_to book_path(book.id)
+    @book = Book.find(params[:book_id])
+    @comment = Comment.new(comment_params)
+    if @comment.save
+      redirect_to book_path(@book.id)
     else
       render :new
     end
   end
   
-
+  def destroy
+    @book = Book.find(params[:book_id])
+    @comment = Comment.find(params[:id])
+    if @comment.user_id == current_user.id
+      @comment.destroy
+      redirect_to book_path(@book.id)
+    end
+  end
   
   private
   def comment_params
-    params.require(:comment).permit(:text)
+    params.require(:comment).permit(:user_id, :book_id, :text)
   end
 end

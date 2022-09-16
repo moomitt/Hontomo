@@ -11,5 +11,5 @@ class Book < ApplicationRecord
     bookmarks.where(user_id: user).exists?
   end
   
-  validates :series, length: { minimum: 2, maximum: 20 }
+  validates :series, length: { maximum: 20 }
 end

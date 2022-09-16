@@ -11,12 +11,13 @@
     <p class="pb-0"><%= comment.text %></p>
     <div class="text-right">
       <p class="d-inline-block mb-0 text-main">
-        <small>投稿者:　<%= comment.user.name %></small>
         <small class="ml-5">投稿日時： <%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></small>
       </p>
       <div id="goods_buttons_<%= comment.id %>" class="d-inline-block">
         <%= render partial: 'public/goods/good', locals: { book: book, comment: comment } %>
       </div>
+      <%= link_to 'コメントを削除', book_comment_path(book.id, comment.id), method: :delete,
+      data: {confirm: "削除したコメントは元に戻せません。本当に削除しますか？"}, class: "text-main ml-4" %>
     </div>
   </div>
 <% end %>
