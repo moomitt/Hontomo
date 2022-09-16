@@ -14,10 +14,13 @@ class Public::BooksController < ApplicationController
       @books = Book.where('name LIKE(?)', "%#{params[:keyword]}%").or(Book.where('author LIKE(?)', "%#{params[:keyword]}%"))
     end
     if params[:tag_ids]
+      @tags = []
       @books = []
       params[:tag_ids].each do |key,value|
+        @tags += Tag.where(name: key) if value == "1"
         @books += Tag.find_by(name: key).books if value == "1"
       end
+      @tags.uniq!
       @books.uniq!
     end
   end

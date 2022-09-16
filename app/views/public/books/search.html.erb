@@ -20,7 +20,21 @@
     </div>
     
     <div class="col-10 mx-auto text-top">
-      <h4 class="mb-4">検索結果　<small>(全<%= @books.count %>件)</small></h4>
+      <h4 class="mb-4 d-inline-block">
+        検索結果
+        <small>全<%= @books.count %>件</small>
+        <% if params[:keyword] %>
+          <small>検索キーワード：<%= "#{params[:keyword]}" %></small>
+        <% elsif params[:tag_ids] %>
+          <small>検索タグ：
+          <% @tags.each do |tag| %>
+            <%= tag.name %>
+          <% end %>
+          </small>
+        <% end %>
+      </h4>
+      <%= link_to '一覧に戻る', books_path, class: "btn btn-sm btn-main px-4 d-inline-block ml-5" %></br>
+      
       <% @books.each do |book| %>
         <div class="d-inline-block" style="vertical-align: top; width: 20%;">
         <%= link_to book_path(book.id) do %>
