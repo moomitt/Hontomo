@@ -24,15 +24,21 @@ class Admin::BooksController < ApplicationController
     items = RakutenWebService::Books::Book.search(isbn: @book.isbn)
     @item = items.first
     if params[:tag]
-      Tag.create(name: params[:tag])
-      redirect_to edit_admin_book_path(@book.id)
+      if Tag.create(name: params[:tag])
+        redirect_to edit_book_path
+      else
+        render :edit
+      end
     end
   end
 
   def update
     book = Book.find(params[:id])
-    book.update(book_params)
-    redirect_to admin_book_path(book.id)
+    if book.update(book_params)
+      redirect_to admin_book_path(book.id)
+    else
+      render :edit
+    end
   end
 
   def destroy

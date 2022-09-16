@@ -6,4 +6,6 @@ class Comment < ApplicationRecord
   def gooded_by?(user)
     goods.exists?(user_id: user.id)
   end
+  
+  validates :series, length: { minimum: 2, maximum: 120 }, uniqueness: true
 end
