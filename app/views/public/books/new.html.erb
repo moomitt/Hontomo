@@ -1,28 +1,56 @@
-<div class="container">
+<div class="container-fluid" style="padding-top:80px">
   <div class="row">
-    <div class="col-12">
-      <h4 class="my-5">本を登録する</h4>
-      <h4 class="my-5">本を登録する</h4>
-      <h4 class="my-5">本を登録する</h4>
-      <h4 class="my-5">本を登録する</h4>
-      <h4 class="my-5">本を登録する</h4>
+    <div class="col-lg-11 mx-auto">
+      <h4 class="my-5 ml-4">
+        新しい本を登録する
+      </h4>
     </div>
     
-    <div class="col-10">
-        <div class="mb-3">
-          <%= image_tag(@item.large_image_url) %>
-          <strong class="mx-3"><%= @item.title %></strong>
-          <%= @item.author %>
-          <%= link_to '楽天ブックスでみる', @item.item_url, :class => "btn btn-sm btn-success ml-5" %>
-          <%= form_with model: @book, url: books_path, method: :post do |f| %>
-            <%= f.hidden_field :isbn, :value => @item.isbn %>
-            <%= f.hidden_field :name, :value => @item.title %>
-            <%= f.hidden_field :author, :value => @item.author %>
-            <%= f.hidden_field :user_id, :value => current_user.id %>
-            <%= f.submit 'この本を登録する', :class => "btn btn btn-success mt-2 mb-3" %>
-          <% end %> 
+    <div class="col-md-11 col-11 mx-auto mb-4">
+      <h5 class="">
+        <i class="fas fa-check-square fa-lg fa-fw mr-3"></i>
+        確認画面
+      </h5>
+    </div>
+    
+    <div class="col-lg-10 col-md-10 col-11 mx-auto mt-2 mb-5 px-3">
+      <div class="row">
+        <h6 class="col-lg-5 col-md-7 mt-2 ml-2">あなたが選択中の本</h6>
+        <div class="col-lg-3 col-md-4 mt-2 ml-2">
+          <%= link_to '楽天ブックスでみる', @item.item_url, class: "btn btn-sm btn-outline-secondary px-3" %>
         </div>
       </div>
+      
+      <table class="table table-borderless my-3 col-lg-8">
+        <tr>
+          <td rowspan="4" style="width: 25%">
+            <%= image_tag(@item.large_image_url) %></br>
+          </td>
+          <td style="width: 75%">
+            <strong><%= @item.title %></strong>
+          </td>
+        </tr>
+        <tr>
+          <td><%= @item.author %></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+      </table>
+      
+      <%= form_with model: @book, url: books_path, method: :post do |f| %>
+        <%= f.hidden_field :isbn, :value => @item.isbn %>
+        <%= f.hidden_field :name, :value => @item.title %>
+        <%= f.hidden_field :author, :value => @item.author %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <%= link_to '検索画面に戻る', books_find_path, class: "btn btn-sm btn-main px-4 d-inline-block my-2 mx-3" %>
+        <%= f.submit 'この本を登録する', class: "btn btn-sm btn-accent px-4 d-inline-block my-2 mx-3" %>
+      <% end %>
     </div>
+    
+    
   </div>
 </div>

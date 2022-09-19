@@ -1,4 +1,4 @@
-<<div class="container-fluid" style="padding-top:80px">
+<div class="container-fluid" style="padding-top:80px">
   <div class="row">
     <div class="col-lg-11 mx-auto">
       <h4 class="my-5 ml-4">
@@ -26,7 +26,9 @@
       <h5 class="">
         <i class="fas fa-book fa-lg fa-fw mr-3"></i>
         検索結果
+        <% if @items.present? %>
         <small class="">（全 <%= @items.count %> 件）</small>
+        <% end %>
       </h5>
       <% if @items.present? %>
       <p class="my-3 ml-5">検索ワード：<%= "#{params[:keyword]}" %></p>
@@ -53,7 +55,7 @@
                 <td>
                   <%= form_with url: new_book_path, method: :get do |f| %>
                     <%= f.hidden_field :isbn, :value => item.isbn %>
-                    <%= link_to '楽天ブックスでみる', item.item_url, class: "btn btn-sm btn-main px-3 d-inline-block my-2 mr-2" %>
+                    <%= link_to '楽天ブックスでみる', item.item_url, class: "btn btn-sm btn-outline-secondary px-3 d-inline-block my-2 mr-2" %>
                     <%= f.submit '登録画面へ', class: "btn btn-sm btn-accent px-4 d-inline-block my-2 mr-2" %>
                   <% end %>
                 </td>
@@ -62,7 +64,7 @@
           <% end %>
         <% end %>
         
-        <p class="mt-5 mx-3">お探しの本が表示されない場合</p>
+        <p class="mt-4 mx-3">お探しの本が表示されない場合</p>
         <p class="mx-3">・検索ワードが短すぎる場合、正しく結果が表示されない場合があります。</p>
         <p class="mx-3">・該当の書籍がデータベースに存在しない可能性があります。</p>
       </div>
