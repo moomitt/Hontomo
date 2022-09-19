@@ -1,31 +1,72 @@
-<div class="container">
+<<div class="container-fluid" style="padding-top:80px">
   <div class="row">
-    <div class="col-12">
-      <h4 class="my-5">本を登録する</h4>
+    <div class="col-lg-11 mx-auto">
+      <h4 class="my-5 ml-4">
+        新しい本を登録する
+      </h4>
     </div>
-    <div class="col-10">
-      <div class="row form-group-sm">
-        <%= form_with url: books_find_path, method: :get, local: true, :class => "form-horaizontal" do |f| %>
-          <%= f.text_field :keyword, :class => "form-control" %>
-          <%= f.submit '題名で検索', :class => "btn btn-sm btn-secondary" %>
-        <% end %>
-      </div>
-      <h4 class="my-5">検索結果</h4>
+    
+    <div class="col-md-11 col-11 mx-auto mb-4">
+      <h5 class="">
+        <i class="fas fa-search fa-lg fa-fw mr-3"></i>
+        題名からさがす
+      </h5>
+    </div>
+    
+    <div class="col-lg-10 col-md-9 col-9 mx-auto mb-5 px-3">
+      <%= form_with url: books_find_path, method: :get, local: true, class: "form-horaizontal" do |f| %>
+        <div class="row input-group-sm">
+          <%= f.text_field :keyword, class: "form-control col-lg-4 col-md-7 col-12 mr-2 my-1" %>
+          <%= f.submit '題名で検索', class: "btn btn-sm btn-secondary col-lg-2 col-md-2 col-5 my-1" %>
+        </div>
+      <% end %>
+    </div>
+    
+    <div class="col-md-11 col-11 mx-auto mb-4">
+      <h5 class="">
+        <i class="fas fa-book fa-lg fa-fw mr-3"></i>
+        検索結果
+        <small class="">（全 <%= @items.count %> 件）</small>
+      </h5>
+      <% if @items.present? %>
+      <p class="my-3 ml-5">検索ワード：<%= "#{params[:keyword]}" %></p>
+      <% end %>
+    </div>
+    
+    <div class="col-lg-10 col-md-9 col-11 mx-auto mb-5 px-3">
       <div id="item_list">
         <% if @items.present? %>
           <% @items.each do |item| %>
-          <div class="mb-3">
-            <%= image_tag(item.medium_image_url) %>
-            <strong class="mx-3"><%= item.title %></strong>
-            <%= item.author %>
-            <%= link_to '楽天ブックスでみる', item.item_url, :class => "btn btn-sm btn-success ml-5" %>
-            <%= form_with url: new_book_path, method: :get do |f| %>
-              <%= f.hidden_field :isbn, :value => item.isbn %>
-              <%= f.submit '登録画面へ', :class => "btn btn-sm btn-secondary mt-2 mb-3" %>
-            <% end %> 
-          </div>
+            <table class="table table-borderless table-sm mb-5 col-lg-8">
+              <tr>
+                <td rowspan="3" style="width: 25%">
+                  <%= image_tag(item.medium_image_url) %></br>
+                </td>
+                <td style="width: 75%">
+                  <strong><%= item.title %></strong>
+                </td>
+              </tr>
+              <tr>
+                <td><%= item.author %></td>
+              </tr>
+              <tr>
+                <td>
+                  <%= form_with url: new_book_path, method: :get do |f| %>
+                    <%= f.hidden_field :isbn, :value => item.isbn %>
+                    <%= link_to '楽天ブックスでみる', item.item_url, class: "btn btn-sm btn-main px-3 d-inline-block my-2 mr-2" %>
+                    <%= f.submit '登録画面へ', class: "btn btn-sm btn-accent px-4 d-inline-block my-2 mr-2" %>
+                  <% end %>
+                </td>
+              </tr>
+            </table>
           <% end %>
         <% end %>
+        
+        <p class="mt-5 mx-3">お探しの本が表示されない場合</p>
+        <p class="mx-3">・検索ワードが短すぎる場合、正しく結果が表示されない場合があります。</p>
+        <p class="mx-3">・該当の書籍がデータベースに存在しない可能性があります。</p>
       </div>
     </div>
+    
   </div>
+</div>

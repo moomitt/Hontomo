@@ -27,7 +27,10 @@ class Public::BooksController < ApplicationController
   
   def find
     if params[:keyword]
-      @items = RakutenWebService::Books::Book.search(title: params[:keyword])
+      keywords = params[:keyword].split(/[[:blank:]]+/).select(&:present?)
+      keywords.each do |keyword|
+        @items = RakutenWebService::Books::Book.search(title: keyword)
+      end
     end
   end
   
