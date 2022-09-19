@@ -165,7 +165,7 @@ label{
 // タブメニュー
 
 .wrap {
-  width: 90%;
+  width: 100%;
   max-width: 800px;
 }
 
@@ -176,22 +176,27 @@ label{
 
 #tab-menu li {
   list-style-type: none;
+  background: #8B9FB2;
+  border-bottom: none;
   width: 25%;
+  font-size: 0.9rem;
+  display: table;
 }
 
 #tab-menu li a {
   color: #FFFFFF;
+  height: 65px;
   text-decoration: none;
   display: block;
-  padding: 10px;
+  padding: 10px 5px;
   text-align: center;
-  background: #8B9FB2;
-  border: 1px solid #8B9FB2;
-  border-bottom: none;
+  display: table-cell;
+  vertical-align: middle;
 }
 
-#tab-menu .active {
+#tab-menu li .active {
   background: #FAF8F8;
+  height: 65px;
   border: 1px solid #8B9FB2;
   border-bottom: none;
   color: #42455A;

@@ -1,23 +1,27 @@
 <div class="container-fluid" style="padding-top:80px">
   <div class="row">
-    <div class="col-12">
-      <h4 class="my-5">本をみる</h4>
+    <div class="col-lg-11 mx-auto">
+      <h4 class="my-5 ml-4">
+        本をみる
+      </h4>
     </div>
     
-    <div class="col-11 mx-auto mb-5">
-      <h5 class="mb-4">
+    <div class="col-md-11 col-11 mx-auto mb-4">
+      <h5 class="">
         <i class="fas fa-book-open fa-lg fa-fw mr-3"></i>
         本の情報
       </h5>
-      
+    </div>
+    
+    <div class="col-lg-10 col-md-10 col-11 mx-auto mb-5 px-3">
       <div class="row">
-        <div class="col-lg-3 pl-5">
+        <div class="col-lg-3 col-md-3 col-12">
           <div class="pb-4">
             <%= image_tag(@item.large_image_url) %>
           </div>
         </div>
         
-        <div class="col-lg-6">
+        <div class="col-lg-8 col-md-9 col-12">
           <table class="table table-sm">
             <tbody>
               <tr>
@@ -73,14 +77,17 @@
       
     </div>
     
-    <div class="col-11 mx-auto">
-      <h5 class="mb-5">
-        <i class="fas fa-comment-alt fa-lg fa-fw mr-3"></i>感想コメント　<small>全<%= @new_comments.count %>件</small>
+    <div class="col-md-11 col-11 mx-auto mb-4">
+      <h5 class="">
+        <i class="fas fa-comment-alt fa-lg fa-fw mr-3"></i>
+        感想コメント　<small>全<%= @new_comments.count %>件</small>
       </h5>
-      
-      <div class="wrap mb-5">
+    </div>
+    
+    <div class="col-lg-10 col-md-10 col-11 mx-auto mb-5 px-3">
+      <div class="wrap">
         <ul id="tab-menu">
-          <li><a href="#tab1" class="active">いいねが多い順</a></li>
+          <li><a href="#tab1" class="active">いいねの多い順</a></li>
           <li><a href="#tab2">新着順</a></li>
           <li><a href="#tab3">コメント検索</a></li>
           <li><a href="#tab4">あなたのコメント</a></li>
