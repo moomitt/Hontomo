@@ -54,7 +54,7 @@
           </table>
           <% if user_signed_in? %>
             <% if @book.bookmarked_by?(current_user) %>
-              <%= link_to book_bookmark_path(@book), method: :delete, class: "btn btn-sm btn-accent px-3 mt-2 mx-3" do %>
+              <%= link_to book_bookmark_path(@book), method: :delete, class: "btn btn-sm btn-outline-accent px-3 mt-2 mx-3" do %>
                 <i class="fas fa-star fa-fw mr-1"></i>お気に入り登録済み
               <% end %>
             <% else %>

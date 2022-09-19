@@ -120,6 +120,25 @@ label{
   color: #FFFFFF;
 }
 
+.btn-outline-accent {
+  background-color: none;
+  border-color:  #CFB96C;
+  color:  #CFB96C;
+}
+
+.btn-outline-accent:hover {
+  background-color: none;
+  border-color: #DDCBB9;
+  color: #DDCBB9;
+}
+
+.btn-outline-accent:active {
+  background-color: none;
+  border-color: #DDCBB9;
+  color: #DDCBB9;
+}
+
+
 .btn-main{
   background-color: #8B9FB2;
   border-color:  #8B9FB2;
