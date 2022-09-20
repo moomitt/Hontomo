@@ -2,14 +2,23 @@
   <% if comment.gooded_by?(current_user) %>
     <%= link_to book_comment_goods_path(book_id: book.id, comment_id: comment.id),
     method: :delete, remote: true do %>
-      <small class="">♥ <%= comment.goods.count %></small>
+      <small class="">
+        <i class="fas fa-thumbs-up fa-lg fa-fw pb-1" style="color: #CFB96C;"></i>
+         <%= comment.goods.count %>
+      </small>
     <% end %>
   <% else %>
     <%= link_to book_comment_goods_path(book_id: book.id, comment_id: comment.id),
     method: :post, remote: true do %>
-      <small class="">♡ <%= comment.goods.count %></small>
+      <small class="">
+        <i class="fas fa-thumbs-up fa-lg fa-fw text-main pb-1"></i>
+         <%= comment.goods.count %>
+      </small>
     <% end %>
   <% end %>
 <% else %>
-  <small class="">♡ <%= comment.goods.count %></small>
+  <small class="">
+    <i class="fas fa-thumbs-up fa-lg fa-fw text-main pb-1"></i>
+     <%= comment.goods.count %>
+  </small>
 <% end %>
