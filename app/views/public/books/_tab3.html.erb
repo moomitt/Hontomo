@@ -1,23 +1,23 @@
 <% if user_signed_in? %>
   <div class="">
-    <%= link_to new_book_comment_path(book.id), class: "btn btn-sm btn-accent px-3 mb-4 ml-3" do %>
+    <%= link_to new_book_comment_path(book.id), class: "btn btn-sm btn-accent px-3 my-4 ml-2" do %>
       <i class="fas fa-pen fa-fw mr-2"></i>感想コメントを投稿
     <% end %>
   </div>
 <% end %>
 
 <% comments.each do |comment| %>
-  <div class="col-12 px-4 pt-3 pb-2 mb-3 card-comment">
-    <p class="pb-0"><%= comment.text %></p>
-    <div class="text-right">
-      <p class="d-inline-block mb-0 text-main">
-        <small class="ml-5">投稿日時： <%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></small>
-      </p>
-      <div id="goods_buttons_<%= comment.id %>" class="d-inline-block">
+  <div class="col-12 px-3 pt-3 pb-2 mb-3 card-comment">
+    <p class="pb-0" style="font-size:0.95rem"><%= comment.text %></p>
+    <div class="row text-right">
+      <p class="col-md-7 col-8 my-0"><small>投稿日時： <%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></small></p>
+      <div id="goods_buttons_<%= comment.id %>" class="col-md-2 col-4 pt-1 text-right">
         <%= render partial: 'public/goods/good', locals: { book: book, comment: comment } %>
       </div>
-      <%= link_to 'コメントを削除', book_comment_path(book.id, comment.id), method: :delete,
-      data: {confirm: "削除したコメントは元に戻せません。本当に削除しますか？"}, class: "text-main ml-4" %>
+      <div class="col-md-3 col-12 pt-1 text-right" style="font-size:0.85rem">
+        <%= link_to 'コメントを削除', book_comment_path(book.id, comment.id), method: :delete,
+        data: {confirm: "削除したコメントは元に戻せません。本当に削除しますか？"}, class: "text-main" %>
+      </div>
     </div>
   </div>
 <% end %>

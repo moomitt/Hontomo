@@ -1,4 +1,10 @@
+<p class="my-4"><i class="fas fa-search mx-2 text-main"></i>キーワードでコメントを検索</p>
+
 <%= form_with url: search_comment_book_path(book.id), method: :get,  class: "form-horaizontal" do |f| %>
-   <%= f.text_field :keyword, class: "form-control col-5" %>
-   <%= f.submit 'キーワード検索', class: "btn btn-sm btn-secondary mb-4" %>
+  <div class="row input-group-sm mx-auto pl-3 mb-5">
+    <%= f.text_field :keyword, class: "form-control col-md-6 col-12 mx-1 mt-2" %>
+    <div class="col-md-3 col-6 mx-1 px-0">
+      <%= f.submit 'キーワード検索', class: "btn btn-sm btn-main mb-4 mt-2 px-3" %>
+    </div>
+  </div>
 <% end %>

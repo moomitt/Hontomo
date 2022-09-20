@@ -84,7 +84,7 @@
       </h5>
     </div>
     
-    <div class="col-lg-10 col-md-10 col-11 mx-auto mb-5 px-3">
+    <div class="col-lg-10 col-md-10 col-12 mx-auto px-3">
       <div class="wrap">
         <ul id="tab-menu">
           <li><a href="#tab1" class="active">いいねの多い順</a></li>
@@ -120,7 +120,7 @@
       
       <div class="row">
         <% if user_signed_in? %>
-          <%= link_to new_book_comment_path(@book.id), class: "btn btn-accent px-3 my-4" do %>
+          <%= link_to new_book_comment_path(@book.id), class: "btn btn-sm btn-accent px-3 my-5 ml-3" do %>
             <i class="fas fa-pen fa-fw mr-2"></i>感想コメントを投稿
           <% end %>
         <% else %>

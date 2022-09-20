@@ -185,7 +185,7 @@ label{
 
 #tab-menu li a {
   color: #FFFFFF;
-  height: 65px;
+  height: 60px;
   text-decoration: none;
   display: block;
   padding: 10px 5px;
@@ -196,7 +196,7 @@ label{
 
 #tab-menu li .active {
   background: #FAF8F8;
-  height: 65px;
+  height: 60px;
   border: 1px solid #8B9FB2;
   border-bottom: none;
   color: #42455A;
@@ -209,15 +209,15 @@ label{
 
 #tab-contents .tab {
   width: 100%;
-  padding: 30px;
+  padding: 15px;
   background: #FAF8F8;
   border: 1px solid #8B9FB2;
   border-top: none;
   .card-comment {
     max-width: 980px;
-    border-radius: 6px;
-    background-color: #F1F3F5;
-    border: 0.6px solid #A2B2C2;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    border: 0.6px solid #E1DFDF;
   }
 }
 
