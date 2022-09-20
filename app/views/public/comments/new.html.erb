@@ -1,7 +1,16 @@
-<div class="container">
+<div class="container-fluid" style="padding-top:80px">
   <div class="row">
-    <div class="col-12">
-      <h4 class="my-5">感想コメント投稿</h4>
+    <div class="col-lg-11 mx-auto">
+      <h4 class="my-5 ml-4">
+        本をみる
+      </h4>
+    </div>
+    
+    <div class="col-md-11 col-11 mx-auto mb-4">
+      <h5 class="">
+        <i class="fas fa-comment fa-lg fa-fw mr-3"></i>
+        感想コメントを投稿
+      </h5>
     </div>
     
     <% if @comment.errors.any? %>
@@ -12,15 +21,17 @@
       </ul>
     <% end %>
     
-    <div class="col-10">
-      <%= form_with model: @comment, url: book_comments_path(@book.id), method: :post, :class => "form-horaizontal" do |f| %>
-        <label class="col-lg-2">コメント</label>
+    <div class="col-lg-10 col-md-10 col-11 mx-auto">
+      <%= form_with model: @comment, url: book_comments_path(@book.id), method: :post, class: "form-horaizontal" do |f| %>
+        <label class="px-0">コメント<small> （2～100文字）</small></label>
         <%= f.hidden_field :book_id, :value => @book.id %>
         <%= f.hidden_field :user_id, :value => current_user.id %>
-        <%= f.text_area :text, :class => "form-control my-3 col-lg-8" %>
-        <%= f.submit 'コメントを投稿', :class => "btn btn-success px-3" %>
+        <%= f.text_area :text, class: "form-control my-3 col-lg-8", :style => "max-width:510px; height:120px;" %>
+        <p><small>※ 特定の個人・団体を誹謗中傷するような内容の投稿はお止めください。</small></p>
+        <p><small>※ その他 注意事項につきましては利用規約をご確認ください。</small></p>
+        <%= f.submit 'コメントを投稿', class: "btn btn-sm btn-accent px-4 mr-3 mt-2" %>
+        <%= link_to 'キャンセル', book_path(@book.id), class: "btn btn-sm btn-main px-3 mt-2" %>
       <% end %>
-      <%= link_to 'キャンセル', book_path(@book.id), class: "btn btn-sm btn-main" %>
     </div>
   </div>
 </div>
