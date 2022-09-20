@@ -235,3 +235,38 @@ label{
 .text-accent{
   color: #CFB96C;
 }
+
+
+// ページネーション
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  background: #FFFFFF;
+  transition: all 0.15s linear;
+}
+
+.page-link {
+  width: auto;
+  color: #8B9FB2;
+}
+
+li.page-item.active .page-link {
+  pointer-events: none;
+  background: #8B9FB2;
+  border: 1px solid #8B9FB2;
+  color: #FFFFFF;
+}
+
+.page-link:hover {
+  background: #8B9FB2;
+  color: #FFFFFF;
+}
