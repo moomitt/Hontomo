@@ -59,20 +59,22 @@
     </div>
     
     <div class="col-lg-10 col-md-10 col-9 mx-auto mb-5">
-      <% @books.each do |book| %>
-        <div class="d-inline-block px-4 text-left" style="vertical-align: top; width: 190px;">
-          <%= link_to book_path(book.id) do %>
-            <% if book.isbn.present? %>
-              <% item = RakutenWebService::Books::Book.search(isbn: book.isbn).first %>
-              <%= image_tag(item.large_image_url) %>
+      <div style="max-width:800px">
+        <% @books.each do |book| %>
+          <div class="d-inline-block px-4 text-left" style="vertical-align: top; width: 190px;">
+            <%= link_to book_path(book.id) do %>
+              <% if book.isbn.present? %>
+                <% item = RakutenWebService::Books::Book.search(isbn: book.isbn).first %>
+                <%= image_tag(item.large_image_url) %>
+              <% end %>
+              <p class="mt-2 mb-1 text-truncate"><strong><%= book.name %></strong></p>
+              <p class="mb-4 text-truncate"><%= book.author %></p>
             <% end %>
-            <p class="mt-2 mb-1 text-truncate"><strong><%= book.name %></strong></p>
-            <p class="mb-4 text-truncate"><%= book.author %></p>
-          <% end %>
-        </div>
-      <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
-   
+      
     <div class="col-md-11 col-12 text-center px-4">
       <p>お探しの本が見つかりませんでしたか？</p>
       <p>あなたの読んだ本を登録して、最初のコメントを投稿しましょう！</p>
@@ -96,6 +98,7 @@
         </div>
       <% end %>
     </div>
+      
     
   </div>
 </div>
