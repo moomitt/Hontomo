@@ -270,3 +270,10 @@ li.page-item.active .page-link {
   background: #8B9FB2;
   color: #FFFFFF;
 }
+
+table {
+width: 100%;
+table-layout: fixed;
+word-break: break-all;
+word-wrap: break-all;
+}
