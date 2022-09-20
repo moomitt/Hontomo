@@ -1,43 +1,56 @@
-<div class="container">
+<div class="container-fluid" style="padding-top:80px; background-color:#F3F5F7;">
   <div class="row">
-    
-    <div class="col-12">
-      <h3 class="my-5 ml-4"><%= @user.name %>さんの会員情報</h3>
+    <div class="col-lg-11 mx-auto">
+      <h4 class="my-5 ml-4">
+        会員情報ページ
+      </h4>
     </div>
     
-    <div class="col-10 mx-auto">
-      <div class="row ml-4">
-        <label class="col-lg-2">会員ID</label>
-        <p class="col-lg-2"><%= @user.id %></p>
-      </div>
-      
-      <div class="row ml-4">
-        <label class="col-lg-2">ニックネーム</label>
-        <p class="col-lg-2"><%= @user.name %></p>
-      </div>
-      
-      <div class="row ml-4">
-        <label class="col-lg-2">メールアドレス</label>
-        <p class="col-lg-3"><%= @user.email %></p>
-      </div>
-      
-      <div class="row ml-4">
-        <label class="col-lg-2">会員ステータス</label>
-        <p class="col-lg-3">
-          <% if @user.is_deleted == false %>
-            <strong class="text-success">有効</strong>
-          <% else %>
-            <strong class="text-secondary">退会</strong>
-          <% end %>
-        </p>
-      </div>
-      
-      <div class="row my-5">
-        <label class="col-lg-2"></label>
-        <%= link_to '編集する', edit_admin_user_path,
-        :class => "btn btn-sm btn-success px-4" %>
-        <%= link_to 'コメント一覧を見る', admin_user_comment_path,
-        :class => "btn btn-sm btn-primary ml-5 px-4" %>
+    <div class="col-md-11 col-11 mx-auto mb-3">
+      <h5 class="my-4">
+        <i class="fas fa-user fa-lg fa-fw mr-3"></i>
+        <%= @user.name %> さんの会員情報
+      </h5>
+    </div>
+    
+    <div class="col-lg-10 col-md-9 col-10 mx-auto mb-5 px-3">
+      <div class="row">
+        <table class="table table-sm col-lg-8 col-md-12"
+        style="table-layout:fixed; width:100%; word-wrap:break-word;">
+          <tr>
+            <td style="width: 30%;">会員ID</td>
+            <td style="width: 70%;"><%= @user.id %></td>
+          </tr>
+          <tr>
+            <td>ニックネーム</td>
+            <td><%= @user.name %></td>
+          </tr>
+          <tr>
+            <td>メールアドレス</td>
+            <td><%= @user.email %></td>
+          </tr>
+          <tr>
+            <td>会員ステータス</td>
+            <td>
+              <% if @user.is_deleted == false %>
+                <strong class="text-success">有効</strong>
+              <% else %>
+                <strong class="text-secondary">退会</strong>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <%= link_to edit_admin_user_path, class: "btn btn-sm btn-main px-3 mt-4 mr-2" do %>
+                <i class="fas fa-edit fa-fw mr-1"></i>登録情報を変更
+              <% end %>
+              <%= link_to edit_admin_user_path, class: "btn btn-sm btn-accent px-3 mt-4" do %>
+                <i class="fas fa-comment-alt fa-fw mr-1"></i>コメント一覧を見る
+              <% end %>
+            </td>
+          </tr>
+        </table>
       </div>
     </div>
     
