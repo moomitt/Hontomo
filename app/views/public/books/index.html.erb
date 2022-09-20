@@ -1,67 +1,101 @@
-<div class="container">
+<div class="container-fluid" style="padding-top:80px">
   <div class="row">
-    <div class="col-12">
-      <h4 class="my-5">本をさがす</h4>
+    <div class="col-lg-11 mx-auto">
+      <h4 class="my-5 ml-4">
+        本をさがす
+      </h4>
     </div>
     
-    <div class="col-10 mx-auto text-top mb-5">
-      <%= form_with url: books_search_path, method: :get, local: true, :class => "form-horaizontal" do |f| %>
-        <%= f.text_field :keyword, :class => "form-control col-5" %>
-        <%= f.submit 'キーワード検索', :class => "btn btn-sm btn-secondary mb-4" %>
+    <div class="col-md-11 col-11 mx-auto mb-3">
+      <h5 class="">
+        <i class="fas fa-search fa-lg fa-fw mr-3"></i>
+        キーワードでさがす
+      </h5>
+    </div>
+    
+    <div class="col-lg-9 col-md-9 col-9 mx-auto mb-5 px-0">
+      <%= form_with url: books_search_path, method: :get, local: true, class: "form-horaizontal" do |f| %>
+        <div class="row input-group-sm px-3">
+          <%= f.text_field :keyword, :placeholder => "題名 ／ 作者名",
+          class: "form-control col-lg-4 col-md-7 col-12 mr-2 my-1" %>
+          <div class="col-lg-2 col-md-2 col-5 my-1 px-0">
+            <%= f.submit 'キーワード検索', class: "btn btn-sm btn-main px-4" %>
+          </div>
+        </div>
       <% end %>
-      
+    </div>
+    
+    <div class="col-md-11 col-11 mx-auto mb-3">
+      <h5 class="">
+        <i class="fas fa-tag fa-lg fa-fw mr-3"></i>
+        タグからさがす
+      </h5>
+    </div>
+    
+    <div class="col-lg-9 col-md-9 col-9 mx-auto mb-5">
       <%= form_tag({controller: "books", action: "search"}, method: :get) do %>
-        <% Tag.all.each do |t| %>
-          <%= check_box :tag_ids, t.name %><%= t.name %>
-        <% end %>
-        </br>
-        <%= submit_tag 'タグ検索' %>
-      <% end %>
-    </div>
-    
-    <div class="col-10 mx-auto text-top">
-      <h4 class="mb-4">すべての本　<small>(全<%= @books.count %>件)</small></h4>
-      <% @books.each do |book| %>
-        <div class="d-inline-block" style="vertical-align: top; width: 20%;">
-        <%= link_to book_path(book.id) do %>
-          <div class="border" style="width: 150px; height: 200px;">
-          <% if book.isbn.present? %>
-            <% item = RakutenWebService::Books::Book.search(isbn: book.isbn).first %>
-            <%= image_tag(item.large_image_url) %>
-          <% end %>
-          </div>
-          <p class="mt-3 mb-1"><strong><%= book.name %></strong></p>
-          <p><%= book.author %></p>
-        <% end %>
-        </div>
-      <% end %>
-    </div>
-    
-   
-    <div class="col-10 mx-auto text-center pt-4">
-      <p><strong>お探しの本が見つかりませんでしたか？</strong></p>
-      <p><strong>あなたの読んだ本を登録して、最初のコメントを投稿しましょう！</strong></p>
-    </div>
-    
-    <% if user_signed_in? %>
-      <div class="col-10 mx-auto text-center">
-        <%= link_to '本を登録する', books_find_path, :class => "btn btn-secondary px-5 mt-4" %>
-      </div>
-    <% else %>
-      <div class="col-6 text-center my-3 py-3 mx-auto bg-light">
-        <p><strong>本の登録・コメント投稿には会員登録が必要です</strong></p>
         <div class="row">
-          <div class="col pr-0">
-            <p>会員登録がお済みの方</p>
-            <%= link_to 'ログイン', new_user_session_path, :class => "btn btn-primary px-5" %>
+          <div class="col-lg-8 px-0">
+            <% Tag.all.each do |t| %>
+              <span class="mr-3" style="white-space: nowrap;">
+                <%= check_box :tag_ids, t.name, class: "mr-1" %>
+                <%= t.name %>
+              </span>
+            <% end %>
           </div>
-          <div class="col pl-0">
-            <p>会員登録がお済みでない方</p>
-            <%= link_to '新規登録', new_user_registration_path, :class => "btn btn-success px-5" %>
+          <div class="col-lg-7 px-0">
+            <%= submit_tag 'タグ検索', class: "btn btn-sm btn-main px-5 mt-3" %>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
+    
+    <div class="col-md-11 col-11 mx-auto mb-4">
+      <h5 class="mt-4">
+        <i class="fas fa-book fa-lg fa-fw mr-3"></i>
+        すべての本
+        <small class="">（全 <%= @books.count %> 件）</small>
+      </h5>
+    </div>
+    
+    <div class="col-lg-10 col-md-10 col-8 mx-auto mb-5">
+      <% @books.each do |book| %>
+        <div class="d-inline-block px-4 text-left" style="vertical-align: top; width: 190px;">
+          <%= link_to book_path(book.id) do %>
+            <% if book.isbn.present? %>
+              <% item = RakutenWebService::Books::Book.search(isbn: book.isbn).first %>
+              <%= image_tag(item.large_image_url) %>
+            <% end %>
+            <p class="mt-2 mb-1 text-truncate"><strong><%= book.name %></strong></p>
+            <p class="mb-4 text-truncate"><%= book.author %></p>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+   
+    <div class="col-md-11 col-12 text-center px-4">
+      <p>お探しの本が見つかりませんでしたか？</p>
+      <p>あなたの読んだ本を登録して、最初のコメントを投稿しましょう！</p>
+      <% if user_signed_in? %>
+        <%= link_to '本を登録する', books_find_path, class: "btn btn-accent px-5 mt-4" %>
+      <% else %>
+        <div class="row">
+          <div class="col-lg-6 col-md-8 col-11 col-xs-11 py-3 mt-4 mx-auto text-center card card-info">
+            <p>本の登録・コメント投稿にはログインが必要です</p>
+            <div class="row text-center">
+              <div class="col-md-6 col-12 mb-2 mx-auto text-center">
+                <p><small>会員登録がお済みの方</small></p>
+                <%= link_to 'ログイン', new_user_session_path, :class => "btn btn-main px-5" %>
+              </div>
+              <div class="col-md-6 col-12 mb-2 mx-auto text-center">
+                <p><small>会員登録がお済みでない方</small></p>
+                <%= link_to '新規登録', new_user_registration_path, :class => "btn btn-success px-5" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
     
   </div>
 </div>
