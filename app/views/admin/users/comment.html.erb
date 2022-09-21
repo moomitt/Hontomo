@@ -1,32 +1,48 @@
-<div class="container">
+<div class="container-fluid" style="padding-top:80px; background-color:#F3F5F7;">
   <div class="row">
-    <div class="col-12">
-      <h3 class="my-5 ml-4 d-inline-block"><%= @user.name %>さんのコメント一覧<small>　(全<%= @comments.count %>件)</small></h3>
-      <%= link_to '会員ページに戻る', admin_user_path(@user.id), class: "btn btn-primary btn-sm px-4 ml-5" %>
+    <div class="col-lg-11 mx-auto">
+      <h4 class="my-5 ml-4">
+        会員情報ページ
+      </h4>
     </div>
     
-    <div class="col-12">
-      <table class="table table-hover table-bordered" style="width:85%">
-        <thead class="table-active">
-          <th>投稿日時</th>
-          <th>コメント</th>
-          <th>書籍名</th>
-          <th></th>
+    <div class="col-md-11 col-11 mx-auto mb-3">
+      <h5 class="my-4">
+        <i class="fas fa-search fa-lg fa-fw mr-3"></i>
+        <%= @user.name %> さんのコメント一覧
+        <small>　(全<%= @all_comments.count %>件)</small>
+      </h5>
+    </div>
+    
+    <div class="col-lg-10 col-md-10 col-11 mx-auto px-0">
+      <%= link_to '会員ページに戻る', admin_user_path(@user.id), class: "btn btn-sm btn-main mb-4 ml-2 px-4" %>
+      <table class="table table-hover table-bordered"
+        style="width:100%; max-width:1200px; font-size:0.9rem">
+        <thead style="background-color:#42455A; color:#FFFFFF;">
+          <th style="width:20%;">投稿日時</th>
+          <th style="width:45%;">コメント</th>
+          <th style="width:25%;">書籍名</th>
+          <th style="width:10%;"></th>
         </thead>
-        <tbody>
+        <tbody style="background-color:#FFFFFF;">
           <% @comments.each do |comment| %>
             <tr>
-              <td style="width:15%"><%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-              <td style="width:40%"><%= comment.text %></td>
-              <td style="width:20%"><%= link_to comment.book.name, admin_book_path(comment.book.id) %></td>
-              <td style="width:10%"><%= link_to '削除', user_comment_destroy_admin_user_path(comment.id),
-              method: :delete, class: "btn btn-sm btn-danger px-3",
-              data: {confirm: "削除したコメントは元に戻せません。本当に削除しますか？"} %></td>
+              <td><%= comment.created_at.strftime('%Y/%m/%d  %H:%M') %></td>
+              <td><%= comment.text %></td>
+              <td><%= link_to comment.book.name, admin_book_path(comment.book.id) %></td>
+              <td>
+                <%= link_to '削除', user_comment_destroy_admin_user_path(comment.id), method: :delete,
+                class: "text-main", data: {confirm: "削除したコメントは元に戻せません。本当に削除しますか？"} %>
+              </td>
             </tr>
           <% end %>
         </tbody>
       </table>
+      
+      <div class="text-center mt-4">
+        <%= paginate @comments %>
+      </div>
     </div>
+    
   </div>
 </div>
-

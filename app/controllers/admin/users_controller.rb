@@ -20,7 +20,8 @@ class Admin::UsersController < ApplicationController
 
   def comment
     @user = User.find(params[:id])
-    @comments = Comment.where(user_id: @user.id)
+    @all_comments = Comment.where(user_id: @user.id)
+    @comments = @all_comments.page(params[:page]).per(10)
   end
   
   def user_comment_destroy
