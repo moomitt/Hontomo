@@ -236,6 +236,75 @@ label{
   color: #CFB96C;
 }
 
+// タブメニュー admin
+
+.wrap.admin {
+  width: 100%;
+  max-width: 800px;
+}
+
+#tab-menu li.admin {
+  list-style-type: none;
+  background: #8B9FB2;
+  border-bottom: none;
+  width: 33%;
+  font-size: 0.9rem;
+  display: table;
+}
+
+#tab-menu li a {
+  color: #FFFFFF;
+  height: 60px;
+  text-decoration: none;
+  display: block;
+  padding: 10px 5px;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+#tab-menu li .active {
+  background: #FAF8F8;
+  height: 60px;
+  border: 1px solid #8B9FB2;
+  border-bottom: none;
+  color: #42455A;
+}
+
+#tab-contents {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#tab-contents .tab.admin {
+  width: 99%;
+  padding: 15px;
+  background: #FAF8F8;
+  border: 1px solid #8B9FB2;
+  border-top: none;
+  .card-comment {
+    max-width: 980px;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    border: 0.6px solid #E1DFDF;
+  }
+}
+
+#tab-contents p {
+  color: #42455A;
+  line-height: 2.0;
+  padding-bottom: 0;
+}
+
+
+.text-main{
+  color: #8B9FB2;
+}
+
+.text-accent{
+  color: #CFB96C;
+}
+
 
 // ページネーション
 
