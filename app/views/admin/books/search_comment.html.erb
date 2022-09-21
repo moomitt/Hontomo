@@ -1,31 +1,41 @@
-<div class="container-fluid" style="padding-top:80px">
+<div class="container-fluid" style="padding-top:80px; background-color:#F3F5F7;">
   <div class="row">
-    <div class="col-12">
-      <h4 class="my-5">本をみる</h4>
+    <div class="col-lg-11 mx-auto">
+      <h4 class="my-5 ml-4">
+        書籍情報ページ
+      </h4>
     </div>
     
-    <div class="col-11 mx-auto">
-      <h5 class="mb-4">
+    <div class="col-md-11 col-11 mx-auto mb-4">
+      <h5 class="">
         <i class="fas fa-comment-alt fa-lg fa-fw mr-3"></i>
-        コメント検索　<small>全<%= @search_comments.count %>件　キーワード:<%= "#{params[:keyword]}" %></small>
+        コメント検索
+        <small>　 全<%= @search_comments.count %>件</small>
       </h5>
-      
-      <div class="">
+      <p class="my-3 ml-3">検索ワード:　<%= "#{params[:keyword]}" %></p>
+    </div>
+    
+    <div class="col-lg-10 col-md-10 col-10 mx-auto">
+      <div class="row">
         <% @search_comments.each do |comment| %>
-          <div class="col-12 bg-light px-4 pt-3 pb-2 mb-3 card-normal card">
-            <p><%= comment.text %></p>
-            <p class="d-inline-block">
-              <small>投稿者:　<%= comment.user.name %></small>
-              <small class="ml-5">投稿日時： <%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></small>
-            </p>
-              <div id="goods_buttons_<%= comment.id %>" class="d-inline-block">
+          <div class="col-lg-11 col-12 px-3 pt-3 pb-2 mb-3 card-comment" style="max-width:800px">
+            <p class="pb-0" style="font-size:0.95rem"><%= comment.text %></p>
+            <div class="row text-right">
+              <p class="col-lg-4 col-md-5 col-12 my-0"><small>投稿者： <%= comment.user.name %></small></p>
+              <p class="col-lg-4 col-md-5 col-9 my-0"><small>投稿日時： <%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></small></p>
+              <div id="goods_buttons_<%= comment.id %>" class="col-lg-1 col-md-2 col-3 text-right">
                 <%= render partial: 'public/goods/good', locals: { book: @book, comment: comment } %>
               </div>
+              <div class="col-lg-3 col-md-12 col-12 pt-1 text-right" style="font-size:0.85rem">
+                <%= link_to 'コメントを削除', book_comment_destroy_admin_book_path(comment.id), method: :delete,
+                data: {confirm: "削除したコメントは元に戻せません。本当に削除しますか？"}, class: "text-main ml-4" %>
+              </div>
+            </div>
           </div>
         <% end %>
       </div>
-      
-      <%= link_to '一覧に戻る', admin_book_path(@book.id), class: "btn btn-main px-4" %>
+      <%= link_to '一覧に戻る', admin_book_path(@book.id), class: "btn btn-main mt-3 px-4" %>
+    </div>
     
   </div>
 </div>

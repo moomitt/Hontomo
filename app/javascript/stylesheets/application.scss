@@ -282,12 +282,13 @@ label{
   background: #FAF8F8;
   border: 1px solid #8B9FB2;
   border-top: none;
-  .card-comment {
-    max-width: 980px;
-    border-radius: 8px;
-    background-color: #FFFFFF;
-    border: 0.6px solid #E1DFDF;
-  }
+}
+
+.card-comment {
+  max-width: 980px;
+  border-radius: 8px;
+  background-color: #FFFFFF;
+  border: 0.6px solid #E1DFDF;
 }
 
 #tab-contents p {
