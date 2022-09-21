@@ -1,6 +1,7 @@
 class Admin::HomesController < ApplicationController
   def top
-    @comments = Comment.all
+    @all_comments = Comment.all
+    @comments = @all_comments.page(params[:page]).per(10)
     if params[:keyword]
       redirect_to admin_comments_search_path
     end
