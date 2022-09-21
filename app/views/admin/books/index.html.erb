@@ -1,37 +1,55 @@
-<div class="container">
+<div class="container-fluid" style="padding-top:80px; background-color:#F3F5F7;">
   <div class="row">
-    <div class="col-12">
-      <h3 class="my-5 ml-4">書籍一覧<small>　(全<%= @books.count %>件)</small></h3>
+    <div class="col-lg-11 mx-auto">
+      <h4 class="my-5 ml-4">
+        書籍情報ページ
+      </h4>
     </div>
     
-    <div class="col-10 mx-auto text-top mb-5">
-      <%= form_with url: admin_books_search_path, method: :get, local: true, :class => "form-horaizontal" do |f| %>
-        <%= f.text_field :keyword, :class => "form-control col-5" %>
-        <%= f.submit 'キーワード検索', :class => "btn btn-sm btn-secondary mb-4" %>
+    <div class="col-md-11 col-11 mx-auto mb-3">
+      <h5 class="my-4">
+        <i class="fas fa-book fa-lg fa-fw mr-3"></i>
+        書籍一覧<small> （全 <%= @all_books.count %> 件）</small>
+      </h5>
+    </div>
+    
+    <div class="col-lg-9 col-md-9 col-9 mx-auto mb-5 px-0">
+      <%= form_with url: admin_books_search_path, method: :get, local: true, class: "form-horaizontal" do |f| %>
+        <div class="row input-group-sm px-0">
+          <%= f.text_field :keyword, :placeholder => "題名 ／ 作者名",
+          class: "form-control col-lg-4 col-md-7 col-12 mr-2 my-1" %>
+          <div class="col-lg-2 col-md-2 col-5 my-1 px-0">
+            <%= f.submit 'キーワード検索', class: "btn btn-sm btn-main px-4" %>
+          </div>
+        </div>
       <% end %>
     </div>
     
-    <div class="col-10">
-      <table class="table table-hover table-bordered">
-        <thead class="table-active">
-          <th>登録日</th>
-          <th>タイトル</th>
-          <th>作者</th>
-          <th>シリーズ名</th>
-          <th>登録者</th>
+    <div class="col-lg-10 col-md-10 col-11 mx-auto px-0">
+      <table class="table table-hover table-bordered"
+        style="width:100%; max-width:1200px; font-size:0.9rem">
+        <thead style="background-color:#42455A; color:#FFFFFF;">
+          <th style="width:22%;">登録日時</th>
+          <th style="width:35%;">タイトル</th>
+          <th style="width:28%;">作者</th>
+          <th style="width:15%;">登録者</th>
         </thead>
-        <tbody>
+        <tbody style="background-color:#FFFFFF;">
           <% @books.each do |book| %>
             <tr>
               <td><%= book.created_at.strftime('%Y/%m/%d %H:%M') %></td>
               <td><%= link_to book.name, admin_book_path(book.id) %></td>
               <td><%= book.author %></td>
-              <td><%= book.series %></td>
               <td><%= link_to book.user.name, admin_user_path(book.user.id) %></td>
             </tr>
           <% end %>
         </tbody>
-      </table>
+        </table>
+        
+        <div class="text-center mt-4">
+          <%= paginate @books %>
+        </div>
     </div>
+    
   </div>
 </div>

@@ -1,6 +1,7 @@
 class Admin::BooksController < ApplicationController
   def index
-    @books = Book.all
+    @all_books = Book.all
+    @books = @all_books.page(params[:page]).per(10)
     if params[:keyword]
       redirect_to admin_books_search_path
     end
