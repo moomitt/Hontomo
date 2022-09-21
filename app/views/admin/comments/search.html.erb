@@ -1,40 +1,68 @@
-<div class="container">
+<div class="container-fluid" style="padding-top:80px; background-color:#F3F5F7;">
   <div class="row">
-    <div class="col-12">
-      <h3 class="my-5 ml-4 d-inline-block">コメント 検索結果<small>　(全<%= @comments.count %>件)</small></h3>
-      <%= link_to '一覧に戻る', admin_root_path, class: "btn btn-primary btn-sm px-4 ml-5" %>
+    <div class="col-lg-11 mx-auto">
+      <h4 class="my-5 ml-4">
+        コメント管理ページ
+      </h4>
     </div>
     
-    <div class="col-10 mx-auto text-top mb-5">
+    <div class="col-md-11 col-11 mx-auto mb-3">
+      <h5 class="my-4">
+        <i class="fas fa-search fa-lg fa-fw mr-3"></i>
+        コメント検索
+      </h5>
+    </div>
+    
+    <div class="col-lg-9 col-md-9 col-9 mx-auto mb-5 px-0">
       <%= form_with url: admin_comments_search_path, method: :get, local: true, :class => "form-horaizontal" do |f| %>
-        <%= f.text_field :keyword, :class => "form-control col-5" %>
-        <%= f.submit 'キーワード検索', :class => "btn btn-sm btn-secondary mb-4" %>
+        <div class="row input-group-sm px-0">
+          <%= f.text_field :keyword, class: "form-control col-lg-4 col-md-7 col-12 mr-2 my-1" %>
+          <div class="col-lg-2 col-md-2 col-5 my-1 px-0">
+            <%= f.submit '検索', class: "btn btn-sm btn-main px-4" %>
+          </div>
+        </div>
       <% end %>
     </div>
     
-    <div class="col-12">
-      <table class="table table-hover table-bordered">
-        <thead class="table-active">
-          <th>投稿日時</th>
-          <th>コメント</th>
-          <th>会員名</th>
-          <th>書籍名</th>
-          <th></th>
+    <div class="col-md-11 col-11 mx-auto mb-3">
+      <h5 class="my-3 d-inline-block">
+        <i class="fas fa-comment-alt fa-lg fa-fw mr-3"></i>
+        検索結果<small> （全 <%= @all_comments.count %> 件）</small>
+      </h5>
+      <p class="my-2 ml-5 d-inline-block">検索キーワード：<%= "#{params[:keyword]}" %></p>
+    </div>
+    
+    <div class="col-lg-10 col-md-10 col-11 mx-auto px-0">
+      <%= link_to '一覧に戻る', admin_root_path, class: "btn btn-sm btn-main mb-4 ml-2 px-4" %>
+      <table class="table table-hover table-bordered"
+        style="width:100%; max-width:1200px; font-size:0.9rem">
+        <thead style="background-color:#42455A; color:#FFFFFF;">
+          <th style="width:15%;">投稿日時</th>
+          <th style="width:40%;">コメント</th>
+          <th style="width:15%;">投稿者</th>
+          <th style="width:20%;">書籍名</th>
+          <th style="width:10%;"></th>
         </thead>
-        <tbody>
+        <tbody style="background-color:#FFFFFF;">
           <% @comments.each do |comment| %>
             <tr>
-              <td style="width:15%"><%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-              <td style="width:40%"><%= comment.text %></td>
-              <td style="width:10%"><%= link_to comment.user.name, admin_user_path(comment.user.id) %></td>
-              <td style="width:20%"><%= link_to comment.book.name, admin_book_path(comment.book.id) %></td>
-              <td style="width:10%"><%= link_to '削除', admin_comment_path(comment.id), method: :delete,
-              class: "btn btn-sm btn-danger px-3",
-              data: {confirm: "削除したコメントは元に戻せません。本当に削除しますか？"} %></td>
+              <td><%= comment.created_at.strftime('%Y/%m/%d  %H:%M') %></td>
+              <td><%= comment.text %></td>
+              <td><%= link_to comment.user.name, admin_user_path(comment.user.id) %></td>
+              <td><%= link_to comment.book.name, admin_book_path(comment.book.id) %></td>
+              <td>
+                <%= link_to '削除', admin_comment_path(comment.id), method: :delete,
+                class: "text-main", data: {confirm: "削除したコメントは元に戻せません。本当に削除しますか？"} %>
+              </td>
             </tr>
           <% end %>
         </tbody>
       </table>
+      
+      <div class="text-center mt-4">
+        <%= paginate @comments %>
+      </div>
     </div>
+    
   </div>
 </div>

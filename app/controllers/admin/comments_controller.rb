@@ -1,6 +1,7 @@
 class Admin::CommentsController < ApplicationController
   def search
-    @comments = Comment.where('text LIKE(?)', "%#{params[:keyword]}%")
+    @all_comments = Comment.where('text LIKE(?)', "%#{params[:keyword]}%")
+    @comments = @all_comments.page(params[:page]).per(10)
   end
   
   def destroy
