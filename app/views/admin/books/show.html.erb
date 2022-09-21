@@ -79,13 +79,13 @@
         </ul>
         
         <div id="tab-contents">
-          <div id="tab1" class="tab admin">
+          <div id="tab1" class="tab admin pt-4">
             <%= render partial: 'tab3', locals: { book: @book, comments: @good_comments } %>
           </div>
-          <div id="tab2" class="tab admin">
+          <div id="tab2" class="tab admin pt-4">
             <%= render partial: 'tab3', locals: { book: @book, comments: @new_comments } %>
           </div>
-          <div id="tab3" class="tab admin">
+          <div id="tab3" class="tab admin pt-4">
             <%= render partial: 'tab2', locals: { book: @book } %>
           </div>
         </div>
