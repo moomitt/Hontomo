@@ -1,56 +1,91 @@
-<div class="container">
+<div class="container-fluid" style="padding-top:80px; background-color:#F3F5F7;">
   <div class="row">
-    <div class="col-12">
-      <h4 class="my-5">書籍の登録情報編集</h4>
+    <div class="col-lg-11 mx-auto">
+      <h4 class="my-5 ml-4">
+        書籍情報ページ
+      </h4>
     </div>
     
-    <div class="col-10 mx-auto">
-      <%= form_with model: @book, url: admin_book_path(@book.id), method: :patch,
-      :class => "form-horaizontal" do |f| %>
-        <%= f.hidden_field :user_id, :value => @book.user.id %>
-        <div class="row input-group-sm mb-2">
+    <div class="col-md-11 col-11 mx-auto mb-4">
+      <h5 class="">
+        <i class="fas fa-edit fa-lg fa-fw mr-3"></i>
+        書籍情報編集
+      </h5>
+    </div>
+    
+    <div class="col-md-10 col-11 mx-auto mb-4">
+      <div class="row">
+        <div class="col-lg-3 col-md-4 col-11 mb-3 mx-auto">
           <%= image_tag(@item.large_image_url) %>
         </div>
-        <div class="row input-group-sm mb-2">
-          <label class="col-lg-2">タイトル</label>
-          <%= f.text_field :name, readonly: true, :class => "form-control col-lg-4" %>
-        </div>
-        <div class="row input-group-sm mb-2">
-          <label class="col-lg-2">作者</label>
-          <%= f.text_field :author, readonly: true, :class => "form-control col-lg-4" %>
-        </div>
-        <div class="row input-group-sm mb-2">
-          <label class="col-lg-2">シリーズ名</label>
-          <%= f.text_field :series, :class => "form-control col-lg-4" %>
-        </div>
-        
-        <div class="row input-group-sm mb-2">
-          <label class="col-lg-2">タグ</label>
-          <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
-            <div class ="form-check mr-3">
-              <%= tag.label class: "form-check-label" do %>
-                <%= tag.check_box class: "form-check-input" %>
-                <%= tag.text %>
-              <% end %>
+        <div class="col-lg-9 col-md-8 col-10 mx-auto">
+          <%= form_with model: @book, url: book_path(@book.id), method: :patch, class: "form-horaizontal" do |f| %>
+            <%= f.hidden_field :user_id, :value => @book.user.id %>
+            <div class="row input-group-sm d-flex align-items-center">
+              <label class="col-lg-3 col-md-4 px-0 mb-2">タイトル</label>
+              <%= f.text_field :name, readonly: true, class: "form-control col-lg-7 col-md-8 mb-2" %>
             </div>
-          <% end %>
-        </div>
-        
-        <div class="row input-group-sm mb-2 mt-3">
-          <label class="col-lg-2"></label>
-          <%= f.submit '変更を保存する', :class => "btn btn-success px-5 mr-5" %>
-          <%= link_to '書籍を削除', admin_book_path(@book.id), method: :delete, class: "btn btn-danger px-4 ml-5",
-          data: {confirm: "削除した書籍は元に戻せません。本当にこの書籍を削除しますか？"} %>
-        </div>
+            <div class="row input-group-sm d-flex align-items-center">
+              <label class="col-lg-3 col-md-4 px-0 mb-2">作者</label>
+              <%= f.text_field :author, readonly: true, class: "form-control col-lg-7 col-md-8 mb-2" %>
+            </div>
+            <div class="row input-group-sm d-flex align-items-center">
+              <label class="col-lg-3 col-md-4 px-0 mb-2">シリーズ名</label>
+              <%= f.text_field :series, class: "form-control col-lg-7 col-md-8 mb-2" %>
+            </div>
+            
+            <div class="row input-group-sm pt-2">
+              <label class="col-lg-3 col-md-4 px-0 mb-2">タグ</label>
+              <div class="col-lg-7 col-md-8 px-0 mb-2 pl-1">
+                <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+                  <div class="form-check mr-3 d-inline-block">
+                    <%= tag.label class: "form-check-label" do %>
+                      <%= tag.check_box class: "form-check-input" %>
+                      <%= tag.text %>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+            
+            <div class="row input-group-sm mb-2 mt-2">
+              <label class="col-lg-3 col-md-4 px-0"></label>
+              <div class="col-lg-7 col-md-8 px-0">
+                <%= f.submit '変更を保存', class: "btn btn-sm btn-success px-4 mr-3 mt-2" %>
+                <%= link_to '変更せず戻る', admin_book_path(@book.id), class: "btn btn-sm btn-main px-4 mt-2" %>
+              </div>
+            </div>
+            
+            <div class="row input-group-sm mb-2 mt-4">
+              <label class="col-lg-3 col-md-4 px-0"></label>
+              <div class="col-lg-7 col-md-8 px-0">
+                <%= link_to 'この書籍を削除する', admin_book_path(@book.id), method: :delete, class: "btn btn-sm btn-danger px-4",
+                data: {confirm: "削除した書籍は元に戻せません。本当にこの書籍を削除しますか？"} %>
+              </div>
+            </div>
+          </div>
         <% end %>
-        
-        <div class="row input-group-sm mb-2 my-5">
-          <label class="col-lg-2">タグを追加</label>
-          <%= form_tag({controller:"books",action:"edit"}, method: :get) do %>
-            <%= text_field_tag :tag %>
-            <%= submit_tag '追加' %>
-          <% end %>
-        </div>
+      </div>
     </div>
+    
+    
+    <div class="col-md-11 col-11 mx-auto my-4">
+      <h5 class="">
+        <i class="fas fa-tags fa-lg fa-fw mr-3"></i>
+        タグを追加する
+      </h5>
+    </div>
+    
+    <div class="col-md-10 col-10 mx-auto mb-4">
+      <%= form_tag({ controller:"books", action:"edit" }, method: :get, class: "form-horaizontal") do %>
+        <div class="row input-group-sm">
+          <%= text_field_tag :tag, "", {class: "form-control col-lg-4 col-md-5 ml-3 mt-2"} %>
+          <div class="col-lg-3 col-md-3 ml-3 mt-2 px-0">
+            <%= submit_tag '追加', class: "btn btn-sm btn-success px-4" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
   </div>
 </div>
