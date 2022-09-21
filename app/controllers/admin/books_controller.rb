@@ -8,7 +8,8 @@ class Admin::BooksController < ApplicationController
   end
   
   def search
-    @books = Book.where('name LIKE(?)', "%#{params[:keyword]}%").or(Book.where('author LIKE(?)', "%#{params[:keyword]}%"))
+    @all_books = Book.where('name LIKE(?)', "%#{params[:keyword]}%").or(Book.where('author LIKE(?)', "%#{params[:keyword]}%"))
+    @books = @all_books.page(params[:page]).per(10)
   end
 
   def show

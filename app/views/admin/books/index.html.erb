@@ -8,8 +8,8 @@
     
     <div class="col-md-11 col-11 mx-auto mb-3">
       <h5 class="my-4">
-        <i class="fas fa-book fa-lg fa-fw mr-3"></i>
-        書籍一覧<small> （全 <%= @all_books.count %> 件）</small>
+        <i class="fas fa-search fa-lg fa-fw mr-3"></i>
+        キーワード検索
       </h5>
     </div>
     
@@ -19,10 +19,17 @@
           <%= f.text_field :keyword, :placeholder => "題名 ／ 作者名",
           class: "form-control col-lg-4 col-md-7 col-12 mr-2 my-1" %>
           <div class="col-lg-2 col-md-2 col-5 my-1 px-0">
-            <%= f.submit 'キーワード検索', class: "btn btn-sm btn-main px-4" %>
+            <%= f.submit '検索', class: "btn btn-sm btn-main px-4" %>
           </div>
         </div>
       <% end %>
+    </div>
+    
+    <div class="col-md-11 col-11 mx-auto mb-3">
+      <h5 class="my-4">
+        <i class="fas fa-book fa-lg fa-fw mr-3"></i>
+        書籍一覧<small> （全 <%= @all_books.count %> 件）</small>
+      </h5>
     </div>
     
     <div class="col-lg-10 col-md-10 col-11 mx-auto px-0">
