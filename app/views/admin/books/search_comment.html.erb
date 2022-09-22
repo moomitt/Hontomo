@@ -6,7 +6,7 @@
       </h4>
     </div>
     
-    <div class="col-md-11 col-11 mx-auto mb-4">
+    <div class="col-lg-11 col-md-11 col-11 mx-auto mb-4">
       <h5 class="">
         <i class="fas fa-comment-alt fa-lg fa-fw mr-3"></i>
         コメント検索
@@ -15,7 +15,7 @@
       <p class="my-3 ml-3">検索ワード:　<%= "#{params[:keyword]}" %></p>
     </div>
     
-    <div class="col-lg-10 col-md-10 col-10 mx-auto">
+    <div class="col-lg-10 col-md-10 col-10 mx-auto" style="max-width:1200px">
       <div class="row">
         <% @search_comments.each do |comment| %>
           <div class="col-lg-11 col-12 px-3 pt-3 pb-2 mb-3 card-comment" style="max-width:800px">
@@ -34,7 +34,7 @@
           </div>
         <% end %>
       </div>
-      <%= link_to '一覧に戻る', admin_book_path(@book.id), class: "btn btn-main mt-3 px-4" %>
+      <%= link_to '一覧に戻る', admin_book_path(@book.id), class: "btn btn-sm btn-main mt-3 px-4" %>
     </div>
     
   </div>

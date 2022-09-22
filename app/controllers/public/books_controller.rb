@@ -1,7 +1,7 @@
 class Public::BooksController < ApplicationController
   def index
     @all_books = Book.all
-    @books = @all_books.page(params[:page]).per(12)
+    @books = @all_books.page(params[:page]).per(8)
     if params[:keyword]
       redirect_to books_search_path
     end
@@ -13,7 +13,7 @@ class Public::BooksController < ApplicationController
   def search
     if params[:keyword]
       @all_books = Book.where('name LIKE(?)', "%#{params[:keyword]}%").or(Book.where('author LIKE(?)', "%#{params[:keyword]}%"))
-      @books = @all_books.page(params[:page]).per(12)
+      @books = @all_books.page(params[:page]).per(8)
     end
     if params[:tag_ids]
       @tags = []
@@ -24,7 +24,7 @@ class Public::BooksController < ApplicationController
       end
       @tags.uniq!
       @all_books.uniq!
-      @books = @all_books.page(params[:page]).per(12)
+      @books = @all_books.page(params[:page]).per(8)
     end
   end
   

@@ -15,7 +15,7 @@
       <div id="goods_buttons_<%= comment.id %>" class="col-lg-1 col-md-2 col-3 pt-1 text-right">
         <%= render partial: 'public/goods/good', locals: { book: book, comment: comment } %>
       </div>
-      <div class="col-lg-3 col-md-12 col-12 pt-1 text-right" style="font-size:0.85rem">
+      <div class="col-lg-3 col-md-12 col-12 pt-2 text-right" style="font-size:0.85rem">
         <%= link_to 'コメントを削除', book_comment_destroy_admin_book_path(comment.id), method: :delete,
         data: {confirm: "削除したコメントは元に戻せません。本当に削除しますか？"}, class: "text-main ml-4" %>
       </div>

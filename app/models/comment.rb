@@ -7,5 +7,5 @@ class Comment < ApplicationRecord
     goods.exists?(user_id: user.id)
   end
   
-  validates :text, presence: true, length: { maximum: 120 }
+  validates :text, presence: true, length: { maximum: 100 }
 end
