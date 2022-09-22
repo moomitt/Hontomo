@@ -15,15 +15,15 @@
       <p class="my-3 ml-3">検索ワード:　<%= "#{params[:keyword]}" %></p>
     </div>
     
-    <div class="col-lg-10 col-md-10 col-10 mx-auto">
-      <div class="row">
+    <div class="col-lg-10 col-md-10 col-sm-10 col-10 mx-auto">
+      <div class="row" style="max-width:1200px">
         <% @search_comments.each do |comment| %>
           <div class="col-lg-11 col-12 px-3 pt-3 pb-2 mb-3 card-comment" style="max-width:800px">
             <p class="pb-0" style="font-size:0.95rem"><%= comment.text %></p>
             <div class="row text-right">
-              <p class="col-lg-7 col-md-6 col-12 my-0"><small>投稿者： <%= comment.user.name %></small></p>
-              <p class="col-lg-4 col-md-4 col-9 my-0"><small>投稿日時： <%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></small></p>
-              <div id="goods_buttons_<%= comment.id %>" class="col-lg-1 col-md-2 col-3 text-right">
+              <p class="col-lg-7 col-sm-6 col-12 my-0"><small>投稿者： <%= comment.user.name %></small></p>
+              <p class="col-lg-4 col-sm-4 col-9 my-0"><small>投稿日時： <%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></small></p>
+              <div id="goods_buttons_<%= comment.id %>" class="col-lg-1 col-sm-2 col-3 text-right">
                 <%= render partial: 'public/goods/good', locals: { book: @book, comment: comment } %>
               </div>
             </div>
