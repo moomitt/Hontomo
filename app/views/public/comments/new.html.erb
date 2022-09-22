@@ -1,7 +1,7 @@
-<div class="container-fluid" style="padding-top:80px">
+<div class="container-fluid" style="padding-top:80px; padding-bottom: 60px; background-color: #FAF8F8;">
   <div class="row">
-    <div class="col-lg-11 mx-auto">
-      <h4 class="my-5 ml-4">
+    <div class="col-12 mx-auto">
+      <h4 class="my-5 mx-4 px-4 pb-3" style="border-bottom: 1.5px solid #616F7C;">
         本をみる
       </h4>
     </div>
@@ -26,7 +26,7 @@
         <label class="px-0">コメント<small> （100文字以内）</small></label>
         <%= f.hidden_field :book_id, :value => @book.id %>
         <%= f.hidden_field :user_id, :value => current_user.id %>
-        <%= f.text_area :text, class: "form-control my-3 col-lg-8", :style => "max-width:510px; height:120px;" %>
+        <%= f.text_area :text, class: "form-control my-3 col-lg-8 mb-4", :style => "max-width:510px; height:120px;" %>
         <p><small>※ 特定の個人・団体を誹謗中傷するような内容の投稿はお止めください。</small></p>
         <p><small>※ その他 注意事項につきましては利用規約をご確認ください。</small></p>
         <%= f.submit 'コメントを投稿', class: "btn btn-sm btn-accent px-4 mr-3 mt-2" %>

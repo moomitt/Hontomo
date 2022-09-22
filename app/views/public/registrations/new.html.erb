@@ -1,14 +1,19 @@
-<div class="container-fluid" style="padding-top:80px">
+<div class="container-fluid" style="padding-top:80px; padding-bottom: 60px; background-color: #FAF8F8;">
   <div class="row">
-    
-    <div class="col-lg-11 mx-auto">
-      <h4 class="my-5 ml-4">
-        <i class="fas fa-user-plus fa-lg fa-fw mr-3"></i>
-        新規登録
+    <div class="col-12 mx-auto">
+      <h4 class="my-5 mx-4 px-4 pb-3" style="border-bottom: 1.5px solid #616F7C;">
+        会員ページ
       </h4>
     </div>
     
-    <div class="col-lg-11 mx-auto">
+    <div class="col-md-11 col-11 mx-auto mb-4">
+      <h5 class="">
+        <i class="fas fa-user-plus fa-lg fa-fw mr-3"></i>
+        新規登録
+      </h5>
+    </div>
+    
+    <div class="col-lg-10 col-md-10 col-10 mx-auto mb-5 px-0">
       <%= form_with model: @user, url: user_registration_path, class: "form-horaizontal" do |f|  %>
         <%= render "public/shared/error_messages", resource: resource %>
           <div class="row input-group-sm ml-4 mr-3 d-flex align-items-center">
@@ -18,7 +23,7 @@
           
           <div class="row input-group-sm ml-4 mr-3 d-flex align-items-center">
             <label class="label-control col-lg-3 mb-3">メールアドレス</label>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-lg-5 col-md-8 form-control ml-3 mb-3" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-lg-5 col-md-9 form-control ml-3 mb-3" %>
           </div>
           
           <div class="row input-group-sm ml-4 mr-3 d-flex align-items-center">
@@ -44,14 +49,15 @@
         <% end %>
     </div>
     
-    <div class="col-lg-11 mx-auto">
-      <h4 class="my-5 ml-4">
+    <div class="col-md-11 col-11 mx-auto mb-4">
+      <h5 class="">
         <i class="fas fa-sign-in-alt fa-lg fa-fw mr-3"></i>
         会員登録がお済みの方
-      </h4>
-      <div class="ml-4 mr-3 mb-3">
-        <p class="ml-3"><%= link_to 'こちら', new_user_session_path, class: "text-primary" %>　からログインしてください。</p>
-      </div>
+      </h5>
+    </div>
+    
+    <div class="col-lg-10 col-md-9 col-10 mx-auto mb-5 px-0">
+      <p class="ml-4"><%= link_to 'こちら', new_user_session_path, class: "text-main" %>　からログインしてください。</p>
     </div>
     
   </div>

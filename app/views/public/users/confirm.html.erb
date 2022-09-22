@@ -1,11 +1,26 @@
-<div class="container">
+<div class="container-fluid" style="padding-top:80px; padding-bottom: 60px; background-color: #FAF8F8;">
   <div class="row">
-    <div class="col-12 text-center my-5">
-      <p><strong>退会すると、新しい本の登録やコメント投稿ができなくなります。</strong></p>
-      <p><strong>本当に退会しますか?</strong></p>
-      <%= link_to '退会しない', users_mypage_path, :class => "btn btn-primary px-5 mr-2 mt-4" %>
-      <%= link_to '退会する', users_withdraw_path, method: :patch,
-      data: {confirm: "本当に退会しますか？"}, :class => "btn btn-danger px-5 ml-4 mt-4" %>
+    <div class="col-12 mx-auto">
+      <h4 class="my-5 mx-4 px-4 pb-3" style="border-bottom: 1.5px solid #616F7C;">
+        マイページ
+      </h4>
+    </div>
+    
+    <div class="col-md-11 col-11 mx-auto mb-4">
+      <h5 class="">
+        <i class="fas fa-user-slash fa-lg fa-fw mr-3"></i>
+        退会する
+      </h5>
+    </div>
+
+    <div class="col-11 mx-auto text-center my-5">
+      <div style="max-width:1300px;"
+        <p><strong>退会すると、新しい本の登録やコメント投稿ができなくなります。</strong></p>
+        <p><strong>本当に退会しますか?</strong></p>
+        <%= link_to 'マイページに戻る', users_mypage_path, class: "btn btn-main px-4 mx-3 mt-4" %>
+        <%= link_to '本当に退会する', users_withdraw_path, method: :patch,
+        data: {confirm: "本当に退会しますか？"}, class: "btn btn-danger px-5 mx-3 mt-4" %>
+      </div>
     </div>
   </div>
 </div>

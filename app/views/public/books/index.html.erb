@@ -1,4 +1,4 @@
-<div class="container-fluid" style="padding-top:80px; background-color: #FAF8F8;">
+<div class="container-fluid" style="padding-top:80px; padding-bottom: 60px; background-color: #FAF8F8;">
   <div class="row">
     <div class="col-12 mx-auto">
       <h4 class="my-5 mx-4 px-4 pb-3" style="border-bottom: 1.5px solid #616F7C;">
@@ -69,7 +69,7 @@
             <% end %>
           </div>
         <% end %>
-        <div class="text-center mt-4">
+        <div class="text-center my-4">
           <%= paginate @books %>
         </div>
         
@@ -80,14 +80,14 @@
             <%= link_to '本を登録する', books_find_path, class: "btn btn-accent px-5 mt-4" %>
           <% else %>
             <div class="row">
-              <div class="col-lg-6 col-md-8 col-11 col-xs-11 py-3 mx-auto mt-4 text-center card card-info">
+              <div class="col-lg-8 col-md-8 col-12 py-3 mx-auto mt-4 text-center card card-info">
                 <p>本の登録・コメント投稿にはログインが必要です</p>
                 <div class="row text-center">
-                  <div class="col-md-6 col-12 mb-2 mx-auto text-center">
+                  <div class="col-sm-6 col-12 mb-2 mx-auto text-center">
                     <p><small>会員登録がお済みの方</small></p>
                     <%= link_to 'ログイン', new_user_session_path, :class => "btn btn-main px-5" %>
                   </div>
-                  <div class="col-md-6 col-12 mb-2 mx-auto text-center">
+                  <div class="col-sm-6 col-12 mb-2 mx-auto text-center">
                     <p><small>会員登録がお済みでない方</small></p>
                     <%= link_to '新規登録', new_user_registration_path, :class => "btn btn-success px-5" %>
                   </div>

@@ -1,7 +1,7 @@
-<div class="container-fluid" style="padding-top:80px">
+<div class="container-fluid" style="padding-top:80px; padding-bottom: 60px; background-color: #FAF8F8;">
   <div class="row">
-    <div class="col-lg-11 mx-auto">
-      <h4 class="my-5 ml-4">
+    <div class="col-12 mx-auto">
+      <h4 class="my-5 mx-4 px-4 pb-3" style="border-bottom: 1.5px solid #616F7C;">
         本をみる
       </h4>
     </div>
@@ -84,7 +84,7 @@
       </h5>
     </div>
     
-    <div class="col-lg-10 col-md-10 col-12 mx-auto px-3">
+    <div class="col-lg-10 col-md-10 col-sm-11 col-12 mx-auto px-3">
       <div class="wrap">
         <ul id="tab-menu">
           <li><a href="#tab1" class="active">いいねの多い順</a></li>
@@ -118,29 +118,29 @@
         </div>
       </div>
       
-      <div class="row">
+      <div class="mt-5" style="max-width:800px;">
         <% if user_signed_in? %>
-          <%= link_to new_book_comment_path(@book.id), class: "btn btn-sm btn-accent px-3 my-5 ml-3" do %>
+          <%= link_to new_book_comment_path(@book.id), class: "btn btn-sm btn-accent px-3 ml-3" do %>
             <i class="fas fa-pen fa-fw mr-2"></i>感想コメントを投稿
           <% end %>
         <% else %>
-          <div class="col-lg-6 col-md-8 col-sm-11 col-xs-11 py-3 mt-5 mx-auto text-center card card-info">
-            <p>本の登録・コメント投稿にはログインが必要です</p>
-            <div class="row text-center">
-              <div class="col-lg-5 col-md-5 mb-2 mx-auto text-center">
-                <p><small>会員登録がお済みの方</small></p>
-                <%= link_to 'ログイン', new_user_session_path, :class => "btn btn-main px-5" %>
-              </div>
-              <div class="col-lg-5 col-md-5 mb-2 mx-auto text-center">
-                <p><small>会員登録がお済みでない方</small></p>
-                <%= link_to '新規登録', new_user_registration_path, :class => "btn btn-success px-5" %>
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-10 col-10 py-3 mx-auto mt-4 text-center card card-info">
+              <p>本の登録・コメント投稿にはログインが必要です</p>
+              <div class="row text-center">
+                <div class="col-sm-6 col-12 mb-2 mx-auto text-center">
+                  <p><small>会員登録がお済みの方</small></p>
+                  <%= link_to 'ログイン', new_user_session_path, :class => "btn btn-main px-5" %>
+                </div>
+                <div class="col-sm-6 col-12 mb-2 mx-auto text-center">
+                  <p><small>会員登録がお済みでない方</small></p>
+                  <%= link_to '新規登録', new_user_registration_path, :class => "btn btn-success px-5" %>
+                </div>
               </div>
             </div>
           </div>
         <% end %>
       </div>
-      
-      
     </div>
     
   </div>

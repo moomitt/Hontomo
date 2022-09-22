@@ -61,6 +61,8 @@ label{
 
 .card-normal {
   background-color: #FAF8F8;
+  border-radius: 15px;
+  border : none;
   .text-main{
     color: #8B9FB2;
   }
@@ -181,7 +183,7 @@ label{
 
 #tab-menu li a {
   color: #FFFFFF;
-  height: 60px;
+  height: 65px;
   text-decoration: none;
   display: block;
   padding: 10px 5px;
@@ -191,7 +193,7 @@ label{
 }
 
 #tab-menu li .active {
-  background: #FAF8F8;
+  background: #FFFFFF;
   height: 60px;
   border: 1px solid #8B9FB2;
   border-bottom: none;
@@ -206,14 +208,14 @@ label{
 #tab-contents .tab {
   width: 100%;
   padding: 15px;
-  background: #FAF8F8;
+  background: #FFFFFF;
   border: 1px solid #8B9FB2;
   border-top: none;
   .card-comment {
     max-width: 980px;
     border-radius: 8px;
-    background-color: #FFFFFF;
-    border: 0.6px solid #E1DFDF;
+    background-color: #F3F5F7;
+    border: 0.6px solid #C5CFD8;
   }
 }
 
@@ -250,21 +252,13 @@ label{
 
 #tab-menu li a {
   color: #FFFFFF;
-  height: 60px;
+  height: 65px;
   text-decoration: none;
   display: block;
   padding: 10px 5px;
   text-align: center;
   display: table-cell;
   vertical-align: middle;
-}
-
-#tab-menu li .active {
-  background: #FAF8F8;
-  height: 60px;
-  border: 1px solid #8B9FB2;
-  border-bottom: none;
-  color: #42455A;
 }
 
 #tab-contents {
@@ -275,7 +269,7 @@ label{
 #tab-contents .tab.admin {
   width: 99%;
   padding: 15px;
-  background: #FAF8F8;
+  background: #FFFFFF;
   border: 1px solid #8B9FB2;
   border-top: none;
 }
@@ -283,8 +277,8 @@ label{
 .card-comment {
   max-width: 980px;
   border-radius: 8px;
-  background-color: #FFFFFF;
-  border: 0.6px solid #E1DFDF;
+  background-color: #F3F5F7;
+  border: 0.6px solid #C5CFD8;
 }
 
 #tab-contents p {

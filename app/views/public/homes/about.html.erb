@@ -1,21 +1,21 @@
-<div class="container-fluid" style="background-color:#988F90">
+<div class="container-fluid" style="padding-bottom: 60px; background-color:#E1DFDF">
   <div class="row">
     
     <div class="text-center pt-5" id="top-image"
     style="height:570px; width:100%; background-image: url('<%= asset_path('top2.png') %>');
     background-size:cover; background-position:bottom;">
-      <div class="px-3 pt-5 mx-auto">
-        <h2 class="my-5 text-light"><span id="e-text">Hontomo </span>へようこそ！</h2>
-        <p class="my-3 text-light"><span id="e-text">Hontomo </span>は、本好きのための ”感想” 共有型コミュニティサイトです。</p>
-        <p class="my-3 mb-5 text-light">コメント形式で気軽に感想を共有できます。</p>
-        <%= link_to 'Topページへ', root_path, class: "btn btn-main px-4 mx-2 mt-3 d-inline-block" %>
-        <%= link_to '本を探してみる', books_path, class: "btn btn-accent px-4 mx-2 mt-3 d-inline-block" %>
+      <div class="col-11 px-3 pt-5 mx-auto">
+        <h2 class="my-5 text-light"><span id="e-text">Hontomo </span><small>へようこそ！</small></h2>
+        <p class="my-2 text-light"><span id="e-text">Hontomo </span>は、本好きのための ”感想” 共有型コミュニティサイトです。</p>
+        <p class="my-2 mb-5 text-light">コメント形式で気軽に感想を共有できます。</p>
+        <%= link_to 'Topページへ', root_path, class: "btn btn-main px-4 mx-2 mt-2 d-inline-block" %>
+        <%= link_to '本を探す', books_path, class: "btn btn-accent px-5 mx-2 mt-2 d-inline-block" %>
       </div>
     </div>
     
-    <div class="col-11 mt-5 mx-auto card card-normal pb-5">
+    <div class="col-11 mt-5 mx-auto card card-normal pt-4 pb-5">
       <div>
-        <h5 class="my-5 ml-3 font-weight-bold">
+        <h5 class="mt-3 mb-5 ml-3 font-weight-bold">
           <i class="fas fa-file fa-lg fa-fw mr-2"></i>
           <span id="e-text">Hontomo </span>の使い方
         </h5>
@@ -34,9 +34,9 @@
       </div>
     </div>
     
-     <div class="col-11 mt-5 mx-auto card card-normal pb-5">
+    <div class="col-11 mt-5 mx-auto card card-normal pt-4 pb-5">
       <div>
-        <h5 class="my-5 ml-3 font-weight-bold">
+        <h5 class="mt-3 mb-5 ml-3 font-weight-bold">
           <i class="fas fa-shield-alt fa-lg fa-fw mr-2"></i>
           ご利用上の注意
         </h5>
@@ -71,25 +71,31 @@
     </div>
     
     <div class="col-12 text-center py-5">
-      <h5 class="text-white"><strong id="e-text">Let's Enjoy Hontomo！</strong></h5>
-      <%= link_to '今すぐ本を探す', books_path, :class => "btn btn-accent px-4 mt-2" %>
+      <%= link_to books_path, class: "btn btn-accent px-5 mt-2" do %>
+        <i class="fas fa-book-open mr-2"></i>
+        今すぐ本を探す
+      <% end %>
     </div>
     
-    <% unless user_signed_in? %>
-      <div class="col-lg-6 col-md-8 col-sm-11 col-xs-11 py-3 mx-auto text-center card card-info">
-        <p>本の登録・コメント投稿にはログインが必要です</p>
-        <div class="row text-center">
-          <div class="col-lg-5 col-md-5 mb-2 mx-auto text-center">
-            <p><small>会員登録がお済みの方</small></p>
-            <%= link_to 'ログイン', new_user_session_path, :class => "btn btn-main px-5" %>
-          </div>
-          <div class="col-lg-5 col-md-5 mb-2 mx-auto text-center">
-            <p><small>会員登録がお済みでない方</small></p>
-            <%= link_to '新規登録', new_user_registration_path, :class => "btn btn-success px-5" %>
+    <div class="col-11 mx-auto">
+      <% unless user_signed_in? %>
+        <div class="row">
+          <div class="col-lg-7 col-md-8 col-sm-10 col-10 py-3 mx-auto mt-4 text-center card card-info">
+            <p>本の登録・コメント投稿にはログインが必要です</p>
+            <div class="row text-center">
+              <div class="col-sm-6 col-12 mb-2 mx-auto text-center">
+                <p><small>会員登録がお済みの方</small></p>
+                <%= link_to 'ログイン', new_user_session_path, :class => "btn btn-main px-5" %>
+              </div>
+              <div class="col-sm-6 col-12 mb-2 mx-auto text-center">
+                <p><small>会員登録がお済みでない方</small></p>
+                <%= link_to '新規登録', new_user_registration_path, :class => "btn btn-success px-5" %>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
     
   </div>
 </div>
