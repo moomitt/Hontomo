@@ -13,50 +13,51 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&family=Raleway:wght@600&display=swap" rel="stylesheet">
   </head>
   
-  <body class="d-flex flex-column vh-100">
-    <header class="shadow" style="background-color:#8B9FB2; color:#FFFFFF;">
-      <nav class="navbar navbar-expand-lg navbar-light" style="flex-direction: column;">
-        <div class="container-fluid" style="max-width:1300px;">
-          <h2 id="e-text" class="ml-3"><%= link_to 'Hontomo', root_path %></h2>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ml-auto">
-            <% if user_signed_in? %>
-              <li class="ml-4 my-3"><small>ようこそ、<%= current_user.name %> さん</small></li>
-              <li class="ml-4 mr-1 my-3"><%= link_to 'Hontomoとは', about_path %></li>
-              <li class="ml-4 mr-1 my-3"><%= link_to '本を探す', books_path %></li>
-              <li class="ml-4 mr-1 my-3"><%= link_to 'マイページ', users_mypage_path %></li>
-              <li class="ml-4 mr-1 my-3"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-            <% elsif admin_signed_in? %>
-              <li class="mx-4 my-3"><small>ようこそ、管理者 さん</small></li>
-              <li class="ml-4 mr-1 my-3"><%= link_to '会員一覧', admin_users_path %></li>
-              <li class="ml-4 mr-1 my-3"><%= link_to '書籍一覧', admin_books_path %></li>
-              <li class="ml-4 mr-1 my-3"><%= link_to 'コメント一覧', admin_root_path %></li>
-              <li class="ml-4 mr-1 my-3"><%= link_to 'タグ一覧', admin_tags_path %></li>
-              <li class="ml-4 mr-1 my-3"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
-            <% else %>
-              <li class="mx-4 my-3"><small>ようこそ、ゲスト さん</small></li>
-              <li class="ml-4 mr-1 my-3"><%= link_to 'Hontomoとは', about_path %></li>
-              <li class="ml-4 mr-1 my-3"><%= link_to '本を探す', books_path %></li>
-              <li class="ml-4 mr-1 my-3"><%= link_to 'ログイン', new_user_session_path %></li>
-              <li class="ml-4 mr-1 my-3"><%= link_to '新規登録', new_user_registration_path %></li>
-            <% end %>
-            </ul>
+  <body class="d-flex flex-column">
+    <div class="wrapper p-0 m-0">
+      <header class="shadow" style="background-color:#8B9FB2; color:#FFFFFF;">
+        <nav class="navbar navbar-expand-lg navbar-light" style="flex-direction: column;">
+          <div class="container-fluid" style="max-width:1300px;">
+            <h2 id="e-text" class="ml-3"><%= link_to 'Hontomo', root_path %></h2>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+              aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav ml-auto">
+              <% if user_signed_in? %>
+                <li class="mx-4 my-3"><small>ようこそ、<%= current_user.name %> さん</small></li>
+                <li class="ml-4 mr-1 my-3"><%= link_to 'Hontomoとは', about_path %></li>
+                <li class="ml-4 mr-1 my-3"><%= link_to '本を探す', books_path %></li>
+                <li class="ml-4 mr-1 my-3"><%= link_to 'マイページ', users_mypage_path %></li>
+                <li class="ml-4 mr-1 my-3"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+              <% elsif admin_signed_in? %>
+                <li class="mx-4 my-3"><small>ようこそ、管理者 さん</small></li>
+                <li class="ml-4 mr-1 my-3"><%= link_to '会員一覧', admin_users_path %></li>
+                <li class="ml-4 mr-1 my-3"><%= link_to '書籍一覧', admin_books_path %></li>
+                <li class="ml-4 mr-1 my-3"><%= link_to 'コメント一覧', admin_root_path %></li>
+                <li class="ml-4 mr-1 my-3"><%= link_to 'タグ一覧', admin_tags_path %></li>
+                <li class="ml-4 mr-1 my-3"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
+              <% else %>
+                <li class="mx-4 my-3"><small>ようこそ、ゲスト さん</small></li>
+                <li class="ml-4 mr-1 my-3"><%= link_to 'Hontomoとは', about_path %></li>
+                <li class="ml-4 mr-1 my-3"><%= link_to '本を探す', books_path %></li>
+                <li class="ml-4 mr-1 my-3"><%= link_to 'ログイン', new_user_session_path %></li>
+                <li class="ml-4 mr-1 my-3"><%= link_to '新規登録', new_user_registration_path %></li>
+              <% end %>
+              </ul>
+            </div>
           </div>
-        </div>
-      </nav>
-   
-    </header> 
-    <main>
-      <%= yield %>
-    </main>
+        </nav>
+     
+      </header> 
+      <main>
+        <%= yield %>
+      </main>
+    </div>
     <footer class="bg-dark text-center">
-      <p class="my-4" style="color:#FFFFFF;">
+      <p class="mt-4" style="color:#FFFFFF;">
         <small class="mx-5">© Hontomo</small>
-        <small class="mx-5">お問い合わせ</small>
       </p>
     </footer>
   </body>
