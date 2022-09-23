@@ -1,8 +1,8 @@
-<div class="container-fluid" style="padding-top:80px; background-color:#F3F5F7;">
+<div class="container-fluid" style="padding-top:80px; padding-bottom: 60px; background-color:#F3F5F7;">
   <div class="row">
-    <div class="col-lg-11 mx-auto">
-      <h4 class="my-5 ml-4">
-        会員情報ページ
+    <div class="col-12 mx-auto">
+      <h4 class="my-5 mx-4 px-4 pb-3" style="border-bottom: 1.5px solid #616F7C;">
+        会員管理ページ
       </h4>
     </div>
     
@@ -10,7 +10,7 @@
       <h5 class="my-4">
         <i class="fas fa-search fa-lg fa-fw mr-3"></i>
         <%= @user.name %> さんのコメント一覧
-        <small>　(全<%= @all_comments.count %>件)</small>
+        <small>　(全 <%= @all_comments.count %> 件)</small>
       </h5>
     </div>
     

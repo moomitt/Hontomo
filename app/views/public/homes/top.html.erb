@@ -1,10 +1,10 @@
 <div class="container-fluid" style="padding-bottom: 60px; background-color:#E1DFDF">
   <div class="row">
     
-    <div class="text-center pt-5" id="top-image"
-    style="height:570px; width:100%; background-image: url('<%= asset_path('top2.png') %>');
-    background-size:cover; background-position:bottom;">
-      <div class="col-11 px-3 pt-5 mx-auto">
+    <div class="text-center py-5" id="top-image"
+    style="height:auto; width:100%; background-image: url('<%= asset_path('top3.png') %>');
+    background-size:cover; background-position:center;">
+      <div class="col-11 px-3 py-5 mx-auto">
         <h2 class="my-5 text-light"><span id="e-text">Hontomo </span><small>へようこそ！</small></h2>
         <p class="my-2 text-light"><span id="e-text">Hontomo </span>は、本好きのための ”感想” 共有型コミュニティサイトです。</p>
         <p class="my-2 mb-5 text-light">コメント形式で気軽に感想を共有できます。</p>
@@ -24,10 +24,12 @@
               <% @popular_books.each do |book| %>
                 <div class="d-inline-block px-4 text-left" style="vertical-align: top; width: 190px;">
                 <%= link_to book_path(book.id) do %>
-                  <% if book.isbn.present? %>
-                    <% item = RakutenWebService::Books::Book.search(isbn: book.isbn).first %>
-                    <%= image_tag(item.large_image_url) %>
-                  <% end %>
+                  <div class="px-0" style="height:210px">
+                    <% if book.isbn.present? %>
+                      <% item = RakutenWebService::Books::Book.search(isbn: book.isbn).first %>
+                      <%= image_tag(item.large_image_url, :style => "max-width:142px;") %>
+                    <% end %>
+                  </div>
                   <p class="mt-2 mb-1 text-truncate"><strong><%= book.name %></strong></p>
                   <p class="mb-4 text-truncate"><%= book.author %></p>
                 <% end %>
@@ -46,10 +48,12 @@
               <% @new_books.each do |book| %>
                 <div class="d-inline-block px-4 text-left" style="vertical-align: top; width: 190px;">
                 <%= link_to book_path(book.id) do %>
-                  <% if book.isbn.present? %>
-                    <% item = RakutenWebService::Books::Book.search(isbn: book.isbn).first %>
-                    <%= image_tag(item.large_image_url) %>
-                  <% end %>
+                  <div class="px-0" style="height:210px">
+                    <% if book.isbn.present? %>
+                      <% item = RakutenWebService::Books::Book.search(isbn: book.isbn).first %>
+                      <%= image_tag(item.large_image_url, :style => "max-width:142px;") %>
+                    <% end %>
+                  </div>
                   <p class="mt-2 mb-1 text-truncate"><strong><%= book.name %></strong></p>
                   <p class="text-truncate mb-4"><%= book.author %></p>
                 <% end %>
@@ -69,7 +73,7 @@
       
       <% unless user_signed_in? %>
         <div class="row">
-          <div class="col-lg-7 col-md-8 col-sm-10 col-10 py-3 mx-auto mt-4 text-center card card-info">
+          <div class="col-lg-6 col-md-8 col-sm-10 col-10 py-3 mx-auto mt-4 text-center card card-info">
             <p>本の登録・コメント投稿にはログインが必要です</p>
             <div class="row text-center">
               <div class="col-sm-6 col-12 mb-2 mx-auto text-center">

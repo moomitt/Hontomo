@@ -17,7 +17,9 @@
       <div class="row">
         <div class="col-lg-3 col-md-3 col-12">
           <div class="pb-4">
-            <%= image_tag(@item.large_image_url) %>
+            <div class="px-0" style="height:auto;">
+              <%= image_tag(@item.large_image_url, :style => "max-width:142px;") %>
+            </div>
           </div>
         </div>
         

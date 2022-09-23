@@ -58,11 +58,15 @@
     <div class="col-lg-10 col-md-10 col-9 mx-auto mb-5 px-0">
       <div style="max-width:800px">
         <% @books.each do |book| %>
-          <div class="d-inline-block px-4 text-left" style="vertical-align: top; width: 190px;">
+          <div class="d-inline-block px-4 mb-3 text-left" style="vertical-align: top; width: 190px;">
             <%= link_to book_path(book.id) do %>
               <% if book.isbn.present? %>
-                <% item = RakutenWebService::Books::Book.search(isbn: book.isbn).first %>
-                <%= image_tag(item.large_image_url) %>
+                <div class="px-0" style="height:210px">
+                  <% if book.isbn.present? %>
+                    <% item = RakutenWebService::Books::Book.search(isbn: book.isbn).first %>
+                    <%= image_tag(item.large_image_url, :style => "max-width:142px;") %>
+                  <% end %>
+                </div>
               <% end %>
               <p class="mt-2 mb-1 text-truncate"><strong><%= book.name %></strong></p>
               <p class="mb-4 text-truncate"><%= book.author %></p>

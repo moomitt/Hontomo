@@ -1,8 +1,8 @@
-<div class="container-fluid" style="padding-top:80px; background-color:#F3F5F7;">
+<div class="container-fluid" style="padding-top:80px; padding-bottom: 60px; background-color:#F3F5F7;">
   <div class="row">
-    <div class="col-lg-11 mx-auto">
-      <h4 class="my-5 ml-4">
-        書籍情報ページ
+    <div class="col-12 mx-auto">
+      <h4 class="my-5 mx-4 px-4 pb-3" style="border-bottom: 1.5px solid #616F7C;">
+        書籍管理ページ
       </h4>
     </div>
     
@@ -18,7 +18,8 @@
     <div class="col-lg-10 col-md-10 col-sm-10 col-10 mx-auto">
       <div class="row" style="max-width:1200px">
         <% @search_comments.each do |comment| %>
-          <div class="col-lg-11 col-12 px-3 pt-3 pb-2 mb-3 card-comment" style="max-width:800px">
+          <div class="col-lg-11 col-12 px-3 pt-3 pb-2 mb-3 card-comment"
+          style="max-width:800px; background-color:#FFFFFF;">
             <p class="pb-0" style="font-size:0.95rem"><%= comment.text %></p>
             <div class="row text-right">
               <p class="col-lg-4 col-sm-5 col-12 my-0"><small>投稿者： <%= comment.user.name %></small></p>
