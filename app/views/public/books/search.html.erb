@@ -69,12 +69,14 @@ style="min-height: calc(100vh - 70px); padding-top:80px; padding-bottom: 60px; b
       <%= link_to '一覧に戻る', books_path, class: "btn btn-sm btn-main px-4 d-inline-block ml-4 mb-5" %></br>
       <div style="max-width:800px">
         <% @books.each do |book| %>
-          <div class="d-inline-block px-4 text-left" style="vertical-align: top; width: 190px;">
+          <div class="d-inline-block px-4 mb-3 text-left" style="vertical-align: top; width: 190px;">
             <%= link_to book_path(book.id) do %>
-              <% if book.isbn.present? %>
-                <% item = RakutenWebService::Books::Book.search(isbn: book.isbn).first %>
-                <%= image_tag(item.large_image_url) %>
-              <% end %>
+              <div class="px-0" style="height:210px">
+                <% if book.isbn.present? %>
+                  <% item = RakutenWebService::Books::Book.search(isbn: book.isbn).first %>
+                  <%= image_tag(item.large_image_url, :style => "max-width:142px;") %>
+                <% end %>
+              </div>
               <p class="mt-2 mb-1 text-truncate"><strong><%= book.name %></strong></p>
               <p class="mb-4 text-truncate"><%= book.author %></p>
             <% end %>

@@ -9,9 +9,12 @@ class Public::UsersController < ApplicationController
   end
 
   def update
-    user = current_user
-    user.update(user_params)
-    redirect_to users_mypage_path 
+    @user = current_user
+    if @user.update(user_params)
+      redirect_to users_mypage_path
+    else
+      render :edit
+    end
   end
 
   def confirm

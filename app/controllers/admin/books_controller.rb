@@ -33,8 +33,6 @@ class Admin::BooksController < ApplicationController
 
   def edit
     @book = Book.find(params[:id])
-    items = RakutenWebService::Books::Book.search(isbn: @book.isbn)
-    @item = items.first
     if params[:tag]
       if Tag.create(name: params[:tag])
         redirect_to edit_admin_book_path

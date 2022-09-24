@@ -18,6 +18,15 @@ style="min-height: calc(100vh - 70px); padding-top:80px; padding-bottom: 60px; b
       <div class="row">
         <div class="col-12" style="max-width:900px;">
           <%= form_with model: @user, url: admin_user_path(@user.id), method: :patch, class: "form_horaizontal" do |f| %>
+            <div class="row input-group-sm mb-4">
+              <% if @user.errors.any? %>
+                <ul class="col-12 pl-5">
+                  <% @user.errors.full_messages.each do |message| %>
+                    <li class="text-danger" style="list-style: none;"><%= message %></li>
+                  <% end %>
+                </ul>
+              <% end %>
+            </div>
             <div class="row input-group-sm">
               <label class="col-md-3 mb-3">会員ID</label>
               <p class="col-lg-6 col-md-5 px-1 mb-3 ml-3"><%= @user.id %></p>

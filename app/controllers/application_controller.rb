@@ -16,5 +16,5 @@ class ApplicationController < ActionController::Base
   end
   # admin_urlがtrueの場合のみbefore_actionを実行
   # request.fullpath : 飛んだ先のpathを全て取得
-    
+  
 end

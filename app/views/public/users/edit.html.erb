@@ -17,6 +17,15 @@ style="min-height: calc(100vh - 70px); padding-top:80px; padding-bottom: 60px; b
     <div class="col-lg-10 col-md-9 col-10 mx-auto mb-5 px-3">
       <div style="max-width:980px;">
         <%= form_with model: @user, url: users_information_path, method: :patch, class: "form-horaizontal" do |f| %>
+          <div class="row input-group-sm mb-4">
+            <% if @user.errors.any? %>
+              <ul class="col-12 pl-5">
+                <% @user.errors.full_messages.each do |message| %>
+                  <li class="text-danger" style="list-style: none;"><%= message %></li>
+                <% end %>
+              </ul>
+            <% end %>
+          </div>
           <div class="row input-group-sm">
             <label class="col-lg-3 col-md-4 mb-2 px-0">ニックネーム<small>（2～10文字）</small></label>
             <%= f.text_field :name, class: "form-control col-lg-3 col-md-5 mb-2" %>

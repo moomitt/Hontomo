@@ -18,7 +18,9 @@ style="min-height: calc(100vh - 70px); padding-top:80px; padding-bottom: 60px; b
       <div class="row">
         <div class="col-lg-3 col-md-4 col-11 mb-3 mx-auto">
           <div class="px-0" style="height:auto;">
-            <%= image_tag(@item.large_image_url, :style => "max-width:142px;") %>
+            <% items = RakutenWebService::Books::Book.search(isbn: @book.isbn) %>
+            <% item = items.first %>
+            <%= image_tag(item.large_image_url, :style => "max-width:142px;") %>
           </div>
         </div>
         <div class="col-lg-9 col-md-8 col-10 mx-auto">

@@ -38,41 +38,39 @@ style="min-height: calc(100vh - 70px); padding-top:80px; padding-bottom: 60px; b
       <% end %>
     </div>
     
-    <div class="col-lg-10 col-md-9 col-11 mx-auto mb-5 px-3">
-      <div id="item_list">
-        <% if @items.present? %>
-          <% @items.each do |item| %>
-            <div class="row px-0">
-              <div class="col-lg-2 col-md-3 col-sm-9 col-10 mb-3 mx-auto px-0">
-                <div class="px-1 pt-2" style="height:auto;">
-                  <%= image_tag(item.medium_image_url, :style => "max-width:150px;") %>
-                </div>
+    <div class="col-lg-9 col-md-9 col-sm-9 col-9 mx-auto mb-5 px-3">
+      <% if @items.present? %>
+        <% @items.each do |item| %>
+          <div class="row px-0">
+            <div class="col-lg-2 col-md-3 col-sm-11 col-12 mb-3 px-0">
+              <div class="px-1 pt-2" style="height:auto;">
+                <%= image_tag(item.medium_image_url, :style => "max-width:150px;") %>
               </div>
-              <table class="table table-borderless table-sm mb-5 col-lg-8 col-md-8 col-sm-9 col-10 mx-auto">
-                <tr>
-                  <td><strong><%= item.title %></strong></td>
-                </tr>
-                <tr>
-                  <td><%= item.author %></td>
-                </tr>
-                <tr>
-                  <td>
-                    <%= form_with url: new_book_path, method: :get do |f| %>
-                      <%= f.hidden_field :isbn, :value => item.isbn %>
-                      <%= link_to '楽天ブックスでみる', item.item_url, class: "btn btn-sm btn-outline-secondary px-3 d-inline-block my-2 mr-2" %>
-                      <%= f.submit '登録画面へ', class: "btn btn-sm btn-accent px-4 d-inline-block my-2 mr-2" %>
-                    <% end %>
-                  </td>
-                </tr>
-              </table>
             </div>
-          <% end %>
+            <table class="table table-borderless table-sm mb-5 col-lg-8 col-md-8 col-sm-11 col-12">
+              <tr>
+                <td><strong><%= item.title %></strong></td>
+              </tr>
+              <tr>
+                <td><%= item.author %></td>
+              </tr>
+              <tr>
+                <td>
+                  <%= form_with url: new_book_path, method: :get do |f| %>
+                    <%= f.hidden_field :isbn, :value => item.isbn %>
+                    <%= link_to '楽天ブックスでみる', item.item_url, class: "btn btn-sm btn-outline-secondary px-3 d-inline-block my-2 mr-2" %>
+                    <%= f.submit '登録画面へ', class: "btn btn-sm btn-accent px-4 d-inline-block my-2 mr-2" %>
+                  <% end %>
+                </td>
+              </tr>
+            </table>
+          </div>
         <% end %>
-        
-        <p class="mt-4 mx-3">お探しの本が表示されない場合</p>
-        <p class="mx-3">・検索ワードが短すぎる場合、正しく結果が表示されない場合があります。</p>
-        <p class="mx-3">・該当の書籍がデータベースに存在しない可能性があります。</p>
-      </div>
+      <% end %>
+      
+      <p class="mt-4 mx-3">お探しの本が表示されない場合</p>
+      <p class="mx-3">・検索ワードが短すぎる場合、正しく結果が表示されない場合があります。</p>
+      <p class="mx-3">・該当の書籍がデータベースに存在しない可能性があります。</p>
     </div>
     
   </div>
