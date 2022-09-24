@@ -14,17 +14,16 @@ style="min-height: calc(100vh - 70px); padding-top:80px; padding-bottom: 60px; b
       </h5>
     </div>
     
-    <% if @comment.errors.any? %>
-      <ul>
-        <% @comment.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    <% end %>
-    
     <div class="col-lg-10 col-md-10 col-11 mx-auto">
       <%= form_with model: @comment, url: book_comments_path(@book.id), method: :post, class: "form-horaizontal" do |f| %>
         <label class="px-0">コメント<small> （100文字以内）</small></label>
+        <% if @comment.errors.any? %>
+          <ul>
+            <% @comment.errors.full_messages.each do |message| %>
+              <li class="text-danger mt-3" style="list-style:none;"><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
         <%= f.hidden_field :book_id, :value => @book.id %>
         <%= f.hidden_field :user_id, :value => current_user.id %>
         <%= f.text_area :text, class: "form-control my-3 col-lg-8 mb-4", :style => "max-width:510px; height:120px;" %>

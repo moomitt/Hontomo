@@ -62,3 +62,5 @@ gem 'rakuten_web_service'
 gem 'jquery-rails'
 
 gem 'kaminari','~> 1.2.1'
+
+gem 'rails-i18n'

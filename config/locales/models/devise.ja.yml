@@ -1,0 +1,15 @@
+ja:
+  errors:
+    messages:
+      not_saved: "エラーが発生したため、登録できませんでした。"
+  activerecord:
+    attributes:
+      user:
+        name: ニックネーム
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（確認用）
+      comment:
+        text: コメント
+      book:
+        series: シリーズ名

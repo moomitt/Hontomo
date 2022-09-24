@@ -24,7 +24,7 @@ class Public::BooksController < ApplicationController
       end
       @tags.uniq!
       @all_books.uniq!
-      @books = @all_books.page(params[:page]).per(8)
+      @books = Kaminari.paginate_array(@all_books).page(params[:page]).per(8)
     end
   end
   
@@ -72,10 +72,8 @@ class Public::BooksController < ApplicationController
 
   def edit
     @book = Book.find(params[:id])
-    items = RakutenWebService::Books::Book.search(isbn: @book.isbn)
-    @item = items.first
     if params[:tag]
-      if Tag.create(name: params[:tag])
+      if @tag = Tag.create(name: params[:tag])
         redirect_to edit_book_path
       else
         render :edit
