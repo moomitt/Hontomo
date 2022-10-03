@@ -1,7 +1,7 @@
 <div class="container-fluid"
 style="min-height: calc(100vh - 70px); padding-bottom: 60px; background-color:#E1DFDF">
   <div class="row">
-    
+
     <div class="text-center py-5" id="top-image"
     style="height:auto; width:100%; background-image: url('<%= asset_path('top3.png') %>');
     background-size:cover; background-position:center;">
@@ -13,7 +13,7 @@ style="min-height: calc(100vh - 70px); padding-bottom: 60px; background-color:#E
         <%= link_to '本を探す', books_path, class: "btn btn-accent px-5 mx-2 mt-2 d-inline-block" %>
       </div>
     </div>
-    
+
     <div class="col-11 mt-5 mx-auto card card-normal pt-4 pb-5">
       <div>
         <h5 class="mt-3 mb-5 ml-3 font-weight-bold">
@@ -34,15 +34,13 @@ style="min-height: calc(100vh - 70px); padding-bottom: 60px; background-color:#E
         </div>
       </div>
     </div>
-    
+
     <div class="col-11 mt-5 mx-auto card card-normal pt-4 pb-5">
       <div>
         <h5 class="mt-3 mb-5 ml-3 font-weight-bold">
           <i class="fas fa-shield-alt fa-lg fa-fw mr-3"></i>
           ご利用上の注意
         </h5>
-        <p class="my-3 ml-4"><%= link_to '　利用規約', about_path, class: "text-primary" %>　　※必ずお読みください</p>
-        
         <div class="mx-2">
           <p class="my-4 ml-4">
             ・<u>本サイトは読了者向けの感想共有サイトです。</u></br>
@@ -51,33 +49,33 @@ style="min-height: calc(100vh - 70px); padding-bottom: 60px; background-color:#E
           </p>
           <p class="mt-4 mb-1 ml-4">
             ・下記に該当する書籍の登録およびコメント投稿はお止めください。</br>
-          </p> 
+          </p>
           <div class="ml-5">
             ・特定の個人・団体を誹謗中傷する内容</br>
             ・公序良俗に反する内容、成人向けの内容
           </div>
-          
+
           <p class="my-4 ml-4">
             ・上記以外の場合でも、管理者が不適切な内容と判断した場合、</br>
             　該当書籍およびコメントは許可無く削除される可能性があります。あらかじめご了承ください。
           </p>
-          
+
           <p class="mt-4 ml-4">
             ・登録いただいた書籍情報に誤りがある場合や変更が生じた場合、</br>
             　管理者側で修正する場合があります。ご了承ください。
           </p>
         </div>
-        
+
       </div>
     </div>
-    
+
     <div class="col-12 text-center py-5">
       <%= link_to books_path, class: "btn btn-accent px-5 mt-2" do %>
         <i class="fas fa-book-open mr-2"></i>
         今すぐ本を探す
       <% end %>
     </div>
-    
+
     <div class="col-11 mx-auto">
       <% unless user_signed_in? %>
         <div class="row">
@@ -97,6 +95,6 @@ style="min-height: calc(100vh - 70px); padding-bottom: 60px; background-color:#E
         </div>
       <% end %>
     </div>
-    
+
   </div>
 </div>
