@@ -6,4 +6,5 @@ $('#tab-menu a').on('click', function(event) {
   $(this).addClass("active");
   $($(this).attr("href")).show();
   event.preventDefault();
+
 });

@@ -12,7 +12,7 @@
     <div class="row text-right">
       <p class="col-md-5 col-12 my-0"><small>投稿日時： <%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></small></p>
       <p class="col-md-5 col-9 my-0"><small>投稿者:　<%= comment.user.name %></small></p>
-      <div id="goods_buttons_<%= comment.id %>" class="col-md-2 col-3 pt-1 text-right">
+      <div class="goods_buttons_<%= comment.id %> col-md-2 col-3 pt-1 text-right">
         <%= render partial: 'public/goods/good', locals: { book: book, comment: comment } %>
       </div>
     </div>

@@ -11,7 +11,7 @@
     <p class="pb-0" style="font-size:0.95rem"><%= comment.text %></p>
     <div class="row text-right">
       <p class="col-md-7 col-8 my-0"><small>投稿日時： <%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></small></p>
-      <div id="goods_buttons_<%= comment.id %>" class="col-md-2 col-4 pt-1 text-right">
+      <div class="goods_buttons_<%= comment.id %> col-md-2 col-4 pt-1 text-right">
         <%= render partial: 'public/goods/good', locals: { book: book, comment: comment } %>
       </div>
       <div class="col-md-3 col-12 pt-2 text-right" style="font-size:0.85rem">
