@@ -1,9 +1,9 @@
 <div class="container-fluid"
 style="min-height: calc(100vh - 70px); padding-bottom: 60px; background-color:#E1DFDF">
   <div class="row">
-    
+
     <div class="text-center py-5" id="top-image"
-    style="height:auto; width:100%; background-image: url('<%= asset_path('top3.png') %>');
+    style="height:auto; width:100%; background-image: image-url('<%= asset_path('top3.png') %>');
     background-size:cover; background-position:center;">
       <div class="col-11 px-3 py-5 mx-auto">
         <h2 class="my-5 text-light"><span id="e-text">Hontomo </span><small>へようこそ！</small></h2>
@@ -13,7 +13,7 @@ style="min-height: calc(100vh - 70px); padding-bottom: 60px; background-color:#E
         <%= link_to '本を探す', books_path, class: "btn btn-accent px-5 mx-2 mt-2 d-inline-block" %>
       </div>
     </div>
-    
+
     <div class="col-lg-10 col-11 mx-auto">
       <div class="row">
         <div class="col-lg-12 col-md-8 col-sm-11 col-11 mx-auto mt-5 card card-normal">
@@ -39,7 +39,7 @@ style="min-height: calc(100vh - 70px); padding-bottom: 60px; background-color:#E
             </div>
           </div>
         </div></br>
-    
+
         <div class="col-lg-12 col-md-8 col-sm-11 col-11 mx-auto mt-5 card card-normal">
           <div class="card-body">
             <h5 class="mt-2 mb-4 ml-2 font-weight-bold">
@@ -64,14 +64,14 @@ style="min-height: calc(100vh - 70px); padding-bottom: 60px; background-color:#E
           </div>
         </div>
       </div>
-      
+
       <div class="text-center py-5">
         <%= link_to books_path, class: "btn btn-accent px-5 mt-2" do %>
           <i class="fas fa-book-open mr-2"></i>
           他の本を探す
         <% end %>
       </div>
-      
+
       <% unless user_signed_in? %>
         <div class="row">
           <div class="col-lg-6 col-md-8 col-sm-10 col-10 py-3 mx-auto mt-4 text-center card card-info">
@@ -90,6 +90,6 @@ style="min-height: calc(100vh - 70px); padding-bottom: 60px; background-color:#E
         </div>
       <% end %>
     </div>
-    
+
   </div>
 </div>
