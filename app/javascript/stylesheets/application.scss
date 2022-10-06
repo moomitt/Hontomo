@@ -68,7 +68,7 @@ header a:hover {
 div.top-image{
   height: auto;
   width: 100%;
-  background-image: url("../images/top3.png");
+  background-image: url(<%= asset_path 'top3.png' %>);
   background-size: cover;
   background-position: center;
 }
