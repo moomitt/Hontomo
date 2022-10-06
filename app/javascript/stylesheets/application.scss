@@ -65,6 +65,14 @@ header a:hover {
   color: #8B9FB2;
 }
 
+#top-image{
+  height: auto;
+  width: 100%;
+  background-image: image-url("top3.png");
+  background-size: cover;
+  background-position: center;
+}
+
 .field_with_errors {
   display: contents;
   input {
