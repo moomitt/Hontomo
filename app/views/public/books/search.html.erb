@@ -5,14 +5,14 @@
         本をさがす
       </h4>
     </div>
-    
+
     <div class="col-md-11 col-11 mx-auto mb-3">
       <h5 class="">
         <i class="fas fa-search fa-lg fa-fw mr-3"></i>
         本を検索
       </h5>
     </div>
-    
+
     <div class="col-lg-10 col-md-10 col-sm-10 col-11 mx-auto">
       <div class="card px-2" style="background-color: #FFFFFF; max-width:700px; border:none;">
         <div class="card-body">
@@ -26,16 +26,16 @@
               </div>
             </div>
           <% end %>
-          
+
           <h6 class="my-3">タグからさがす</h6>
           <%= form_tag({controller: "books", action: "search"}, method: :get) do %>
             <div class="row mb-2 px-4">
               <div class="col-11 px-0">
                 <% Tag.all.each do |t| %>
-                  <span class="mr-3" style="white-space: nowrap;">
+                  <label class="mr-3" style="white-space: nowrap;">
                     <%= check_box :tag_ids, t.name, class: "mr-1" %>
                     <%= t.name %>
-                  </span>
+                  </label>
                 <% end %>
               </div>
               <div class="col-lg-7 px-0">
@@ -46,7 +46,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="col-md-11 col-11 mx-auto mb-4">
       <h5 class="mt-5">
         <i class="fas fa-book fa-lg fa-fw mr-3"></i>
@@ -63,7 +63,7 @@
         </p>
       <% end %>
     </div>
-    
+
     <div class="col-lg-10 col-md-10 col-9 mx-auto mb-5 px-0">
       <%= link_to '一覧に戻る', books_path, class: "btn btn-sm btn-main px-4 d-inline-block ml-4 mb-5" %></br>
       <div style="max-width:800px">
@@ -84,7 +84,7 @@
         <div class="text-center my-4">
           <%= paginate @books %>
         </div>
-        
+
         <div class="text-center mt-5">
           <p>お探しの本が見つかりませんでしたか？</p>
           <p>あなたの読んだ本を登録して、最初のコメントを投稿しましょう！</p>
