@@ -9,7 +9,7 @@ class Public::BooksController < ApplicationController
       redirect_to books_search_path
     end
   end
-  
+
   def search
     if params[:keyword]
       @all_books = Book.where('name LIKE(?)', "%#{params[:keyword]}%").or(Book.where('author LIKE(?)', "%#{params[:keyword]}%"))
@@ -27,7 +27,7 @@ class Public::BooksController < ApplicationController
       @books = Kaminari.paginate_array(@all_books).page(params[:page]).per(8)
     end
   end
-  
+
   def find
     if params[:keyword]
       keywords = params[:keyword].split(/[[:blank:]]+/).select(&:present?)
@@ -36,7 +36,7 @@ class Public::BooksController < ApplicationController
       end
     end
   end
-  
+
   def new
     @book = Book.new
     items = RakutenWebService::Books::Book.search(isbn: params[:isbn])
@@ -58,13 +58,13 @@ class Public::BooksController < ApplicationController
     @book = Book.find(params[:id])
     items = RakutenWebService::Books::Book.search(isbn: @book.isbn)
     @item = items.first
-    @good_comments = Comment.where(book_id: @book.id).sort{|a,b| b.goods.size <=> a.goods.size}
+    @good_comments = @book.comments.left_joins(:goods).group(:id).order('count(goods.comment_id) desc')
     @new_comments = Comment.where(book_id: @book.id).order('id DESC')
     if user_signed_in?
       @user_comments = Comment.where(book_id: @book.id, user_id: current_user.id)
     end
   end
-  
+
   def search_comment
     @book = Book.find(params[:id])
     @search_comments = Comment.where(book_id: @book.id).where('text LIKE(?)', "%#{params[:keyword]}%").sort{|a,b| b.goods.size <=> a.goods.size}
@@ -89,7 +89,7 @@ class Public::BooksController < ApplicationController
       render :edit
     end
   end
-  
+
   private
   def book_params
     params.require(:book).permit(:user_id, :name, :author, :series, :isbn, tag_ids: [])

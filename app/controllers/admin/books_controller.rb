@@ -6,7 +6,7 @@ class Admin::BooksController < ApplicationController
       redirect_to admin_books_search_path
     end
   end
-  
+
   def search
     @all_books = Book.where('name LIKE(?)', "%#{params[:keyword]}%").or(Book.where('author LIKE(?)', "%#{params[:keyword]}%"))
     @books = @all_books.page(params[:page]).per(10)
@@ -16,15 +16,15 @@ class Admin::BooksController < ApplicationController
     @book = Book.find(params[:id])
     items = RakutenWebService::Books::Book.search(isbn: @book.isbn)
     @item = items.first
-    @good_comments = Comment.where(book_id: @book.id).sort{|a,b| b.goods.size <=> a.goods.size}
+    @good_comments = @book.comments.left_joins(:goods).group(:id).order('count(goods.comment_id) desc')
     @new_comments = Comment.where(book_id: @book.id).order('id DESC')
   end
-  
+
   def search_comment
     @book = Book.find(params[:id])
     @search_comments = Comment.where(book_id: @book.id).where('text LIKE(?)', "%#{params[:keyword]}%").sort{|a,b| b.goods.size <=> a.goods.size}
   end
-  
+
   def book_comment_destroy
     comment = Comment.find(params[:id])
     comment.destroy
@@ -56,7 +56,7 @@ class Admin::BooksController < ApplicationController
     book.destroy
     redirect_to admin_books_path
   end
-  
+
   private
   def book_params
     params.require(:book).permit(:user_id, :name, :author, :series, :isbn, tag_ids: [])
