@@ -1,6 +1,6 @@
 RakutenWebService.configure do |c|
 
-  c.application_id = '1099502186585771326'
-  c.affiliate_id = '2a9eee68.7152fceb.2a9eee6a.61364759'
+  c.application_id = ENV['RAKTEN_APPLICATION_ID']
+  c.affiliate_id = ENV['RAKTEN_AFFILIATE_ID']
 
 end
