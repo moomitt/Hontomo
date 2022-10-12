@@ -1,19 +1,18 @@
-<div class="container-fluid"
-style="min-height: calc(100vh - 70px); padding-top:80px; padding-bottom: 60px; background-color:#F3F5F7;">
+<div class="container-fluid admin">
   <div class="row">
     <div class="col-12 mx-auto">
-      <h4 class="my-5 mx-4 px-4 pb-3" style="border-bottom: 1.5px solid #616F7C;">
+      <h4 class="heading my-5 mx-4 px-4 pb-3">
         タグ管理ページ
       </h4>
     </div>
-    
+
     <div class="col-md-11 col-11 mx-auto my-4">
       <h5 class="">
         <i class="fas fa-tag fa-lg fa-fw mr-3"></i>
         タグを追加する
       </h5>
     </div>
-    
+
     <div class="col-lg-10 col-md-9 col-sm-10 col-11 px-0 mx-auto mb-4">
       <%= form_tag({controller:"tags",action:"index"}, method: :get, class: "form-horaizontal") do %>
         <div class="row input-group-sm" style="max-width:800px;">
@@ -24,7 +23,7 @@ style="min-height: calc(100vh - 70px); padding-top:80px; padding-bottom: 60px; b
         </div>
       <% end %>
     </div>
-    
+
     <div class="col-md-11 col-11 mx-auto my-4">
       <h5 class="">
         <i class="fas fa-tags fa-lg fa-fw mr-3"></i>
@@ -32,7 +31,7 @@ style="min-height: calc(100vh - 70px); padding-top:80px; padding-bottom: 60px; b
         <small> （全 <%= @all_tags.count %> 件）</small>
       </h5>
     </div>
-    
+
     <div class="col-lg-10 col-md-9 col-sm-10 col-11 mx-auto px-0">
       <table class="table table-hover table-bordered"
         style="max-width:600px; font-size:0.9rem">
@@ -54,11 +53,11 @@ style="min-height: calc(100vh - 70px); padding-top:80px; padding-bottom: 60px; b
           <% end %>
         </tbody>
       </table>
-      
+
       <div class="text-center mt-4">
         <%= paginate @tags %>
       </div>
     </div>
-    
+
   </div>
 </div>

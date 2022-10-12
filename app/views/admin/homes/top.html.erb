@@ -1,19 +1,18 @@
-<div class="container-fluid"
-style="min-height: calc(100vh - 70px); padding-top:80px; padding-bottom: 60px; background-color:#F3F5F7;">
+<div class="container-fluid admin">
   <div class="row">
     <div class="col-12 mx-auto">
-      <h4 class="my-5 mx-4 px-4 pb-3" style="border-bottom: 1.5px solid #616F7C;">
+      <h4 class="heading my-5 mx-4 px-4 pb-3">
         コメント管理ページ
       </h4>
     </div>
-    
+
     <div class="col-md-11 col-11 mx-auto mb-3">
       <h5 class="my-4">
         <i class="fas fa-search fa-lg fa-fw mr-3"></i>
         コメント検索
       </h5>
     </div>
-    
+
     <div class="col-lg-10 col-md-9 col-sm-9 col-9 mx-auto mb-5">
       <%= form_with url: admin_comments_search_path, method: :get, local: true, class: "form-horaizontal" do |f| %>
         <div class="row input-group-sm" style="max-width:900px;">
@@ -24,14 +23,14 @@ style="min-height: calc(100vh - 70px); padding-top:80px; padding-bottom: 60px; b
         </div>
       <% end %>
     </div>
-    
+
     <div class="col-md-11 col-11 mx-auto mb-3">
       <h5 class="my-4">
         <i class="fas fa-comment-alt fa-lg fa-fw mr-3"></i>
         コメント一覧<small> （全 <%= @all_comments.count %> 件）</small>
       </h5>
     </div>
-    
+
     <div class="col-lg-10 col-md-10 col-sm-10 col-11 mx-auto px-0">
       <table class="table table-hover table-bordered"
         style="width:100%; max-width:1200px; font-size:0.9rem">
@@ -57,11 +56,11 @@ style="min-height: calc(100vh - 70px); padding-top:80px; padding-bottom: 60px; b
           <% end %>
         </tbody>
       </table>
-      
+
       <div class="text-center mt-4">
         <%= paginate @comments %>
       </div>
     </div>
-    
+
   </div>
 </div>

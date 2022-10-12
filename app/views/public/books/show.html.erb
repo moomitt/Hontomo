@@ -1,19 +1,18 @@
-<div class="container-fluid"
-style="min-height: calc(100vh - 70px); padding-top:80px; padding-bottom: 60px; background-color: #FAF8F8;">
+<div class="container-fluid public">
   <div class="row">
     <div class="col-12 mx-auto">
       <h4 class="my-5 mx-4 px-4 pb-3" style="border-bottom: 1.5px solid #616F7C;">
         本をみる
       </h4>
     </div>
-    
+
     <div class="col-md-11 col-11 mx-auto mb-4">
       <h5 class="">
         <i class="fas fa-book-open fa-lg fa-fw mr-3"></i>
         本の情報
       </h5>
     </div>
-    
+
     <div class="col-lg-10 col-md-10 col-11 mx-auto mb-5 px-3">
       <div class="row">
         <div class="col-lg-3 col-md-3 col-12">
@@ -23,7 +22,7 @@ style="min-height: calc(100vh - 70px); padding-top:80px; padding-bottom: 60px; b
             </div>
           </div>
         </div>
-        
+
         <div class="col-lg-8 col-md-9 col-12">
           <table class="table table-sm" style="max-width:700px;">
             <tbody>
@@ -77,16 +76,16 @@ style="min-height: calc(100vh - 70px); padding-top:80px; padding-bottom: 60px; b
           <% end %>
         </div>
       </div>
-      
+
     </div>
-    
+
     <div class="col-md-11 col-11 mx-auto mb-4">
       <h5 class="">
         <i class="fas fa-comment-alt fa-lg fa-fw mr-3"></i>
         感想コメント　<small>全<%= @new_comments.count %>件</small>
       </h5>
     </div>
-    
+
     <div class="col-lg-10 col-md-10 col-sm-11 col-12 mx-auto px-3">
       <div class="wrap">
         <ul id="tab-menu">
@@ -95,7 +94,7 @@ style="min-height: calc(100vh - 70px); padding-top:80px; padding-bottom: 60px; b
           <li><a href="#tab3">コメント検索</a></li>
           <li><a href="#tab4">あなたのコメント</a></li>
         </ul>
-        
+
         <div id="tab-contents">
           <div id="tab1" class="tab pt-4">
             <%= render partial: 'tab', locals: { book: @book, comments: @good_comments } %>
@@ -120,7 +119,7 @@ style="min-height: calc(100vh - 70px); padding-top:80px; padding-bottom: 60px; b
           </div>
         </div>
       </div>
-      
+
       <div class="mt-5" style="max-width:800px;">
         <% if user_signed_in? %>
           <%= link_to new_book_comment_path(@book.id), class: "btn btn-sm btn-accent px-3 ml-3" do %>
@@ -145,7 +144,7 @@ style="min-height: calc(100vh - 70px); padding-top:80px; padding-bottom: 60px; b
         <% end %>
       </div>
     </div>
-    
+
   </div>
 </div>
 

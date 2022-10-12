@@ -73,6 +73,30 @@ div.top-image{
   background-position: center;
 }
 
+div.container-fluid.top{
+  min-height: calc(100vh - 70px);
+  padding-bottom: 60px;
+  background-color: #E1DFDF;
+}
+
+div.container-fluid.public{
+  min-height: calc(100vh - 70px);
+  padding-top: 80px;
+  padding-bottom: 60px;
+  background-color: #FAF8F8;
+}
+
+div.container-fluid.admin{
+  min-height: calc(100vh - 70px);
+  padding-top: 80px;
+  padding-bottom: 60px;
+  background-color: #F3F5F7;
+}
+
+h4.heading{
+  border-bottom: 1.5px solid #616F7C;
+}
+
 .field_with_errors {
   display: contents;
   input {
