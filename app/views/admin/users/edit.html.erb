@@ -45,9 +45,9 @@
               <label class="col-md-3 mb-3">会員ステータス</label>
               <div class="form-check mb-3 ml-3">
                 <%= f.radio_button :is_deleted, :false, class: "form-check-input mr-5 mt-2" %>
-                <label class="form-check-label mr-5">有効</label>
+                <%= f.label :is_deleted, '有効', value: :false, class: "form-check-label mr-5" %>
                 <%= f.radio_button :is_deleted, :true, class: "form-check-input mt-2" %>
-                <label class="form-check-label">退会</label>
+                <%= f.label :is_deleted, '退会', value: :true, class: "form-check-label" %>
               </div>
             </div>
 
