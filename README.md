@@ -45,13 +45,13 @@
 - 自分と同じ感想を持った人がいないか知りたいとき
 
 ## 設計書
-- 実装機能リスト
+- 実装機能リスト  
   https://docs.google.com/spreadsheets/d/1QIHupszH9kSksYkofslfzFKRv1ugBX3dssLI8usQ7mQ/edit?usp=sharing
-- ER図
+- ER図  
   https://drive.google.com/file/d/1xc2syf9fD2KldLv4m8a1-9_P6qvta2vg/view?usp=sharing
-- テーブル定義書
+- テーブル定義書  
   https://docs.google.com/spreadsheets/d/1OAH7mpjpObS4BzpFL3zxaELh3k_vBiGK-UBXo5T1d8Y/edit?usp=sharing
-- 詳細設計書
+- 詳細設計書  
   https://docs.google.com/spreadsheets/d/1fmexaYrDZLsPj0fgQi6-7_zcVibuTWZFvpV-xSqtNX8/edit?usp=sharing
 
 ## 開発環境
@@ -62,9 +62,9 @@
 - IDE：Cloud9
 
 ## 使用素材
-- アイコン：Font Awesome
+- アイコン：Font Awesome  
   https://fontawesome.com/
-- 画像：Adobe Stock
+- 画像：Adobe Stock  
   https://stock.adobe.com/jp/
-- 書籍情報（画像含む）：楽天ブックスAPI
+- 書籍情報（画像含む）：楽天ブックスAPI  
   https://webservice.faq.rakuten.net/hc/ja
