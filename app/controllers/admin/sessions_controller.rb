@@ -19,11 +19,12 @@ class Admin::SessionsController < Devise::SessionsController
   # end
 
   protected
-  
+  #管理者ログイン後、管理者トップ画面に遷移
   def after_sign_in_path_for(resource)
     admin_root_path
   end
-  
+
+  #管理者ログアウト後、管理者ログイン画面に遷移
   def after_sign_out_path_for(resource)
     new_admin_session_path
   end

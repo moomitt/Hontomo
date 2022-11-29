@@ -21,18 +21,21 @@ class Admin::UsersController < ApplicationController
     end
   end
 
+  #ユーザ別コメント画面
   def comment
     @user = User.find(params[:id])
     @all_comments = Comment.where(user_id: @user.id)
     @comments = @all_comments.page(params[:page]).per(10)
   end
-  
+
+  #ユーザ別コメント画面でのコメント削除
   def user_comment_destroy
     comment = Comment.find(params[:id])
     comment.destroy
+    #ユーザ別コメント画面にリダイレクト
     redirect_to admin_user_comment_path(comment.user.id)
   end
-  
+
   private
   def user_params
     params.require(:user).permit(:name, :email, :is_deleted)

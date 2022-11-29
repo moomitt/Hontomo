@@ -20,13 +20,15 @@ class Public::UsersController < ApplicationController
   def confirm
   end
 
+  #退会処理
   def withdraw
     user = current_user
     user.update(is_deleted: true)
+    #退会処理後、ログアウト→トップページにリダイレクト
     reset_session
     redirect_to root_path
   end
-  
+
   private
   def user_params
     params.require(:user).permit(:name, :email)

@@ -14,11 +14,13 @@ class Public::CommentsController < ApplicationController
     end
   end
   
+  #ユーザのコメント削除はbooks/showページのみ
   def destroy
     @book = Book.find(params[:book_id])
     @comment = Comment.find(params[:id])
     if @comment.user_id == current_user.id
       @comment.destroy
+      #booshowページにリダイレクト
       redirect_to book_path(@book.id)
     end
   end
