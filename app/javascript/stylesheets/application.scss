@@ -12,34 +12,12 @@ body {
   color: #42455A;
 }
 
-main{
-  height: auto;
-  min-height: calc(100vh - 70px);
-}
+//*** レイアウト1 ***//
 
 .wrapper {
   height: auto;
   min-height: calc(100vh - 70px);
 }
-
-footer{
-  width: 100%;
-  height: 70px;
-}
-
-#e-text {
-  font-family: 'Raleway', sans-serif;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-weight: bold;
-}
-
-a, a:hover, a:active {
-  color: #42455A;
-  text-decoration: none;
-}
-
 header{
   position: fixed;
   top: 0;
@@ -47,23 +25,16 @@ header{
   width: 100%;
   z-index: 10;
 }
-
-header a {
-  color: #FFFFFF;
+main{
+  height: auto;
+  min-height: calc(100vh - 70px);
+}
+footer{
+  width: 100%;
+  height: 70px;
 }
 
-header a:hover {
-  color: #000000;
-  text-decoration: none;
-}
-
-.navbar-toggler .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-}
-
-.fa-lg{
-  color: #8B9FB2;
-}
+//*** レイアウト2 ***//
 
 div.top-image{
   height: auto;
@@ -72,20 +43,17 @@ div.top-image{
   background-size: cover;
   background-position: center;
 }
-
 div.container-fluid.top{
   min-height: calc(100vh - 70px);
   padding-bottom: 60px;
   background-color: #E1DFDF;
 }
-
 div.container-fluid.public{
   min-height: calc(100vh - 70px);
   padding-top: 80px;
   padding-bottom: 60px;
   background-color: #FAF8F8;
 }
-
 div.container-fluid.admin{
   min-height: calc(100vh - 70px);
   padding-top: 80px;
@@ -93,9 +61,50 @@ div.container-fluid.admin{
   background-color: #F3F5F7;
 }
 
-h4.heading{
+//*** ヘッダー詳細 ***//
+
+header a {
+  color: #FFFFFF;
+}
+header a:hover {
+  color: #000000;
+  text-decoration: none;
+}
+.navbar-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+
+//*** 共通 ***//
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+}
+a, a:hover, a:active {
+  color: #42455A;
+  text-decoration: none;
+}
+label{
+  margin-bottom: 0;
+}
+#e-text {
+  font-family: 'Raleway', sans-serif;
+}
+.heading{
   border-bottom: 1.5px solid #616F7C;
 }
+.fa-lg{
+  color: #8B9FB2;
+}
+table {
+  width: 100%;
+  table-layout: fixed;
+  word-break: break-all;
+  word-wrap: break-all;
+}
+
+
+//*** フォーム共通 ***//
 
 .field_with_errors {
   display: contents;
@@ -107,24 +116,17 @@ h4.heading{
     border-radius: 0.2rem;
     height: 31px;
   }
-}
-
-.area_with_errors {
-  display: contents;
-  input {
+  textarea {
     @extend .is-invalid;
   }
 }
 
-label{
-  margin-bottom: 0;
-}
+//*** カード ***//
 
 .card{
   max-width: 980px;
   border-radius: 8px;
 }
-
 .card-normal {
   background-color: #FAF8F8;
   border-radius: 15px;
@@ -133,12 +135,10 @@ label{
     color: #8B9FB2;
   }
 }
-
 .card-main {
   background-color: #8B9FB2;
   color: #FFFFFF;
 }
-
 .card-accent {
   background-color: #CFB96C;
   border-color: #CFB96C;
@@ -147,7 +147,6 @@ label{
     color: #FFFFFF;
   }
 }
-
 .card-pale {
   background-color: #988F90;
   border-color: #988F90;
@@ -156,7 +155,6 @@ label{
     color: #FFFFFF;
   }
 }
-
 .card-info {
   background-color: #42455A;
   border-color: #42455A;
@@ -166,78 +164,17 @@ label{
   }
 }
 
-.btn-accent {
-  background-color: #CFB96C;
-  border-color:  #CFB96C;
-  color: #FFFFFF;
-}
 
-.btn-accent:hover {
-  background-color: #DDCBB9;
-  border-color:  #DDCBB9;
-  color: #FFFFFF;
-}
-
-.btn-accent:active {
-  background-color: #DDCBB9;
-  border-color:  #DDCBB9;
-  color: #FFFFFF;
-}
-
-.btn-outline-accent {
-  background-color: none;
-  border-color:  #CFB96C;
-  color:  #CFB96C;
-}
-
-.btn-outline-accent:hover {
-  background-color: none;
-  border-color: #DDCBB9;
-  color: #DDCBB9;
-}
-
-.btn-outline-accent:active {
-  background-color: none;
-  border-color: #DDCBB9;
-  color: #DDCBB9;
-}
-
-
-.btn-main{
-  background-color: #8B9FB2;
-  border-color:  #8B9FB2;
-  color: #FFFFFF;
-}
-
-.btn-main:hover {
-  background-color: #A2B2C2;
-  border-color:  #A2B2C2;
-  color: #FFFFFF;
-}
-
-.btn-main:active {
-  background-color: #A2B2C2;
-  border-color:  #A2B2C2;
-  color: #FFFFFF;
-}
-
-.text-main {
-  color:  #8B9FB2;
-}
-
-
-// タブメニュー
+//*** タブメニュー:public ***//
 
 .wrap {
   width: 100%;
   max-width: 800px;
 }
-
 #tab-menu {
   display: flex;
   margin-bottom: 0px;
 }
-
 #tab-menu li {
   list-style-type: none;
   background: #8B9FB2;
@@ -246,7 +183,6 @@ label{
   font-size: 0.9rem;
   display: table;
 }
-
 #tab-menu li a {
   color: #FFFFFF;
   height: 65px;
@@ -257,7 +193,6 @@ label{
   display: table-cell;
   vertical-align: middle;
 }
-
 #tab-menu li .active {
   background: #FFFFFF;
   height: 60px;
@@ -265,12 +200,10 @@ label{
   border-bottom: none;
   color: #42455A;
 }
-
 #tab-contents {
   display: flex;
   flex-wrap: wrap;
 }
-
 #tab-contents .tab {
   width: 100%;
   padding: 15px;
@@ -284,29 +217,18 @@ label{
     border: 0.6px solid #C5CFD8;
   }
 }
-
 #tab-contents p {
   color: #42455A;
   line-height: 2.0;
   padding-bottom: 0;
 }
 
-
-.text-main{
-  color: #8B9FB2;
-}
-
-.text-accent{
-  color: #CFB96C;
-}
-
-// タブメニュー admin
+//*** タブメニュー:admin ***//
 
 .wrap.admin {
   width: 100%;
   max-width: 800px;
 }
-
 #tab-menu li.admin {
   list-style-type: none;
   background: #8B9FB2;
@@ -315,23 +237,6 @@ label{
   font-size: 0.9rem;
   display: table;
 }
-
-#tab-menu li a {
-  color: #FFFFFF;
-  height: 65px;
-  text-decoration: none;
-  display: block;
-  padding: 10px 5px;
-  text-align: center;
-  display: table-cell;
-  vertical-align: middle;
-}
-
-#tab-contents {
-  display: flex;
-  flex-wrap: wrap;
-}
-
 #tab-contents .tab.admin {
   width: 99%;
   padding: 15px;
@@ -340,37 +245,35 @@ label{
   border-top: none;
 }
 
+//*** コメント表示 ***//
+
 .card-comment {
   max-width: 980px;
   border-radius: 8px;
   background-color: #F3F5F7;
   border: 0.6px solid #C5CFD8;
+  .comment-text {
+    font-size: 0.95rem;
+    overflow-wrap: break-word;
+  }
+  .comment-caption {
+    text-align: right;
+    div {
+      text-align: right;
+    }
+    .delete-btn {
+      font-size: 0.85rem;
+    }
+  }
 }
 
-#tab-contents p {
-  color: #42455A;
-  line-height: 2.0;
-  padding-bottom: 0;
-}
-
-
-.text-main{
-  color: #8B9FB2;
-}
-
-.text-accent{
-  color: #CFB96C;
-}
-
-
-// ページネーション
+//*** ページネーション ***//
 
 .pagination {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
 .page-item {
   display: flex;
   justify-content: center;
@@ -379,41 +282,77 @@ label{
   background: #FFFFFF;
   transition: all 0.15s linear;
 }
-
 .page-link {
   width: auto;
   color: #8B9FB2;
 }
-
 li.page-item.active .page-link {
   pointer-events: none;
   background: #8B9FB2;
   border: 1px solid #8B9FB2;
   color: #FFFFFF;
 }
-
 .page-link:hover {
   background: #8B9FB2;
   color: #FFFFFF;
 }
 
-table {
-  width: 100%;
-  table-layout: fixed;
-  word-break: break-all;
-  word-wrap: break-all;
+
+//*** カスタマイズテキスト ***//
+
+.text-main{
+  color: #8B9FB2;
+}
+.text-accent{
+  color: #CFB96C;
 }
 
-.comment-text {
-  font-size: 0.95rem;
-  overflow-wrap: break-word;
+//*** カスタマイズボタン ***//
+
+.btn-accent {
+  background-color: #CFB96C;
+  border-color:  #CFB96C;
+  color: #FFFFFF;
 }
-.comment-caption {
-  text-align: right;
-  div {
-    text-align: right;
-  }
-  .delete-btn {
-    font-size: 0.85rem;
-  }
+.btn-accent:hover {
+  background-color: #DDCBB9;
+  border-color:  #DDCBB9;
+  color: #FFFFFF;
+}
+.btn-accent:active {
+  background-color: #DDCBB9;
+  border-color:  #DDCBB9;
+  color: #FFFFFF;
+}
+
+.btn-outline-accent {
+  background-color: none;
+  border-color:  #CFB96C;
+  color:  #CFB96C;
+}
+.btn-outline-accent:hover {
+  background-color: none;
+  border-color: #DDCBB9;
+  color: #DDCBB9;
+}
+.btn-outline-accent:active {
+  background-color: none;
+  border-color: #DDCBB9;
+  color: #DDCBB9;
+}
+
+.btn-main{
+  background-color: #8B9FB2;
+  border-color:  #8B9FB2;
+  color: #FFFFFF;
+}
+.btn-main:hover {
+  background-color: #A2B2C2;
+  border-color:  #A2B2C2;
+  color: #FFFFFF;
+}
+.btn-main:active {
+  background-color: #A2B2C2;
+  border-color:  #A2B2C2;
+  color: #FFFFFF;
 }
