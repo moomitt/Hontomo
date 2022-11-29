@@ -1,6 +1,10 @@
-<p class="my-4"><i class="fas fa-search mx-2 text-main"></i>キーワードでコメントを検索</p>
+<p class="my-4">
+  <i class="fas fa-search mx-2 text-main"></i>
+  キーワードでコメントを検索
+</p>
 
-<%= form_with url: search_comment_book_path(book.id), method: :get,  class: "form-horaizontal" do |f| %>
+<%= form_with url: search_comment_book_path(book.id),
+method: :get,  class: "form-horaizontal" do |f| %>
   <div class="row input-group-sm mx-auto pl-3 mb-5">
     <%= f.text_field :keyword, class: "form-control col-md-6 col-sm-8 col-12 mx-1 mt-2" %>
     <div class="col-md-3 col-6 mx-1 px-0">

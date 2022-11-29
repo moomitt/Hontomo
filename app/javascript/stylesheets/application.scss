@@ -398,8 +398,22 @@ li.page-item.active .page-link {
 }
 
 table {
-width: 100%;
-table-layout: fixed;
-word-break: break-all;
-word-wrap: break-all;
+  width: 100%;
+  table-layout: fixed;
+  word-break: break-all;
+  word-wrap: break-all;
+}
+
+.comment-text {
+  font-size: 0.95rem;
+  overflow-wrap: break-word;
+}
+.comment-caption {
+  text-align: right;
+  div {
+    text-align: right;
+  }
+  .delete-btn {
+    font-size: 0.85rem;
+  }
 }

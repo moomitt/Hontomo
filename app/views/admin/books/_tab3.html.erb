@@ -7,17 +7,23 @@
 <% end %>
 
 <% comments.each do |comment| %>
-  <div class="col-12 px-3 pt-3 pb-2 mb-3 card-comment">
-    <p class="pb-0" style="font-size:0.95rem"><%= comment.text %></p>
-    <div class="row text-right">
-      <p class="col-lg-4 col-sm-5 col-12 my-0"><small>投稿者： <%= comment.user.name %></small></p>
-      <p class="col-lg-4 col-sm-5 col-9 my-0"><small>投稿日時： <%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></small></p>
-      <div class="goods_buttons_<%= comment.id %> col-lg-1 col-sm-2 col-3 pt-1 text-right">
+  <div class="card-comment col-12 px-3 pt-3 pb-2 mb-3">
+    <p class="comment-text pb-0">
+      <%= safe_join(comment.text.split("\r"),tag(:br)) %>
+    </p>
+    <div class="comment-caption row">
+      <p class="col-lg-4 col-sm-5 col-12 my-0">
+        <small>投稿者： <%= comment.user.name %></small>
+      </p>
+      <p class="col-lg-4 col-sm-5 col-9 my-0">
+        <small>投稿日時： <%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></small>
+      </p>
+      <div class="goods_buttons_<%= comment.id %> col-lg-1 col-sm-2 col-3 pt-1">
         <%= render partial: 'public/goods/good', locals: { book: book, comment: comment } %>
       </div>
-      <div class="col-lg-3 col-sm-12 col-12 pt-2 text-right" style="font-size:0.85rem">
+      <div class="delete-btn col-lg-3 col-sm-12 col-12 pt-2">
         <%= link_to 'コメントを削除', book_comment_destroy_admin_book_path(comment.id), method: :delete,
-        data: {confirm: "削除したコメントは元に戻せません。本当に削除しますか？"}, class: "text-main ml-4" %>
+        data: {confirm: "削除したコメントは元に戻せません。本当に削除しますか？"}, class: "text-main" %>
       </div>
     </div>
   </div>
