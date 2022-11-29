@@ -2,6 +2,4 @@ $(function(){
   $('.goods_buttons_<%= @comment.id %>').html("<%= j(render partial: 'public/goods/good', locals: { book: @book, comment: @comment }) %>");
 });
 
-
-
 <!--goods_buttons_... この部分のHTMLだけ、renderで部分的に更新するという処理-->

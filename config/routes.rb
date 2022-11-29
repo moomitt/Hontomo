@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
-  
+
   devise_for :admins, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
-  
+
   devise_for :users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: "public/sessions"
   }
-  
-  
+
+
   namespace :admin do
     root to: 'homes#top'
     get 'comments/search'
@@ -31,17 +31,17 @@ Rails.application.routes.draw do
     end
     resources :tags, only: [:index, :destroy]
   end
-  
+
   scope module: 'public' do
     root to: 'homes#top'
     get 'about' => 'homes#about'
-    
+
     get 'users/mypage' => 'users#show'
     get 'users/information/edit' => 'users#edit'
     patch 'users/information' => 'users#update'
     get 'users/confirm'
     patch 'users/withdraw'
-    
+
     get 'books/find'
     get 'books/search'
     resources :books, only: [:index, :new, :create, :show, :edit, :update] do
