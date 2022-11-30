@@ -39,6 +39,7 @@ footer{
 div.top-image{
   height: auto;
   width: 100%;
+  text-align: center;
   background-image: url('../images/top3.png');
   background-size: cover;
   background-position: center;
@@ -252,7 +253,7 @@ table {
   width: 190px;
   text-align: left;
   .book-image{
-    height: 220px;
+    height: 210px;
     img {
       max-width: 142px;
     }
