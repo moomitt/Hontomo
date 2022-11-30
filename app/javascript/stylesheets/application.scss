@@ -203,6 +203,25 @@ table {
 }
 
 
+//*** adminページ ***//
+
+.admin-container{
+  max-width: 900px;
+}
+.admin-table{
+  width: 100%;
+  max-width: 1200px;
+  font-size: 0.9rem;
+  thead{
+    background-color: #42455A;
+    color: #FFFFFF;
+  }
+  tbody{
+    background-color: #FFFFFF;
+  }
+}
+
+
 //*** タブメニュー:public ***//
 
 .wrap {
