@@ -245,7 +245,7 @@ table {
 }
 
 
-//*** users/showページ ***//
+//*** usersページ ***//
 
 .bookmark{
   vertical-align: top;
@@ -261,6 +261,9 @@ table {
 .confirm-container{
   max-width: 1200px;
   text-align: center;
+}
+.table-user{
+  max-width: 800px;
 }
 
 
@@ -284,6 +287,10 @@ table {
     background-color: #FFFFFF;
   }
 }
+.admin-table.sm{
+  max-width: 900px;
+}
+
 
 
 //*** タブメニュー:public ***//

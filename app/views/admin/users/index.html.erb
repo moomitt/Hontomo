@@ -6,23 +6,22 @@
       </h4>
     </div>
 
-    <div class="col-md-11 col-11 mx-auto mb-3">
+    <div class="col-11 mx-auto mb-3">
       <h5 class="my-4">
         <i class="fas fa-users fa-lg fa-fw mr-3"></i>
         会員一覧<small> （全 <%= @all_users.count %> 件）</small>
       </h5>
     </div>
 
-    <div class="col-lg-10a col-md-10 col-11 mx-auto px-0">
-      <table class="table table-hover table-bordered"
-        style="width:100%; max-width:900px; font-size:0.9rem">
-          <thead style="background-color:#42455A; color:#FFFFFF;">
+    <div class="col-md-10 col-11 mx-auto px-0">
+      <table class="table admin-table sm table-hover table-bordered">
+          <thead>
             <th style="width:13%;">ID</th>
             <th style="width:30%;">会員名</th>
             <th style="width:37%;">メールアドレス</th>
             <th style="width:20%;">ステータス</th>
           </thead>
-          <tbody style="background-color:#FFFFFF;">
+          <tbody>
             <% @users.each do |user| %>
               <tr>
                 <td><%= user.id %></td>
