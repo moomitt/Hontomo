@@ -84,6 +84,9 @@ a, a:hover, a:active {
   color: #42455A;
   text-decoration: none;
 }
+li {
+  list-style: none;
+}
 label{
   margin-bottom: 0;
 }
@@ -191,6 +194,12 @@ table {
   img {
     max-width: 142px;
   }
+}
+
+//*** books/editページ ***//
+
+.edit-container{
+  max-width: 800px;
 }
 
 

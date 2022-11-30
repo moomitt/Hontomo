@@ -1,35 +1,36 @@
 <div class="container-fluid public">
   <div class="row">
     <div class="col-12 mx-auto">
-      <h4 class="my-5 mx-4 px-4 pb-3" style="border-bottom: 1.5px solid #616F7C;">
+      <h4 class="heading my-5 mx-4 px-4 pb-3">
         本をみる
       </h4>
     </div>
 
-    <div class="col-md-11 col-11 mx-auto mb-4">
-      <h5 class="">
+    <div class="col-11 mx-auto mb-4">
+      <h5>
         <i class="fas fa-edit fa-lg fa-fw mr-3"></i>
         本の情報を編集する
       </h5>
     </div>
 
-    <div class="col-md-10 col-11 mx-auto mb-4">
+    <div class="col-sm-10 col-11 mx-auto mb-4">
       <div class="row">
         <div class="col-lg-3 col-md-4 col-11 mb-3 mx-auto">
-          <div class="px-0" style="height:auto;">
+          <div class="book-image px-0">
             <% items = RakutenWebService::Books::Book.search(isbn: @book.isbn) %>
             <% item = items.first %>
-            <%= image_tag(item.large_image_url, :style => "max-width:142px;") %>
+            <%= image_tag(item.large_image_url) %>
           </div>
         </div>
-        <div class="col-lg-9 col-md-8 col-10 mx-auto">
-          <%= form_with model: @book, url: book_path(@book.id), method: :patch, class: "form-horaizontal" do |f| %>
+        <div class="edit-container col-lg-9 col-md-8 col-10 mx-auto">
+          <%= form_with model: @book, url: book_path(@book.id), method: :patch,
+          class: "form-horaizontal" do |f| %>
             <%= f.hidden_field :user_id, :value => @book.user.id %>
             <div class="row input-group-sm d-flex align-items-center">
               <% if @book.errors.any? %>
                 <ul>
                   <% @book.errors.full_messages.each do |message| %>
-                    <li class="text-danger mt-3" style="list-style:none;"><%= message %></li>
+                    <li class="text-danger mt-3"><%= message %></li>
                   <% end %>
                 </ul>
               <% end %>
@@ -73,18 +74,19 @@
       </div>
     </div>
 
-    <div class="col-md-11 col-11 mx-auto my-4">
+    <div class="col-11 mx-auto my-4">
       <h5 class="">
         <i class="fas fa-tags fa-lg fa-fw mr-3"></i>
         タグを追加する
       </h5>
     </div>
 
-    <div class="col-md-10 col-10 mx-auto mb-4">
-      <%= form_tag({ controller:"books", action:"edit" }, method: :get, class: "form-horaizontal") do %>
-        <div class="row input-group-sm">
-          <%= text_field_tag :tag, "", {class: "form-control col-lg-4 col-md-5 ml-3 mt-2"} %>
-          <div class="col-lg-3 col-md-3 ml-3 mt-2 px-0">
+    <div class="col-md-10 col-sm-9 col-10 mx-auto mb-4">
+      <%= form_tag({ controller:"books", action:"edit" }, method: :get,
+      class: "form-horaizontal") do %>
+        <div class="edit-container row input-group-sm">
+          <%= text_field_tag :tag, "", {class: "form-control col-md-4 col-sm-10 col-11 ml-3 mt-2"} %>
+          <div class="col-md-3 ml-3 mt-2 px-0">
             <%= submit_tag '追加', class: "btn btn-sm btn-success px-4" %>
           </div>
         </div>
