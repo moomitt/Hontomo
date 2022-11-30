@@ -1,52 +1,52 @@
 <div class="container-fluid public">
   <div class="row">
     <div class="col-12 mx-auto">
-      <h4 class="my-5 mx-4 px-4 pb-3" style="border-bottom: 1.5px solid #616F7C;">
+      <h4 class="heading my-5 mx-4 px-4 pb-3">
         新しい本を登録する
       </h4>
     </div>
-    
-    <div class="col-md-11 col-11 mx-auto mb-4">
-      <h5 class="">
+
+    <div class="col-11 mx-auto mb-4">
+      <h5>
         <i class="fas fa-search fa-lg fa-fw mr-3"></i>
         題名からさがす
       </h5>
     </div>
-    
-    <div class="col-lg-10 col-md-9 col-9 mx-auto mb-5 px-3">
+
+    <div class="col-md-10 col-9 mx-auto mb-5 px-3">
       <%= form_with url: books_find_path, method: :get, local: true, class: "form-horaizontal" do |f| %>
         <div class="row input-group-sm">
           <%= f.text_field :keyword, class: "form-control col-lg-4 col-md-7 col-12 mr-2 my-1" %>
-          <div class="col-lg-2 col-md-2 col-5 px-0">
+          <div class="col-md-2 col-5 px-0">
             <%= f.submit '題名で検索', class: "btn btn-sm btn-main px-4 my-1" %>
           </div>
         </div>
       <% end %>
     </div>
-    
-    <div class="col-md-11 col-11 mx-auto mb-4">
-      <h5 class="">
+
+    <div class="col-11 mx-auto mb-4">
+      <h5>
         <i class="fas fa-book fa-lg fa-fw mr-3"></i>
         検索結果
         <% if @items.present? %>
-        <small class="">（全 <%= @items.count %> 件）</small>
+          <small>（全 <%= @items.count %> 件）</small>
         <% end %>
       </h5>
       <% if @items.present? %>
-      <p class="my-3 ml-5">検索ワード：<%= "#{params[:keyword]}" %></p>
+        <p class="my-3 ml-5">検索ワード：<%= "#{params[:keyword]}" %></p>
       <% end %>
     </div>
-    
-    <div class="col-lg-9 col-md-9 col-sm-9 col-9 mx-auto mb-5 px-3">
+
+    <div class="col-9 mx-auto mb-5 px-3">
       <% if @items.present? %>
         <% @items.each do |item| %>
           <div class="row px-0">
             <div class="col-lg-2 col-md-3 col-sm-11 col-12 mb-3 px-0">
-              <div class="px-1 pt-2" style="height:auto;">
-                <%= image_tag(item.medium_image_url, :style => "max-width:150px;") %>
+              <div class="book-image px-1 pt-2">
+                <%= image_tag(item.medium_image_url) %>
               </div>
             </div>
-            <table class="table table-borderless table-sm mb-5 col-lg-8 col-md-8 col-sm-11 col-12">
+            <table class="table table-borderless table-sm mb-5 col-md-8 col-sm-11 col-12">
               <tr>
                 <td><strong><%= item.title %></strong></td>
               </tr>
@@ -66,11 +66,11 @@
           </div>
         <% end %>
       <% end %>
-      
+
       <p class="mt-4 mx-3">お探しの本が表示されない場合</p>
       <p class="mx-3">・検索ワードが短すぎる場合、正しく結果が表示されない場合があります。</p>
       <p class="mx-3">・該当の書籍がデータベースに存在しない可能性があります。</p>
     </div>
-    
+
   </div>
 </div>

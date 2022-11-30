@@ -1,34 +1,36 @@
 <div class="container-fluid public">
   <div class="row">
     <div class="col-12 mx-auto">
-      <h4 class="my-5 mx-4 px-4 pb-3" style="border-bottom: 1.5px solid #616F7C;">
+      <h4 class="heading my-5 mx-4 px-4 pb-3">
         新しい本を登録する
       </h4>
     </div>
-    
-    <div class="col-md-11 col-11 mx-auto mb-4">
-      <h5 class="">
+
+    <div class="col-11 mx-auto mb-4">
+      <h5>
         <i class="fas fa-check-square fa-lg fa-fw mr-3"></i>
         確認画面
       </h5>
     </div>
-    
-    <div class="col-lg-10 col-md-10 col-sm-9 col-9 mx-auto mt-2 mb-5 px-3">
+
+    <div class="col-md-10 col-9 mx-auto mt-2 mb-5 px-3">
       <div class="row px-0">
-        <h6 class="col-lg-5 col-md-7 col-sm-10 col-11 mt-2 px-0">あなたが選択中の本</h6>
+        <h6 class="col-lg-5 col-md-7 col-sm-10 col-11 mt-2 px-0">
+          あなたが選択中の本
+        </h6>
         <div class="col-lg-3 col-md-4 col-sm-10 col-11 mt-2 px-0">
           <%= link_to '楽天ブックスでみる', @item.item_url, class: "btn btn-sm btn-outline-secondary px-3" %>
         </div>
       </div>
-      
+
       <div class="row px-0 mt-4">
         <div class="col-lg-3 col-md-4 col-sm-11 col-11 mb-3 px-0">
-          <div class="pt-3 pl-3" style="height:auto;">
-            <%= image_tag(@item.large_image_url, :style => "max-width:150px;") %>
+          <div class="book-image pt-3 pl-3">
+            <%= image_tag(@item.large_image_url) %>
           </div>
         </div>
-        
-        <table class="table table-borderless my-3 col-lg-9 col-md-8 col-sm-11 col-11">
+
+        <table class="table table-borderless col-lg-9 col-md-8 col-11 my-3">
           <tr>
             <td>
               <strong><%= @item.title %></strong>
@@ -55,6 +57,6 @@
         </div>
       </div>
     </div>
-    
+
   </div>
 </div>
