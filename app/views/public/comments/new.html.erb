@@ -1,34 +1,40 @@
 <div class="container-fluid public">
   <div class="row">
     <div class="col-12 mx-auto">
-      <h4 class="my-5 mx-4 px-4 pb-3" style="border-bottom: 1.5px solid #616F7C;">
+      <h4 class="heading my-5 mx-4 px-4 pb-3">
         本をみる
       </h4>
     </div>
 
-    <div class="col-md-11 col-11 mx-auto mb-4">
-      <h5 class="">
+    <div class="col-11 mx-auto mb-4">
+      <h5>
         <i class="fas fa-comment fa-lg fa-fw mr-3"></i>
         感想コメントを投稿
       </h5>
     </div>
 
-    <div class="col-lg-10 col-md-10 col-11 mx-auto">
+    <div class="col-md-10 col-11 mx-auto">
       <%= form_with model: @comment, url: book_comments_path(@book.id), method: :post, class: "form-horaizontal" do |f| %>
-        <label class="px-0">コメント<small> （100文字以内）</small></label>
+        <label class="px-0">
+          コメント<small> （100文字以内）</small>
+        </label>
         <% if @comment.errors.any? %>
           <ul>
             <% @comment.errors.full_messages.each do |message| %>
-              <li class="text-danger mt-3" style="list-style:none; font-size:0.9rem;"><%= message %></li>
+              <li class="text-danger mt-3"><%= message %></li>
             <% end %>
           </ul>
         <% end %>
         <%= f.hidden_field :book_id, :value => @book.id %>
         <%= f.hidden_field :user_id, :value => current_user.id %>
-        <%= f.text_area :text, class: "form-control my-3 col-lg-8 mb-4", :style => "max-width:510px; height:120px;" %>
-        <p><small>※ 特定の個人・団体を誹謗中傷するような内容の投稿はお止めください。</small></p>
-        <p><small>※ その他 注意事項につきましては
-        <%= link_to '　ご利用上の注意（Aboutページ）' , about_path, class: "text-primary" %>をご確認ください。</small></p>
+        <%= f.text_area :text, class: "form-control comment my-3 col-lg-8 mb-4" %>
+        <p><small>
+          ※ 特定の個人・団体を誹謗中傷するような内容の投稿はお止めください。
+        </small></p>
+        <p><small>
+          ※ その他 注意事項につきましては
+          <%= link_to '　ご利用上の注意（Aboutページ）' , about_path, class: "text-primary" %>をご確認ください。
+        </small></p>
         <%= f.submit 'コメントを投稿', class: "btn btn-sm btn-accent px-4 mr-3 mt-2" %>
         <%= link_to 'キャンセル', book_path(@book.id), class: "btn btn-sm btn-main px-3 mt-2" %>
       <% end %>

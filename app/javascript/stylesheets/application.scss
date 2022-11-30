@@ -84,8 +84,9 @@ a, a:hover, a:active {
   color: #42455A;
   text-decoration: none;
 }
-li {
+li.text-danger {
   list-style: none;
+  font-size: 0.9rem;
 }
 label{
   margin-bottom: 0;
@@ -231,6 +232,13 @@ table {
 }
 .tags{
   white-space: nowrap;
+}
+
+//*** comments/newページ ***//
+
+.form-control.comment{
+  max-width: 510px;
+  height: 120px;
 }
 
 //*** adminページ ***//
