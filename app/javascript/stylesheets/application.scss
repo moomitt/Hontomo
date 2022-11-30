@@ -170,6 +170,12 @@ table {
     color: #FFFFFF;
   }
 }
+.card-comment{
+  max-width: 800px;
+}
+.card-comment.admin{
+  background-color:#FFFFFF;
+}
 
 
 //*** books/showページ ***//
@@ -207,6 +213,9 @@ table {
 
 .admin-container{
   max-width: 900px;
+}
+.admin-container-large{
+  max-width: 1200px;
 }
 .admin-table{
   width: 100%;
