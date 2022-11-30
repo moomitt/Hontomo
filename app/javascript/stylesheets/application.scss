@@ -184,6 +184,27 @@ table {
 }
 
 
+//*** books/index,searchページ ***//
+
+.index-container{
+  max-width: 800px;
+  .book{
+    text-align: left;
+    vertical-align: top;
+    width: 190px;
+    div {
+      height: 210px;
+      img {
+        max-width: 142px;
+      }
+    }
+  }
+}
+.tags{
+  white-space: nowrap;
+}
+
+
 //*** books/showページ ***//
 
 .book-table{
@@ -208,31 +229,6 @@ table {
   }
 }
 
-//*** books/editページ ***//
-
-.edit-container{
-  max-width: 800px;
-}
-
-//*** books/index,searchページ ***//
-
-.index-container{
-  max-width: 800px;
-  .book{
-    text-align: left;
-    vertical-align: top;
-    width: 190px;
-    div {
-      height: 210px;
-      img {
-        max-width: 142px;
-      }
-    }
-  }
-}
-.tags{
-  white-space: nowrap;
-}
 
 //*** comments/newページ ***//
 
@@ -240,6 +236,33 @@ table {
   max-width: 510px;
   height: 120px;
 }
+
+
+//*** editページ共通 ***//
+
+.edit-container{
+  max-width: 800px;
+}
+
+
+//*** users/showページ ***//
+
+.bookmark{
+  vertical-align: top;
+  width: 190px;
+  text-align: left;
+  .book-image{
+    height: 220px;
+    img {
+      max-width: 142px;
+    }
+  }
+}
+.confirm-container{
+  max-width: 1200px;
+  text-align: center;
+}
+
 
 //*** adminページ ***//
 
