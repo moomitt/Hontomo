@@ -102,6 +102,10 @@ table {
   word-break: break-all;
   word-wrap: break-all;
 }
+.guest-window{
+  max-width: 800px;
+  text-align: center;
+}
 
 
 //*** フォーム共通 ***//
@@ -161,6 +165,31 @@ table {
   color: #FFFFFF;
   p {
     color: #FFFFFF;
+  }
+}
+
+
+//*** books/showページ ***//
+
+.book-table{
+  max-width: 700px;
+}
+.title{
+  font-weight: bold;
+  .text-main{
+    width: 25%;
+  }
+}
+.date {
+  font-size: 0.9rem;
+}
+.name {
+  font-size: 0.95rem;
+}
+.book-image{
+  height: auto;
+  img {
+    max-width: 142px;
   }
 }
 
