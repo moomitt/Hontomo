@@ -176,6 +176,11 @@ table {
 .card-comment.admin{
   background-color:#FFFFFF;
 }
+.card-search{
+  background-color: #FFFFFF;
+  max-width: 700px;
+  border: none;
+}
 
 
 //*** books/showページ ***//
@@ -208,6 +213,25 @@ table {
   max-width: 800px;
 }
 
+//*** books/index,searchページ ***//
+
+.index-container{
+  max-width: 800px;
+  .book{
+    text-align: left;
+    vertical-align: top;
+    width: 190px;
+    div {
+      height: 210px;
+      img {
+        max-width: 142px;
+      }
+    }
+  }
+}
+.tags{
+  white-space: nowrap;
+}
 
 //*** adminページ ***//
 
