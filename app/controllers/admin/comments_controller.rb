@@ -1,7 +1,8 @@
 class Admin::CommentsController < ApplicationController
   def search
     #コメント本文をキーワード検索
-    @all_comments = Comment.where('text LIKE(?)', "%#{params[:keyword]}%")
+    #params[:keyword]をサニタイズ
+    @all_comments = Comment.where('text LIKE ?', "%#{Comment.sanitize_sql_like(params[:keyword])}%")
     @comments = @all_comments.page(params[:page]).per(10)
   end
 

@@ -11,8 +11,9 @@ class Admin::BooksController < ApplicationController
   def search
     #キーワード検索
     #タイトルに部分一致 or 作者名に部分一致
-    @all_books = Book.where('name LIKE(?)', "%#{params[:keyword]}%")
-    .or(Book.where('author LIKE(?)', "%#{params[:keyword]}%"))
+    #params[:keyword]をサニタイズ
+    @all_books = Book.where('name LIKE ?', "%#{Book.sanitize_sql_like(params[:keyword])}%")
+    .or(Book.where('author LIKE ?', "%#{Book.sanitize_sql_like(params[:keyword])}%"))
     @books = @all_books.page(params[:page]).per(10)
   end
 
@@ -30,7 +31,9 @@ class Admin::BooksController < ApplicationController
   def search_comment
     @book = Book.find(params[:id])
     #コメント本文をキーワード検索、結果をいいね順に表示
-    @search_comments = Comment.where(book_id: @book.id).where('text LIKE(?)', "%#{params[:keyword]}%")
+    #params[:keyword]をサニタイズ
+    @search_comments = Comment.where(book_id: @book.id)
+    .where('text LIKE ?', "%#{Comment.sanitize_sql_like(params[:keyword])}%")
     .sort{|a,b| b.goods.size <=> a.goods.size}
   end
 
