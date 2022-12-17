@@ -11,16 +11,16 @@ Rails.application.routes.draw do
 
 
   namespace :admin do
-    root to: 'homes#top'
-    get 'comments/search'
+    root to: "homes#top"
+    get "comments/search"
     resources :comments, only: [:destroy]
     resources :users, only: [:index, :show, :edit, :update] do
       member do
         delete :user_comment_destroy
       end
     end
-    get 'users/:id/comment' => 'users#comment', as: 'user_comment'
-    get 'books/search'
+    get "users/:id/comment" => "users#comment", as: "user_comment"
+    get "books/search"
     resources :books, only: [:index, :show, :edit, :update, :destroy] do
       member do
         get :search_comment
@@ -32,22 +32,22 @@ Rails.application.routes.draw do
     resources :tags, only: [:index, :destroy]
   end
 
-  scope module: 'public' do
-    root to: 'homes#top'
-    get 'about' => 'homes#about'
+  scope module: "public" do
+    root to: "homes#top"
+    get "about" => "homes#about"
 
-    get 'users/mypage' => 'users#show'
-    get 'users/information/edit' => 'users#edit'
-    patch 'users/information' => 'users#update'
-    get 'users/confirm'
-    patch 'users/withdraw'
+    get "users/mypage" => "users#show"
+    get "users/information/edit" => "users#edit"
+    patch "users/information" => "users#update"
+    get "users/confirm"
+    patch "users/withdraw"
 
-    get 'books/find'
-    get 'books/search'
+    get "books/find"
+    get "books/search"
     resources :books, only: [:index, :new, :create, :show, :edit, :update] do
       resources :bookmarks, only: [:create, :destroy]
       resources :comments, only: [:new, :create, :destroy] do
-        resource :goods, only: [:create, :destroy]    #URLにgoodのidを含む必要がないため、resourceで記述
+        resource :goods, only: [:create, :destroy]    # URLにgoodのidを含む必要がないため、resourceで記述
       end
       member do
         get :search_comment

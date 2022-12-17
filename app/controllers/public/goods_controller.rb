@@ -1,6 +1,6 @@
 class Public::GoodsController < ApplicationController
 
-  #非同期通信で処理
+  # 非同期通信で処理
   def create
     @book = Book.find(params[:book_id])
     @comment = Comment.find(params[:comment_id])
@@ -10,7 +10,7 @@ class Public::GoodsController < ApplicationController
     good.save
   end
 
-  #非同期通信で処理
+  # 非同期通信で処理
   def destroy
     @book = Book.find(params[:book_id])
     @comment = Comment.find(params[:comment_id])

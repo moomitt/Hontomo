@@ -2,26 +2,26 @@ class Public::BooksController < ApplicationController
   def index
     @all_books = Book.all
     @books = @all_books.page(params[:page]).per(8)
-    #キーワードを受け取ると、検索画面に遷移
+    # キーワードを受け取ると、検索画面に遷移
     if params[:keyword]
       redirect_to books_search_path
     end
-    #タグを受け取ると、検索画面に遷移
+    # タグを受け取ると、検索画面に遷移
     if params[:tag_ids]
       redirect_to books_search_path
     end
   end
 
   def search
-    #キーワード検索
+    # キーワード検索
     if params[:keyword]
-      #タイトルに部分一致 or 作者名に部分一致
-      #params[:keyword]をサニタイズ
-      @all_books = Book.where('name LIKE ?', "%#{Book.sanitize_sql_like(params[:keyword])}%")
-      .or(Book.where('author LIKE ?', "%#{Book.sanitize_sql_like(params[:keyword])}%"))
+      # タイトルに部分一致 or 作者名に部分一致
+      # params[:keyword]をサニタイズ
+      @all_books = Book.where("name LIKE ?", "%#{Book.sanitize_sql_like(params[:keyword])}%")
+      .or(Book.where("author LIKE ?", "%#{Book.sanitize_sql_like(params[:keyword])}%"))
       @books = @all_books.page(params[:page]).per(8)
     end
-    #タグ検索
+    # タグ検索
     if params[:tag_ids]
       @tags = []
       @all_books = []
@@ -35,9 +35,9 @@ class Public::BooksController < ApplicationController
     end
   end
 
-  #新規登録用の検索画面
+  # 新規登録用の検索画面
   def find
-    #キーワード検索
+    # キーワード検索
     if params[:keyword]
       keywords = params[:keyword].split(/[[:blank:]]+/).select(&:present?)
       keywords.each do |keyword|
@@ -46,17 +46,17 @@ class Public::BooksController < ApplicationController
     end
   end
 
-  #新規登録用の確認画面
+  # 新規登録用の確認画面
   def new
     @book = Book.new
-    #ISBNコードで検索、1件目を表示
+    # ISBNコードで検索、1件目を表示
     items = RakutenWebService::Books::Book.search(isbn: params[:isbn])
     @item = items.first
   end
 
   def create
     @book = Book.new(book_params)
-    #ISBNコードで検索、1件目を表示
+    # ISBNコードで検索、1件目を表示
     items = RakutenWebService::Books::Book.search(isbn: @book.isbn)
     @item = items.first
     if @book.save
@@ -68,14 +68,14 @@ class Public::BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
-    #ISBNコードで検索、1件目を表示
+    # ISBNコードで検索、1件目を表示
     items = RakutenWebService::Books::Book.search(isbn: @book.isbn)
     @item = items.first
-    #いいね順表示：commentsテーブルとgoodsテーブルを結合、同じcomment_idでグループ化、comment_idの多い順に並べ替え
-    @good_comments = @book.comments.left_joins(:goods).group(:id).order('count(goods.comment_id) desc')
-    #新着順表示：comment_idの降順に並べ替え
-    @new_comments = Comment.where(book_id: @book.id).order('id DESC')
-    #ログイン済みの場合のみ、current_userのコメントを表示
+    # いいね順表示：commentsテーブルとgoodsテーブルを結合、同じcomment_idでグループ化、comment_idの多い順に並べ替え
+    @good_comments = @book.comments.left_joins(:goods).group(:id).order("count(goods.comment_id) desc")
+    # 新着順表示：comment_idの降順に並べ替え
+    @new_comments = Comment.where(book_id: @book.id).order("id DESC")
+    # ログイン済みの場合のみ、current_userのコメントを表示
     if user_signed_in?
       @user_comments = Comment.where(book_id: @book.id, user_id: current_user.id)
     end
@@ -83,16 +83,16 @@ class Public::BooksController < ApplicationController
 
   def search_comment
     @book = Book.find(params[:id])
-    #コメント本文をキーワード検索、結果をいいね順に表示
-    #params[:keyword]をサニタイズ
+    # コメント本文をキーワード検索、結果をいいね順に表示
+    # params[:keyword]をサニタイズ
     @search_comments = Comment.where(book_id: @book.id)
-    .where('text LIKE ?', "%#{Comment.sanitize_sql_like(params[:keyword])}%")
+    .where("text LIKE ?", "%#{Comment.sanitize_sql_like(params[:keyword])}%")
     .sort{|a,b| b.goods.size <=> a.goods.size}
   end
 
   def edit
     @book = Book.find(params[:id])
-    #タグ追加処理
+    # タグ追加処理
     if params[:tag]
       if @tag = Tag.create(name: params[:tag])
         redirect_to edit_book_path
@@ -112,7 +112,7 @@ class Public::BooksController < ApplicationController
   end
 
   private
-  def book_params
-    params.require(:book).permit(:user_id, :name, :author, :series, :isbn, tag_ids: [])
-  end
+    def book_params
+      params.require(:book).permit(:user_id, :name, :author, :series, :isbn, tag_ids: [])
+    end
 end

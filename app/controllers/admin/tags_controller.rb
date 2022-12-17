@@ -2,7 +2,7 @@ class Admin::TagsController < ApplicationController
   def index
     @all_tags = Tag.all
     @tags = @all_tags.page(params[:page]).per(10)
-    #タグ追加処理
+    # タグ追加処理
     if params[:tag]
       Tag.create(name: params[:tag])
       redirect_to admin_tags_path
